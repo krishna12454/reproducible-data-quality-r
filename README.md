@@ -76,7 +76,8 @@ Key endpoints (all prefixed `/api`):
 |----------|--------------|
 | `GET /api/health` | reports R version & that packages are installed |
 | `POST /api/analysis/run` | runs `scripts/run_analysis.R` via `Rscript` |
-| `GET /api/analysis/correlations?method=pearson\|spearman` | recomputes correlations in R for the chosen method |
+| `GET /api/analysis/correlations?method=pearson\|spearman\|kendall` | recomputes correlations in R for the chosen method |
+| `GET /api/analysis/subset?gender=…&sleep_quality=…` | re-runs descriptive stats + correlations in R on a filtered subset |
 | `GET /api/analysis/results` | returns the generated R tables as JSON |
 | `POST /api/tests/run` | runs the `testthat` suite via `Rscript` |
 | `GET /api/analysis/figures/{key}` | serves a ggplot2 PNG produced by R |

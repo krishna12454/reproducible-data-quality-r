@@ -1,0 +1,4 @@
+x,y,method,n,estimate,statistic,p_value
+sleep_hours,wellbeing_score,kendall,901,0.3477736831257076,15.278390352676096,1.0653987577666733e-52
+stress_level,wellbeing_score,kendall,945,-0.3484165271744669,-14.884016551524923,4.1859634040518227e-50
+exercise_days_per_week,wellbeing_score,kendall,941,0.1585086734305,6.589904764264268,4.401087937594691e-11

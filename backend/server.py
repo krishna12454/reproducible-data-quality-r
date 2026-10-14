@@ -154,6 +154,23 @@ async def analysis_results():
     }
 
 
+@api_router.get("/analysis/subset")
+def subset_analysis(gender: str = "all", sleep_quality: str = "all"):
+    """Recompute descriptive stats + key correlations in R on a filtered subset."""
+    import json as _json
+    allowed_g = {"all", "Male", "Female", "Other"}
+    allowed_q = {"all", "Poor", "Fair", "Good", "Excellent"}
+    if gender not in allowed_g or sleep_quality not in allowed_q:
+        raise HTTPException(status_code=400, detail="Invalid filter value.")
+    res = _run_r("scripts/subset_analysis.R", [gender, sleep_quality])
+    if not res["success"]:
+        raise HTTPException(status_code=500, detail={"message": "R subset failed", **res})
+    try:
+        return _json.loads(res["stdout"])
+    except ValueError:
+        raise HTTPException(status_code=500, detail="Could not parse R output.")
+
+
 @api_router.get("/analysis/correlations")
 def correlations(method: str = "pearson"):
     """Recompute correlations in R for the chosen method (pearson/spearman)."""
@@ -199,14 +216,15 @@ async def list_figures():
 
 
 @api_router.get("/analysis/figures/{key}")
-async def get_figure(key: str):
+async def get_figure(key: str, download: bool = False):
     fname = FIGURES.get(key)
     if not fname:
         raise HTTPException(status_code=404, detail="Unknown figure.")
     path = R_PROJECT_DIR / "outputs/figures" / fname
     if not path.exists():
         raise HTTPException(status_code=404, detail="Figure not generated yet.")
-    return FileResponse(str(path), media_type="image/png")
+    return FileResponse(str(path), media_type="image/png",
+                        filename=(fname if download else None))
 
 
 @api_router.get("/dataset/download")

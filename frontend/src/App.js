@@ -4,7 +4,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import {
   FlaskConical, Play, Moon, Sun, Loader2, CheckCircle2, AlertTriangle,
-  XCircle, Download, FileText, Beaker, TerminalSquare, Sigma, RefreshCw,
+  XCircle, Download, FileText, Beaker, TerminalSquare, Sigma, RefreshCw, Filter,
 } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -113,6 +113,10 @@ function App() {
   const [corrData, setCorrData] = useState(null);
   const [corrLoading, setCorrLoading] = useState(false);
   const [showReport, setShowReport] = useState(false);
+  const [subGender, setSubGender] = useState("all");
+  const [subQuality, setSubQuality] = useState("all");
+  const [subData, setSubData] = useState(null);
+  const [subLoading, setSubLoading] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -155,6 +159,16 @@ function App() {
     } catch (e) {
       /* keep previous */
     } finally { setCorrLoading(false); }
+  };
+
+  const runSubset = async () => {
+    setSubLoading(true);
+    try {
+      const { data } = await axios.get(`${API}/analysis/subset?gender=${subGender}&sleep_quality=${subQuality}`);
+      setSubData(data);
+    } catch (e) {
+      setSubData(null);
+    } finally { setSubLoading(false); }
   };
 
   const runTests = async () => {
@@ -344,10 +358,10 @@ function App() {
               <div className="grid lg:grid-cols-5 gap-6">
                 <Card testid="correlation-matrix-card" className="lg:col-span-3">
                   <CardHead icon={Sigma} title="Correlation Matrix"
-                    sub={`${corrMethod === "spearman" ? "Spearman" : "Pearson"} · pairwise-complete · recomputed in R.`}
+                    sub={`${corrMethod.charAt(0).toUpperCase() + corrMethod.slice(1)} · pairwise-complete · recomputed in R.`}
                     right={
                       <div className="inline-flex rounded-md border border-border p-0.5 text-xs font-medium">
-                        {["pearson", "spearman"].map((m) => (
+                        {["pearson", "spearman", "kendall"].map((m) => (
                           <button key={m} data-testid={`corr-method-${m}`} onClick={() => selectCorr(m)}
                             className={`rounded px-2.5 py-1 capitalize transition-colors ${corrMethod === m ? "bg-primary text-primary-foreground" : "hover:bg-accent"}`}>
                             {m}
@@ -413,6 +427,73 @@ function App() {
               </div>
             </Section>
 
+            {/* ----------------- Subset Analysis ----------------- */}
+            <Section id="subset">
+              <Card testid="subset-analysis-card">
+                <CardHead icon={Filter} title="On-demand Subset Analysis"
+                  sub="Filter the cleaned data and re-run descriptive stats + correlations live in R."
+                  right={
+                    <div className="flex flex-wrap items-center gap-2">
+                      <select data-testid="subset-gender-select" value={subGender}
+                        onChange={(e) => setSubGender(e.target.value)}
+                        className="rounded-md border border-border bg-card px-2.5 py-1.5 text-xs font-medium">
+                        {["all", "Male", "Female", "Other"].map((g) => <option key={g} value={g}>{g === "all" ? "All genders" : g}</option>)}
+                      </select>
+                      <select data-testid="subset-quality-select" value={subQuality}
+                        onChange={(e) => setSubQuality(e.target.value)}
+                        className="rounded-md border border-border bg-card px-2.5 py-1.5 text-xs font-medium">
+                        {["all", "Poor", "Fair", "Good", "Excellent"].map((q) => <option key={q} value={q}>{q === "all" ? "All quality" : q}</option>)}
+                      </select>
+                      <button data-testid="run-subset-button" onClick={runSubset} disabled={subLoading}
+                        className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-60 transition-opacity">
+                        {subLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />}
+                        Run in R
+                      </button>
+                    </div>
+                  } />
+                {!subData && (
+                  <p className="p-5 text-sm text-muted-foreground">
+                    Choose filters above and click “Run in R” to analyse a subset. Each run executes a real Rscript on the filtered data.
+                  </p>
+                )}
+                {subData && (
+                  <div className="p-5 space-y-4">
+                    <div className="flex flex-wrap items-center gap-3 text-sm">
+                      <span data-testid="subset-n-value" className="rounded-md bg-secondary px-3 py-1.5 font-mono">
+                        n = {subData.n}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        gender: <b>{subData.gender}</b> · sleep quality: <b>{subData.sleep_quality}</b>
+                      </span>
+                    </div>
+                    {subData.n > 2 ? (
+                      <div className="grid lg:grid-cols-2 gap-4">
+                        <div>
+                          <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Descriptive statistics</p>
+                          <DataTable rows={subData.descriptive} testid="subset-desc-table" highlightCol="variable" />
+                        </div>
+                        <div>
+                          <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Correlations with wellbeing</p>
+                          <div className="space-y-2">
+                            {subData.key_correlations?.map((r, i) => (
+                              <div key={i} data-testid={`subset-corr-${i}`} className="flex items-center justify-between rounded-md border border-border px-3 py-2 text-xs">
+                                <span className="font-mono">{r.x}</span>
+                                <span className={`font-mono font-semibold ${r.estimate >= 0 ? "text-primary" : "text-rose-600 dark:text-rose-400"}`}>
+                                  {r.estimate == null ? "—" : `r = ${Number(r.estimate).toFixed(3)}`}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-amber-600 dark:text-amber-400">Subset too small for a reliable analysis.</p>
+                    )}
+                  </div>
+                )}
+              </Card>
+            </Section>
+
             {/* ----------------- Figures ----------------- */}
             <Section id="figures">
               <Card testid="figures-gallery-card">
@@ -421,7 +502,13 @@ function App() {
                 <div data-testid="figures-gallery-grid" className="grid sm:grid-cols-2 gap-px bg-border">
                   {FIGS.map((f) => (
                     <div key={f.key} data-testid={f.testid} className="bg-card p-4">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{f.title}</p>
+                      <div className="mb-2 flex items-center justify-between">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{f.title}</p>
+                        <a data-testid={`figure-download-${f.key}`} href={`${API}/analysis/figures/${f.key}?download=1&v=${figKey}`}
+                          className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                          <Download className="h-3.5 w-3.5" /> PNG
+                        </a>
+                      </div>
                       <a href={fig(f.key)} target="_blank" rel="noreferrer">
                         <img src={fig(f.key)} alt={f.title}
                           className="w-full rounded border border-border bg-white transition-transform hover:scale-[1.01]" />
