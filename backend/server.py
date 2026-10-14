@@ -28,14 +28,15 @@ logger = logging.getLogger(__name__)
 # --------------------------------------------------------------------------
 # Helpers that invoke the REAL R workflow via Rscript
 # --------------------------------------------------------------------------
-def _run_r(script_rel_path: str) -> dict:
+def _run_r(script_rel_path: str, args=None) -> dict:
     """Run an R script from the project root and capture its output."""
     script = R_PROJECT_DIR / script_rel_path
     if not script.exists():
         raise HTTPException(status_code=500, detail=f"R script not found: {script_rel_path}")
+    cmd = [RSCRIPT, str(script)] + ([str(a) for a in args] if args else [])
     try:
         proc = subprocess.run(
-            [RSCRIPT, str(script)],
+            cmd,
             cwd=str(R_PROJECT_DIR),
             capture_output=True, text=True, timeout=R_TIMEOUT,
         )
@@ -78,7 +79,7 @@ async def root():
 
 
 @api_router.get("/health")
-async def health():
+def health():
     """Report whether R and the key packages are available."""
     try:
         proc = subprocess.run(
@@ -96,7 +97,7 @@ async def health():
 
 
 @api_router.post("/analysis/run")
-async def run_analysis():
+def run_analysis():
     """Generate the synthetic data (if needed) and run the full R pipeline."""
     _ensure_raw()
     result = _run_r("scripts/run_analysis.R")
@@ -108,7 +109,7 @@ async def run_analysis():
 
 
 @api_router.post("/tests/run")
-async def run_tests():
+def run_tests():
     """Run the testthat suite via Rscript and return the real console output."""
     result = _run_r("scripts/run_tests.R")
     combined = (result["stdout"] + "\n" + result["stderr"])
@@ -151,6 +152,33 @@ async def analysis_results():
         "raw_preview": _read_csv("outputs/tables/raw_preview.csv"),
         "cleaned_preview": _read_csv("outputs/tables/cleaned_preview.csv"),
     }
+
+
+@api_router.get("/analysis/correlations")
+def correlations(method: str = "pearson"):
+    """Recompute correlations in R for the chosen method (pearson/spearman)."""
+    method = method.lower()
+    if method not in ("pearson", "spearman", "kendall"):
+        raise HTTPException(status_code=400, detail="Invalid method.")
+    mat_file = f"outputs/tables/correlation_matrix_{method}.csv"
+    key_file = f"outputs/tables/key_correlations_{method}.csv"
+    if not (R_PROJECT_DIR / mat_file).exists():
+        res = _run_r("scripts/correlate.R", [method])
+        if not res["success"]:
+            raise HTTPException(status_code=500, detail={"message": "R correlation failed", **res})
+
+    rows = _read_csv(mat_file)
+    matrix = None
+    if rows:
+        header = list(rows[0].keys())
+        var_key = header[0]
+        matrix = {
+            "variables": [r[var_key] for r in rows],
+            "columns": header[1:],
+            "matrix": [[r[c] for c in header[1:]] for r in rows],
+        }
+    return {"method": method, "correlation_matrix": matrix,
+            "key_correlations": _read_csv(key_file)}
 
 
 FIGURES = {

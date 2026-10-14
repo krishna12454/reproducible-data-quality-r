@@ -109,6 +109,10 @@ function App() {
   const [figKey, setFigKey] = useState(Date.now());
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [corrMethod, setCorrMethod] = useState("pearson");
+  const [corrData, setCorrData] = useState(null);
+  const [corrLoading, setCorrLoading] = useState(false);
+  const [showReport, setShowReport] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -141,6 +145,18 @@ function App() {
     } finally { setRunning(false); }
   };
 
+  const selectCorr = async (method) => {
+    setCorrMethod(method);
+    if (method === "pearson" && !corrData) return; // base results already pearson
+    setCorrLoading(true);
+    try {
+      const { data } = await axios.get(`${API}/analysis/correlations?method=${method}`);
+      setCorrData(data);
+    } catch (e) {
+      /* keep previous */
+    } finally { setCorrLoading(false); }
+  };
+
   const runTests = async () => {
     setTesting(true);
     try {
@@ -152,6 +168,10 @@ function App() {
   };
 
   const summary = results?.summary || {};
+  const cm = (corrMethod !== "pearson" || corrData) && corrData
+    ? corrData.correlation_matrix : results?.correlation_matrix;
+  const kc = (corrMethod !== "pearson" || corrData) && corrData
+    ? corrData.key_correlations : results?.key_correlations;
   const fig = (k) => `${API}/analysis/figures/${k}?v=${figKey}`;
   const FIGS = [
     { key: "sleep_hist", title: "Distribution of nightly sleep", testid: "figure-card-sleep-hist" },
@@ -323,23 +343,39 @@ function App() {
             <Section id="correlations">
               <div className="grid lg:grid-cols-5 gap-6">
                 <Card testid="correlation-matrix-card" className="lg:col-span-3">
-                  <CardHead icon={Sigma} title="Correlation Matrix" sub="Pearson, pairwise-complete observations." />
-                  <div className="overflow-x-auto p-5">
-                    {results.correlation_matrix && (
+                  <CardHead icon={Sigma} title="Correlation Matrix"
+                    sub={`${corrMethod === "spearman" ? "Spearman" : "Pearson"} · pairwise-complete · recomputed in R.`}
+                    right={
+                      <div className="inline-flex rounded-md border border-border p-0.5 text-xs font-medium">
+                        {["pearson", "spearman"].map((m) => (
+                          <button key={m} data-testid={`corr-method-${m}`} onClick={() => selectCorr(m)}
+                            className={`rounded px-2.5 py-1 capitalize transition-colors ${corrMethod === m ? "bg-primary text-primary-foreground" : "hover:bg-accent"}`}>
+                            {m}
+                          </button>
+                        ))}
+                      </div>
+                    } />
+                  <div className="overflow-x-auto p-5 relative">
+                    {corrLoading && (
+                      <div className="absolute inset-0 z-10 grid place-items-center bg-card/70 backdrop-blur-sm">
+                        <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                      </div>
+                    )}
+                    {cm && (
                       <table data-testid="correlation-matrix-grid" className="w-full text-xs">
                         <thead>
                           <tr>
                             <th className="p-2"></th>
-                            {results.correlation_matrix.columns.map((c) => (
+                            {cm.columns.map((c) => (
                               <th key={c} className="p-2 font-mono font-medium text-muted-foreground -rotate-0 whitespace-nowrap">{c}</th>
                             ))}
                           </tr>
                         </thead>
                         <tbody>
-                          {results.correlation_matrix.variables.map((v, i) => (
+                          {cm.variables.map((v, i) => (
                             <tr key={v}>
                               <td className="p-2 font-mono font-medium text-muted-foreground whitespace-nowrap">{v}</td>
-                              {results.correlation_matrix.matrix[i].map((val, j) => (
+                              {cm.matrix[i].map((val, j) => (
                                 <td key={j} className="p-2 text-center font-mono"
                                   style={{ backgroundColor: corrColor(val) }}>
                                   {parseFloat(val).toFixed(2)}
@@ -355,7 +391,7 @@ function App() {
                 <Card testid="key-correlations-card" className="lg:col-span-2">
                   <CardHead icon={Sigma} title="Key Correlations with Wellbeing" sub="cor.test() with p-values." />
                   <div className="space-y-3 p-5">
-                    {results.key_correlations?.map((r, i) => {
+                    {kc?.map((r, i) => {
                       const est = parseFloat(r.estimate), p = parseFloat(r.p_value);
                       return (
                         <div key={i} data-testid={`key-corr-${i}`} className="rounded-md border border-border p-3">
@@ -430,10 +466,18 @@ function App() {
                       The full reproducible report is rendered from <span className="font-mono">report/report.Rmd</span> with
                       methodology, results, figures and an explicit limitations section.
                     </p>
-                    <a data-testid="rmarkdown-report-link" href={`${API}/report`} target="_blank" rel="noreferrer"
+                    <button data-testid="rmarkdown-report-link" onClick={() => setShowReport((s) => !s)}
                       className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity">
-                      <FileText className="h-4 w-4" /> Open rendered report
+                      <FileText className="h-4 w-4" /> {showReport ? "Hide report" : "View report inline"}
+                    </button>
+                    <a data-testid="report-newtab-link" href={`${API}/report`} target="_blank" rel="noreferrer"
+                      className="ml-2 inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors">
+                      Open in new tab
                     </a>
+                    {showReport && (
+                      <iframe data-testid="report-iframe" title="R Markdown report" src={`${API}/report`}
+                        className="mt-2 h-[520px] w-full rounded-md border border-border bg-white" />
+                    )}
                     <div className="rounded-md border border-amber-400/50 bg-amber-50 dark:bg-amber-950/30 p-3 text-xs text-amber-700 dark:text-amber-400">
                       All dataset records are 100% synthetic, generated for academic demonstration only. They do not describe real people and carry no empirical claims.
                     </div>

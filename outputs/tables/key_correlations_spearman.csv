@@ -1,0 +1,4 @@
+x,y,method,n,estimate,statistic,p_value
+sleep_hours,wellbeing_score,spearman,901,0.4958040937231134,61464153.213455744,4.495112335850648e-57
+stress_level,wellbeing_score,spearman,945,-0.47055279427486707,206835132.8223367,3.089275079211886e-53
+exercise_days_per_week,wellbeing_score,spearman,941,0.2127089126622685,109333301.96781357,4.342188084786877e-11

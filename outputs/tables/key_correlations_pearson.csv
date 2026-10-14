@@ -1,0 +1,4 @@
+x,y,method,n,estimate,statistic,p_value
+sleep_hours,wellbeing_score,pearson,901,0.5028662101443309,17.44357507804136,6.493798831342123e-59
+stress_level,wellbeing_score,pearson,945,-0.484439169000676,-17.004894296828112,9.10956919172881e-57
+exercise_days_per_week,wellbeing_score,pearson,941,0.23379773554266095,7.368505238388279,3.7782468341966635e-13

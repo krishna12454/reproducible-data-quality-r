@@ -1,0 +1,8 @@
+"","age","sleep_hours","caffeine_cups","screen_time_hours","exercise_days_per_week","stress_level","wellbeing_score"
+"age",1,-0.015,0.07,0.029,0.003,-0.002,-0.02
+"sleep_hours",-0.015,1,-0.054,0.005,-0.047,-0.015,0.496
+"caffeine_cups",0.07,-0.054,1,0.002,0.028,0.016,-0.16
+"screen_time_hours",0.029,0.005,0.002,1,-0.043,-0.033,0.037
+"exercise_days_per_week",0.003,-0.047,0.028,-0.043,1,-0.015,0.213
+"stress_level",-0.002,-0.015,0.016,-0.033,-0.015,1,-0.471
+"wellbeing_score",-0.02,0.496,-0.16,0.037,0.213,-0.471,1
