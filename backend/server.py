@@ -154,6 +154,21 @@ async def analysis_results():
     }
 
 
+@api_router.get("/analysis/anova")
+def anova(factor: str = "sleep_quality"):
+    """One-way ANOVA of wellbeing across a categorical factor, computed in R."""
+    import json as _json
+    if factor not in ("sleep_quality", "gender", "mood"):
+        raise HTTPException(status_code=400, detail="Invalid factor.")
+    res = _run_r("scripts/group_comparison.R", [factor])
+    if not res["success"]:
+        raise HTTPException(status_code=500, detail={"message": "R ANOVA failed", **res})
+    try:
+        return _json.loads(res["stdout"])
+    except ValueError:
+        raise HTTPException(status_code=500, detail="Could not parse R output.")
+
+
 @api_router.get("/analysis/subset")
 def subset_analysis(gender: str = "all", sleep_quality: str = "all"):
     """Recompute descriptive stats + key correlations in R on a filtered subset."""

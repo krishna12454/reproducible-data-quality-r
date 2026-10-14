@@ -78,6 +78,7 @@ Key endpoints (all prefixed `/api`):
 | `POST /api/analysis/run` | runs `scripts/run_analysis.R` via `Rscript` |
 | `GET /api/analysis/correlations?method=pearson\|spearman\|kendall` | recomputes correlations in R for the chosen method |
 | `GET /api/analysis/subset?gender=…&sleep_quality=…` | re-runs descriptive stats + correlations in R on a filtered subset |
+| `GET /api/analysis/anova?factor=sleep_quality\|gender\|mood` | one-way ANOVA of wellbeing across a factor, computed in R |
 | `GET /api/analysis/results` | returns the generated R tables as JSON |
 | `POST /api/tests/run` | runs the `testthat` suite via `Rscript` |
 | `GET /api/analysis/figures/{key}` | serves a ggplot2 PNG produced by R |

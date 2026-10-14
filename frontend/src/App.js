@@ -117,6 +117,9 @@ function App() {
   const [subQuality, setSubQuality] = useState("all");
   const [subData, setSubData] = useState(null);
   const [subLoading, setSubLoading] = useState(false);
+  const [anovaFactor, setAnovaFactor] = useState("sleep_quality");
+  const [anovaData, setAnovaData] = useState(null);
+  const [anovaLoading, setAnovaLoading] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -169,6 +172,18 @@ function App() {
     } catch (e) {
       setSubData(null);
     } finally { setSubLoading(false); }
+  };
+
+  const runAnova = async (factor) => {
+    const f = factor || anovaFactor;
+    setAnovaFactor(f);
+    setAnovaLoading(true);
+    try {
+      const { data } = await axios.get(`${API}/analysis/anova?factor=${f}`);
+      setAnovaData(data);
+    } catch (e) {
+      setAnovaData(null);
+    } finally { setAnovaLoading(false); }
   };
 
   const runTests = async () => {
@@ -489,6 +504,65 @@ function App() {
                     ) : (
                       <p className="text-sm text-amber-600 dark:text-amber-400">Subset too small for a reliable analysis.</p>
                     )}
+                  </div>
+                )}
+              </Card>
+            </Section>
+
+            {/* ----------------- ANOVA Group Comparison ----------------- */}
+            <Section id="anova">
+              <Card testid="anova-card">
+                <CardHead icon={Sigma} title="Group Comparison — One-way ANOVA"
+                  sub="Tests whether mean wellbeing differs across the levels of a factor. aov() in R."
+                  right={
+                    <div className="flex flex-wrap items-center gap-2">
+                      <div className="inline-flex rounded-md border border-border p-0.5 text-xs font-medium">
+                        {["sleep_quality", "gender", "mood"].map((m) => (
+                          <button key={m} data-testid={`anova-factor-${m}`} onClick={() => runAnova(m)}
+                            className={`rounded px-2.5 py-1 transition-colors ${anovaFactor === m ? "bg-primary text-primary-foreground" : "hover:bg-accent"}`}>
+                            {m.replace("_", " ")}
+                          </button>
+                        ))}
+                      </div>
+                      <button data-testid="run-anova-button" onClick={() => runAnova()} disabled={anovaLoading}
+                        className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-60 transition-opacity">
+                        {anovaLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />}
+                        Run ANOVA in R
+                      </button>
+                    </div>
+                  } />
+                {!anovaData && (
+                  <p className="p-5 text-sm text-muted-foreground">
+                    Pick a factor and click “Run ANOVA in R”. The F test is computed on the cleaned data by a real Rscript.
+                  </p>
+                )}
+                {anovaData && (
+                  <div className="grid lg:grid-cols-2 gap-px bg-border">
+                    <div className="bg-card">
+                      <p className="px-5 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        Wellbeing by {anovaData.factor.replace("_", " ")} (n = {anovaData.n})
+                      </p>
+                      <DataTable rows={anovaData.groups} testid="anova-groups-table" highlightCol="mean" />
+                    </div>
+                    <div className="bg-card p-5">
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">ANOVA result</p>
+                      <div className="grid grid-cols-2 gap-3">
+                        <Stat testid="anova-f-stat" label="F statistic" value={anovaData.anova.f} />
+                        <Stat testid="anova-eta" label="η² (effect size)" tone="violet" value={anovaData.anova.eta_sq} />
+                      </div>
+                      <div className="mt-3 flex items-center justify-between rounded-md border border-border px-3 py-2 text-sm">
+                        <span className="text-muted-foreground">df = {anovaData.anova.df_between}, {anovaData.anova.df_within}</span>
+                        <span data-testid="anova-p-value" className="font-mono">
+                          {anovaData.anova.p < 0.001 ? "p < 0.001" : `p = ${Number(anovaData.anova.p).toPrecision(3)}`}
+                        </span>
+                      </div>
+                      <div data-testid="anova-interpretation"
+                        className={`mt-3 rounded-md px-3 py-2 text-xs font-medium ${anovaData.anova.p < 0.05 ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400" : "bg-secondary text-muted-foreground"}`}>
+                        {anovaData.anova.p < 0.05
+                          ? `Statistically significant difference in mean wellbeing across ${anovaData.factor.replace("_", " ")} groups (α = 0.05).`
+                          : `No statistically significant difference across ${anovaData.factor.replace("_", " ")} groups (α = 0.05).`}
+                      </div>
+                    </div>
                   </div>
                 )}
               </Card>
