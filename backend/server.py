@@ -1,11 +1,16 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, UploadFile, File, Form
 from fastapi.responses import FileResponse, PlainTextResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import os
 import logging
 import subprocess
 import csv
+import json
+import uuid
+import asyncio
+import tempfile
 from pathlib import Path
 
 
@@ -28,7 +33,7 @@ logger = logging.getLogger(__name__)
 # --------------------------------------------------------------------------
 # Helpers that invoke the REAL R workflow via Rscript
 # --------------------------------------------------------------------------
-def _run_r(script_rel_path: str, args=None) -> dict:
+def _run_r(script_rel_path: str, args=None, stdin_data=None) -> dict:
     """Run an R script from the project root and capture its output."""
     script = R_PROJECT_DIR / script_rel_path
     if not script.exists():
@@ -38,6 +43,7 @@ def _run_r(script_rel_path: str, args=None) -> dict:
         proc = subprocess.run(
             cmd,
             cwd=str(R_PROJECT_DIR),
+            input=stdin_data,
             capture_output=True, text=True, timeout=R_TIMEOUT,
         )
     except FileNotFoundError:
@@ -271,6 +277,168 @@ async def get_report():
     if not path.exists():
         raise HTTPException(status_code=404, detail="Report not rendered yet.")
     return PlainTextResponse(path.read_text(), media_type="text/html")
+
+
+# ==========================================================================
+# Universal CSV Cleaner — AI suggests cleaning rules, R executes them
+# (deterministic & reproducible). All actual cleaning is done by R.
+# ==========================================================================
+EMERGENT_LLM_KEY = os.environ.get("EMERGENT_LLM_KEY")
+
+CLEAN_SYSTEM_PROMPT = (
+    "You are a meticulous data-cleaning assistant. You are given a JSON profile of "
+    "the columns of a messy CSV (name, inferred_type, missing counts, distinct counts, "
+    "sample values, and raw category labels). Propose deterministic cleaning rules.\n\n"
+    "Return ONLY a JSON object (no prose, no markdown fences) with this schema:\n"
+    "{\n"
+    '  "clean_column_names": true,\n'
+    '  "remove_duplicate_rows": true,\n'
+    '  "na_sentinels": ["", "NA", "N/A", "null", "-"],\n'
+    '  "columns": [\n'
+    '    {"name": "<exact column name from profile>",\n'
+    '     "type": "numeric|integer|date|category|text",\n'
+    '     "trim_whitespace": true,\n'
+    '     "numeric_min": <number or null>, "numeric_max": <number or null>,\n'
+    '     "date_format": <R strptime format string or null>,\n'
+    '     "label_map": {"<raw variant>": "<canonical label>"}}\n'
+    "  ]\n"
+    "}\n\n"
+    "Rules:\n"
+    "- Use the EXACT column names from the profile; include every column.\n"
+    "- For categorical columns, build label_map that maps each messy raw variant to a single "
+    "canonical, human-readable label. Merge case/whitespace variants (e.g. 'good','GOOD','Good ' -> 'Good') "
+    "and obvious synonyms/abbreviations ONLY when clearly the same category (e.g. 'NYC','new york city' -> 'New York'). "
+    "Do NOT merge values you are unsure about.\n"
+    "- For numeric columns, set numeric_min/numeric_max only when an obvious plausible range exists "
+    "(e.g. age 0-120, percentage 0-100); otherwise null.\n"
+    "- Pick type='integer' for whole-number counts, 'numeric' for decimals.\n"
+    "- Keep free-text / identifier columns as type='text' with no label_map."
+)
+
+
+async def _suggest_rules(profile: dict) -> dict:
+    """Ask the LLM to propose rules; fall back to deterministic rules on any failure."""
+    if EMERGENT_LLM_KEY:
+        try:
+            from emergentintegrations.llm.chat import LlmChat, UserMessage
+            chat = LlmChat(
+                api_key=EMERGENT_LLM_KEY,
+                session_id="csv-clean-" + uuid.uuid4().hex[:8],
+                system_message=CLEAN_SYSTEM_PROMPT,
+            ).with_model("openai", "gpt-5.4")
+            prompt = "Here is the CSV column profile. Return the cleaning-rules JSON only:\n\n" + json.dumps(profile)
+            resp = await chat.send_message(UserMessage(text=prompt))
+            rules = _parse_rules_json(str(resp))
+            if rules and isinstance(rules.get("columns"), list):
+                rules["_source"] = "ai"
+                return rules
+        except Exception as e:  # noqa: BLE001
+            logger.error("LLM rule suggestion failed, using fallback: %s", e)
+    rules = _fallback_rules(profile)
+    rules["_source"] = "fallback"
+    return rules
+
+
+def _parse_rules_json(text: str):
+    t = text.strip()
+    if "```" in t:
+        t = t.split("```")[1]
+        if t.lstrip().lower().startswith("json"):
+            t = t.lstrip()[4:]
+    start, end = t.find("{"), t.rfind("}")
+    if start == -1 or end == -1:
+        return None
+    try:
+        return json.loads(t[start:end + 1])
+    except ValueError:
+        return None
+
+
+def _fallback_rules(profile: dict) -> dict:
+    cols = []
+    for c in profile.get("columns", []):
+        t = c.get("inferred_type", "text")
+        rule = {"name": c["name"], "trim_whitespace": True, "type": t}
+        labels = c.get("labels") or []
+        if labels and c.get("n_distinct", 999) <= 25 and t not in ("date",):
+            rule["type"] = "category"
+            groups = {}
+            for l in labels:
+                key = " ".join(str(l["label"]).split()).lower()
+                groups.setdefault(key, []).append((l["label"], l["n"]))
+            lm = {}
+            for _, variants in groups.items():
+                canon = max(variants, key=lambda z: z[1])[0].strip()
+                for lbl, _n in variants:
+                    if lbl != canon:
+                        lm[lbl] = canon
+            if lm:
+                rule["label_map"] = lm
+        cols.append(rule)
+    return {
+        "clean_column_names": True,
+        "remove_duplicate_rows": True,
+        "na_sentinels": ["", "NA", "N/A", "na", "n/a", "null", "NULL", "-", "?", "."],
+        "columns": cols,
+    }
+
+
+class SuggestReq(BaseModel):
+    profile: dict
+
+
+def _decode_csv(data: bytes) -> str:
+    if len(data) > 15 * 1024 * 1024:
+        raise HTTPException(status_code=413, detail="File too large (max 15 MB).")
+    if not data:
+        raise HTTPException(status_code=400, detail="Empty file.")
+    return data.decode("utf-8", errors="replace")
+
+
+@api_router.post("/clean/profile")
+async def clean_profile(file: UploadFile = File(...)):
+    """Profile ANY uploaded CSV in R (streamed via stdin, never stored)."""
+    text = _decode_csv(await file.read())
+    res = await asyncio.to_thread(_run_r, "rclean/profile.R", None, text)
+    if not res["success"]:
+        raise HTTPException(status_code=500, detail={"message": "Profiling failed", **res})
+    try:
+        profile = json.loads(res["stdout"])
+    except ValueError:
+        raise HTTPException(status_code=500, detail="Could not profile this CSV.")
+    return {"filename": file.filename, "profile": profile}
+
+
+@api_router.post("/clean/suggest")
+async def clean_suggest(req: SuggestReq):
+    """AI proposes cleaning rules from the column profile (deterministic fallback)."""
+    rules = await _suggest_rules(req.profile)
+    source = rules.pop("_source", "ai")
+    return {"rules": rules, "source": source}
+
+
+@api_router.post("/clean/apply")
+async def clean_apply(file: UploadFile = File(...), rules: str = Form(...)):
+    """Apply the approved rules in R; return cleaned CSV, audit and reproducible script inline."""
+    text = _decode_csv(await file.read())
+    try:
+        rules_obj = json.loads(rules)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid rules JSON.")
+    rules_obj.pop("_source", None)
+    tf = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+    try:
+        json.dump(rules_obj, tf)
+        tf.close()
+        res = await asyncio.to_thread(_run_r, "rclean/apply.R", [tf.name], text)
+    finally:
+        os.unlink(tf.name)
+    if not res["success"]:
+        raise HTTPException(status_code=500, detail={"message": "Cleaning failed", **res})
+    try:
+        return json.loads(res["stdout"])
+    except ValueError:
+        raise HTTPException(status_code=500, detail="Could not parse R output.")
 
 
 app.include_router(api_router)

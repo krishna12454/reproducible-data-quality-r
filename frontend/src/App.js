@@ -7,6 +7,8 @@ import {
   XCircle, Download, FileText, Beaker, TerminalSquare, Sigma, RefreshCw, Filter,
 } from "lucide-react";
 
+import CsvCleaner from "@/CsvCleaner";
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
@@ -261,6 +263,13 @@ function App() {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+        <CsvCleaner />
+
+        <div className="flex items-center gap-3 pt-2">
+          <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Example R project · sleep &amp; wellbeing demo</span>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+
         {/* R engine status */}
         <div className="flex flex-wrap items-center gap-3 text-sm">
           {health && (
