@@ -63,6 +63,31 @@ statistics — everything runs through `Rscript`.
 
 ---
 
+## Optional web interface (really runs R)
+
+A small web console is included that **actually invokes the R workflow** — it is
+*not* a mock. The FastAPI backend (`backend/server.py`) shells out to `Rscript`
+and the React dashboard renders the genuine R outputs (validation metrics,
+tables, correlation matrix and the ggplot2 PNG figures).
+
+Key endpoints (all prefixed `/api`):
+
+| Endpoint | What it does |
+|----------|--------------|
+| `GET /api/health` | reports R version & that packages are installed |
+| `POST /api/analysis/run` | runs `scripts/run_analysis.R` via `Rscript` |
+| `GET /api/analysis/results` | returns the generated R tables as JSON |
+| `POST /api/tests/run` | runs the `testthat` suite via `Rscript` |
+| `GET /api/analysis/figures/{key}` | serves a ggplot2 PNG produced by R |
+| `GET /api/dataset/download?which=raw\|clean` | downloads the CSV |
+| `GET /api/report` | serves the rendered R Markdown report |
+
+The web interface is **optional** — the R project is fully usable on its own via
+the commands above. The dashboard simply triggers and visualises that same real
+pipeline.
+
+---
+
 ## Requirements
 
 * **R >= 4.1** (developed/tested on R 4.2)

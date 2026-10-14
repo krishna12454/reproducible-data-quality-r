@@ -34,4 +34,14 @@ synthetic. No invented affiliations/publications.
 ## Backlog (P1/P2)
 - Optional Quarto (.qmd) variant of the report.
 - Optional renv lockfile for exact package pinning.
-- Optional Shiny/Plumber interface that shells out to the real R pipeline.
+
+## Web interface (added 2026-06) — verified 100% by testing agent
+- FastAPI (`backend/server.py`) shells out to `Rscript` for real execution:
+  /api/health, /api/analysis/run, /api/analysis/results, /api/tests/run,
+  /api/analysis/figures/{key}, /api/dataset/download, /api/report.
+- React dashboard (`frontend/src/App.js`) — scientific/Swiss design, dark/light,
+  shows live validation metrics, raw-vs-cleaned, descriptive stats, frequency
+  tables, correlation matrix + p-values, ggplot2 figure gallery, testthat
+  runner with live R console output, and the R Markdown report link.
+- Backend regression suite: `/app/backend/tests/test_r_pipeline.py` (10 tests).
+- NOT hardcoded: every number/figure in the UI is produced live by R.
