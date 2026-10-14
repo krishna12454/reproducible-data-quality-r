@@ -537,6 +537,7 @@ function App() {
                   </p>
                 )}
                 {anovaData && (
+                  <>
                   <div className="grid lg:grid-cols-2 gap-px bg-border">
                     <div className="bg-card">
                       <p className="px-5 pt-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -564,6 +565,44 @@ function App() {
                       </div>
                     </div>
                   </div>
+                  {anovaData.tukey?.length > 0 && (
+                    <div className="border-t border-border p-5">
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        Tukey HSD post-hoc · pairwise differences (95% CI)
+                      </p>
+                      <div className="overflow-x-auto">
+                        <table data-testid="tukey-table" className="w-full text-sm">
+                          <thead>
+                            <tr className="bg-secondary/70 text-left">
+                              {["pair", "diff", "lwr", "upr", "p_adj", "significant"].map((c) => (
+                                <th key={c} className="px-4 py-2.5 font-semibold text-foreground/80 whitespace-nowrap border-b border-border">{c}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {anovaData.tukey.map((t, i) => {
+                              const sig = t.p_adj < 0.05;
+                              return (
+                                <tr key={i} data-testid={`tukey-row-${i}`} className="odd:bg-background even:bg-secondary/30">
+                                  <td className="px-4 py-2 font-mono text-xs border-b border-border/60">{t.pair}</td>
+                                  <td className="px-4 py-2 font-mono text-xs border-b border-border/60">{t.diff}</td>
+                                  <td className="px-4 py-2 font-mono text-xs border-b border-border/60 text-muted-foreground">{t.lwr}</td>
+                                  <td className="px-4 py-2 font-mono text-xs border-b border-border/60 text-muted-foreground">{t.upr}</td>
+                                  <td className="px-4 py-2 font-mono text-xs border-b border-border/60">{t.p_adj < 0.0001 ? "<0.0001" : t.p_adj}</td>
+                                  <td className="px-4 py-2 border-b border-border/60">
+                                    <span className={`rounded px-2 py-0.5 text-xs font-medium ${sig ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400" : "bg-secondary text-muted-foreground"}`}>
+                                      {sig ? "yes" : "no"}
+                                    </span>
+                                  </td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+                  </>
                 )}
               </Card>
             </Section>

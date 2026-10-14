@@ -46,5 +46,16 @@ anova <- list(
   eta_sq = round(ss_between / ss_total, 3)
 )
 
-cat(jsonlite::toJSON(list(factor = fac, n = nrow(d), groups = groups, anova = anova),
+# Tukey HSD post-hoc pairwise comparisons
+tuk <- as.data.frame(TukeyHSD(fit)$group)
+tukey <- tibble(
+  pair = rownames(tuk),
+  diff = round(tuk[["diff"]], 2),
+  lwr = round(tuk[["lwr"]], 2),
+  upr = round(tuk[["upr"]], 2),
+  p_adj = round(tuk[["p adj"]], 4)
+) %>% arrange(p_adj)
+
+cat(jsonlite::toJSON(list(factor = fac, n = nrow(d), groups = groups,
+                          anova = anova, tukey = tukey),
                      dataframe = "rows", na = "null", auto_unbox = TRUE, digits = 6))
