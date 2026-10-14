@@ -1,0 +1,8 @@
+metric,value
+raw_rows,1020
+cleaned_rows,1000
+duplicate_rows_removed,20
+total_missing_cells,171
+total_invalid_entries,24
+distinct_raw_gender_labels,10
+distinct_raw_quality_labels,10

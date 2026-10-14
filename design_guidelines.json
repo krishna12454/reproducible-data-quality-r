@@ -1,0 +1,117 @@
+{
+  "project_title": "Reproducible Research Data Quality and Analysis Console",
+  "app_type": "dashboard (academic / scientific reproducible-research console)",
+  "context_type": "DASHBOARDS & ADMIN PANELS (Academic & Data Science Precision)",
+  "theme_strategy": "Dual Mode (Light Paper Lab Journal as primary default with high-contrast Slate/Obsidian Dark mode)",
+  "design_archetype": "Swiss Technical & Scientific Precision Journal",
+  "data_testid_requirement": "MANDATORY - All interactive and key data display elements MUST include descriptive kebab-case data-testid attributes (e.g., data-testid='run-r-pipeline-button', data-testid='raw-cleaned-row-comparison', data-testid='correlation-matrix-table')",
+
+  "typography": {
+    "font_family_pairing": {
+      "headings": "Cabinet Grotesk, Outfit, or Playfair Display for editorial scientific headings (Avoid standard Inter/Roboto)",
+      "body": "IBM Plex Sans or DM Sans for clear statistical data reading",
+      "code_and_mono": "IBM Plex Mono or JetBrains Mono for stats, p-values, R console output, and CSV previews"
+    },
+    "scale_and_hierarchy": {
+      "h1_title": "text-3xl md:text-4xl font-extrabold tracking-tight",
+      "h2_section": "text-xl md:text-2xl font-bold tracking-tight text-foreground/90",
+      "h3_card_header": "text-base md:text-lg font-semibold tracking-tight",
+      "body_text": "text-sm text-foreground/80 leading-relaxed",
+      "mono_stats": "font-mono text-xs md:text-sm tracking-wide font-medium",
+      "disclaimer_badge": "text-xs font-mono uppercase tracking-widest font-bold"
+    }
+  },
+
+  "color_system": {
+    "light_mode_palette": {
+      "background": "#FBFBF9",
+      "surface": "#FFFFFF",
+      "surface_subtle": "#F4F4F0",
+      "border": "#E2E2DC",
+      "foreground": "#1A1D20",
+      "primary_accent": "#1E3A8A",
+      "primary_accent_hover": "#1D4ED8",
+      "emerald_valid": "#059669",
+      "amber_warning": "#D97706",
+      "rose_error": "#DC2626",
+      "violet_stat": "#6D28D9"
+    },
+    "dark_mode_palette": {
+      "background": "#0B0F17",
+      "surface": "#111827",
+      "surface_subtle": "#1F2937",
+      "border": "#374151",
+      "foreground": "#F9FAFB",
+      "primary_accent": "#3B82F6",
+      "primary_accent_hover": "#60A5FA",
+      "emerald_valid": "#10B981",
+      "amber_warning": "#F59E0B",
+      "rose_error": "#EF4444",
+      "violet_stat": "#8B5CF6"
+    },
+    "rules": {
+      "no_flat_transparent_overlays": "Never use pure transparent backgrounds for headers, dropdowns, or modals. Use backdrop-blur-md with 85%+ opacity surface color.",
+      "chart_palette": ["#1E3A8A", "#059669", "#D97706", "#6D28D9", "#0284C7", "#DB2777"]
+    }
+  },
+
+  "layout_and_spacing": {
+    "grid_strategy": "High-Density Data Grid (MODE B) with 1px border grid dividers",
+    "container_padding": "p-4 sm:p-6 lg:p-8",
+    "gap_strategy": "gap-4 md:gap-6",
+    "border_radius": "rounded-md (max 8px, crisp scientific cards)",
+    "shadows": "shadow-sm border border-border for clean lab notebook feel"
+  },
+
+  "key_components_structure": [
+    {
+      "name": "Header & Execution Bar",
+      "data_testids": ["app-header", "run-r-pipeline-button", "synthetic-data-disclaimer", "theme-toggle-button"],
+      "description": "Features prominent title, 'All data is SYNTHETIC' disclaimer pill, R Analysis execution trigger button with live loading state, and dark/light toggle."
+    },
+    {
+      "name": "Data Validation & Audit Panel",
+      "data_testids": ["validation-summary-card", "missing-values-badge", "duplicates-count-badge", "invalid-entries-badge", "inconsistent-labels-badge"],
+      "description": "Displays automated R janitor/tidyverse validation metrics: missing values, duplicate rows, data type mismatches, and invalid ranges."
+    },
+    {
+      "name": "Raw vs Cleaned Dataset Comparison",
+      "data_testids": ["dataset-comparison-card", "raw-row-count", "cleaned-row-count", "data-preview-table", "data-dictionary-toggle"],
+      "description": "Interactive split preview of raw imported CSV vs cleaned R dataset with row count differences and filter tabs."
+    },
+    {
+      "name": "Descriptive Statistics & Frequency Tables",
+      "data_testids": ["desc-stats-table", "frequency-tables-card", "gender-dist-table", "sleep-quality-dist-table"],
+      "description": "Publication-ready summary tables (Mean, SD, Median, IQR, Min, Max) and categorical distributions."
+    },
+    {
+      "name": "Correlation Matrix & Statistical Inference",
+      "data_testids": ["correlation-matrix-grid", "key-correlations-list", "p-value-badge"],
+      "description": "Interactive Pearson/Spearman correlation matrix with p-value significance callouts (e.g., r = 0.64, p < 0.001)."
+    },
+    {
+      "name": "Publication Figure Gallery (ggplot2 Outputs)",
+      "data_testids": ["figures-gallery-grid", "figure-card-sleep-wellbeing", "figure-card-correlation-heatmap", "figure-lightbox-trigger"],
+      "description": "Displays high-resolution publication-quality ggplot2 figures rendered directly by R (PNGs) with captions and download options."
+    },
+    {
+      "name": "Automated Test Runner & Reproducible Report",
+      "data_testids": ["testthat-results-panel", "rmarkdown-report-link", "download-synthetic-csv-button", "r-console-output-terminal"],
+      "description": "Panel showing R testthat execution status, embedded/external link to rendered R Markdown HTML report, and real R console log terminal."
+    }
+  ],
+
+  "motion_and_interaction": {
+    "library": "framer-motion",
+    "reduced_motion": "Respect prefers-reduced-motion with instant fallback transitions",
+    "micro_interactions": "Smooth button hover fill, subtle count-up on numeric stats, fade-in for R script pipeline outputs"
+  },
+
+  "instructions_to_main_agent": [
+    "Ensure the web UI connects to real R script execution endpoints (FastAPI backend executing Rscript or knitr/Rmarkdown).",
+    "Ensure all data-testid attributes listed in key_components_structure are applied in .js / .jsx code.",
+    "Do NOT use pure transparent backgrounds for floating headers or dropdowns.",
+    "Format tables with clear borders, tabular font numbers (font-mono), and crisp header contrast.",
+    "Display prominent banner confirming 'All dataset records are 100% synthetic for academic research demonstration'."
+  ]
+}

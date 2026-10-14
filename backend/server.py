@@ -1,72 +1,204 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi.responses import FileResponse, PlainTextResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import subprocess
+import csv
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
-import uuid
-from datetime import datetime, timezone
 
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# The R project lives at the repository root (one level above /app/backend).
+R_PROJECT_DIR = ROOT_DIR.parent
+RSCRIPT = os.environ.get("RSCRIPT_BIN", "Rscript")
+R_TIMEOUT = int(os.environ.get("R_TIMEOUT_SECONDS", "240"))
 
-# Create the main app without a prefix
-app = FastAPI()
-
-# Create a router with the /api prefix
+app = FastAPI(title="Reproducible Research Data Quality API")
 api_router = APIRouter(prefix="/api")
 
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
-# Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
-    
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
+# --------------------------------------------------------------------------
+# Helpers that invoke the REAL R workflow via Rscript
+# --------------------------------------------------------------------------
+def _run_r(script_rel_path: str) -> dict:
+    """Run an R script from the project root and capture its output."""
+    script = R_PROJECT_DIR / script_rel_path
+    if not script.exists():
+        raise HTTPException(status_code=500, detail=f"R script not found: {script_rel_path}")
+    try:
+        proc = subprocess.run(
+            [RSCRIPT, str(script)],
+            cwd=str(R_PROJECT_DIR),
+            capture_output=True, text=True, timeout=R_TIMEOUT,
+        )
+    except FileNotFoundError:
+        raise HTTPException(status_code=500,
+                            detail="Rscript not found. R is not installed in this environment.")
+    except subprocess.TimeoutExpired:
+        raise HTTPException(status_code=504, detail="R execution timed out.")
+    return {
+        "script": script_rel_path,
+        "exit_code": proc.returncode,
+        "stdout": proc.stdout,
+        "stderr": proc.stderr,
+        "success": proc.returncode == 0,
+    }
 
-# Add your routes to the router instead of directly to app
+
+def _read_csv(rel_path: str):
+    """Read a generated CSV table into a list of dict rows."""
+    path = R_PROJECT_DIR / rel_path
+    if not path.exists():
+        return None
+    with open(path, newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def _ensure_raw():
+    if not (R_PROJECT_DIR / "data/raw/sleep_wellbeing_raw.csv").exists():
+        res = _run_r("scripts/make_dataset.R")
+        if not res["success"]:
+            raise HTTPException(status_code=500, detail="Failed to generate synthetic dataset.")
+
+
+# --------------------------------------------------------------------------
+# API routes
+# --------------------------------------------------------------------------
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Reproducible Research Data Quality API", "engine": "R"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
 
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
+@api_router.get("/health")
+async def health():
+    """Report whether R and the key packages are available."""
+    try:
+        proc = subprocess.run(
+            [RSCRIPT, "-e",
+             'cat(as.character(getRversion())); '
+             'cat("|"); '
+             'cat(all(c("tidyverse","janitor","ggplot2","testthat") %in% rownames(installed.packages())))'],
+            capture_output=True, text=True, timeout=60,
+        )
+        version, _, pkgs = proc.stdout.partition("|")
+        return {"r_available": proc.returncode == 0, "r_version": version.strip(),
+                "packages_ok": pkgs.strip() == "TRUE"}
+    except Exception as e:  # noqa: BLE001
+        return {"r_available": False, "error": str(e)}
 
-# Include the router in the main app
+
+@api_router.post("/analysis/run")
+async def run_analysis():
+    """Generate the synthetic data (if needed) and run the full R pipeline."""
+    _ensure_raw()
+    result = _run_r("scripts/run_analysis.R")
+    if not result["success"]:
+        logger.error("R analysis failed: %s", result["stderr"])
+        raise HTTPException(status_code=500,
+                            detail={"message": "R analysis failed", **result})
+    return result
+
+
+@api_router.post("/tests/run")
+async def run_tests():
+    """Run the testthat suite via Rscript and return the real console output."""
+    result = _run_r("scripts/run_tests.R")
+    combined = (result["stdout"] + "\n" + result["stderr"])
+    return {**result, "passed": result["success"], "output": combined}
+
+
+@api_router.get("/analysis/results")
+async def analysis_results():
+    """Return every generated R output table as JSON (after running the pipeline)."""
+    tables_dir = R_PROJECT_DIR / "outputs/tables"
+    if not tables_dir.exists():
+        raise HTTPException(status_code=404,
+                            detail="No results yet. Run the analysis first.")
+
+    summary_rows = _read_csv("outputs/tables/validation_summary.csv") or []
+    summary = {r["metric"]: float(r["value"]) for r in summary_rows}
+
+    def corr_matrix():
+        rows = _read_csv("outputs/tables/correlation_matrix.csv")
+        if not rows:
+            return None
+        header = [c for c in rows[0].keys()]
+        var_key = header[0]
+        variables = [r[var_key] for r in rows]
+        matrix = [[r[c] for c in header[1:]] for r in rows]
+        return {"variables": variables, "columns": header[1:], "matrix": matrix}
+
+    return {
+        "summary": summary,
+        "missing": _read_csv("outputs/tables/missing_report.csv"),
+        "invalid": _read_csv("outputs/tables/invalid_entries_report.csv"),
+        "descriptive": _read_csv("outputs/tables/descriptive_stats.csv"),
+        "frequency": {
+            "gender": _read_csv("outputs/tables/gender_frequency.csv"),
+            "sleep_quality": _read_csv("outputs/tables/sleep_quality_frequency.csv"),
+            "mood": _read_csv("outputs/tables/mood_frequency.csv"),
+        },
+        "correlation_matrix": corr_matrix(),
+        "key_correlations": _read_csv("outputs/tables/key_correlations.csv"),
+        "raw_preview": _read_csv("outputs/tables/raw_preview.csv"),
+        "cleaned_preview": _read_csv("outputs/tables/cleaned_preview.csv"),
+    }
+
+
+FIGURES = {
+    "sleep_hist": "01_sleep_hist.png",
+    "sleep_wellbeing": "02_sleep_wellbeing.png",
+    "wellbeing_by_quality": "03_wellbeing_by_quality.png",
+    "corr_heatmap": "04_corr_heatmap.png",
+}
+
+
+@api_router.get("/analysis/figures")
+async def list_figures():
+    out = []
+    for key, fname in FIGURES.items():
+        if (R_PROJECT_DIR / "outputs/figures" / fname).exists():
+            out.append({"key": key, "file": fname})
+    return {"figures": out}
+
+
+@api_router.get("/analysis/figures/{key}")
+async def get_figure(key: str):
+    fname = FIGURES.get(key)
+    if not fname:
+        raise HTTPException(status_code=404, detail="Unknown figure.")
+    path = R_PROJECT_DIR / "outputs/figures" / fname
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Figure not generated yet.")
+    return FileResponse(str(path), media_type="image/png")
+
+
+@api_router.get("/dataset/download")
+async def download_dataset(which: str = "raw"):
+    rel = ("data/raw/sleep_wellbeing_raw.csv" if which == "raw"
+           else "data/processed/sleep_wellbeing_clean.csv")
+    path = R_PROJECT_DIR / rel
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Dataset not generated yet.")
+    return FileResponse(str(path), media_type="text/csv", filename=path.name)
+
+
+@api_router.get("/report", response_class=PlainTextResponse)
+async def get_report():
+    path = R_PROJECT_DIR / "report/report.html"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Report not rendered yet.")
+    return PlainTextResponse(path.read_text(), media_type="text/html")
+
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -76,14 +208,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()

@@ -37,8 +37,21 @@ readr::write_csv(report$out_of_range, "outputs/tables/invalid_entries_report.csv
 # ---- 3. Clean (original `raw` is preserved) -------------------------------
 cleaned <- clean_dataset(raw)
 readr::write_csv(cleaned, "data/processed/sleep_wellbeing_clean.csv")
+readr::write_csv(utils::head(raw, 25), "outputs/tables/raw_preview.csv")
+readr::write_csv(utils::head(cleaned, 25), "outputs/tables/cleaned_preview.csv")
 message(sprintf("Cleaned rows: %d (removed %d duplicate rows)",
                 nrow(cleaned), nrow(raw) - nrow(cleaned)))
+
+# ---- 3b. Machine-readable validation summary (for the web UI) ------------
+validation_summary <- tibble::tibble(
+  metric = c("raw_rows", "cleaned_rows", "duplicate_rows_removed",
+             "total_missing_cells", "total_invalid_entries",
+             "distinct_raw_gender_labels", "distinct_raw_quality_labels"),
+  value = c(nrow(raw), nrow(cleaned), nrow(raw) - nrow(cleaned),
+            sum(report$missing$missing), sum(report$out_of_range$n_invalid),
+            nrow(report$gender_labels), nrow(report$quality_labels))
+)
+readr::write_csv(validation_summary, "outputs/tables/validation_summary.csv")
 
 # ---- 4. Analyse ------------------------------------------------------------
 num_cols <- c("age", "sleep_hours", "caffeine_cups", "screen_time_hours",
