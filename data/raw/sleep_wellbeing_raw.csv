@@ -1,0 +1,1021 @@
+participant_id,survey_date,age,gender,sleep_hours,sleep_quality,caffeine_cups,screen_time_hours,exercise_days_per_week,stress_level,mood,wellbeing_score
+P0290,2023-02-14,38,Male,6.7,Good,2,5.8,2,7,Happy,45
+P0543,2023-02-28,41,Female,4.3,Poor,1,3.9,4,5,Neutral,48
+P0361,2023-04-01,25,Male,5.2,Poor,1,5.4,1,4,Neutral,43
+P0436,2023-02-24,46,F,7.6,Excellent,0,6.2,0,9,Happy,53
+P0854,2023-02-05,22,M,8,Excellent,2,4.4,2,9,Anxious,55
+P0291,2023-01-12,27,male,8.8,Excellent,,9.5,2,8,happy,58
+P0503,2023-01-30,35,Female,5.8,Fair,2,5,1,5,Neutral,41
+P0125,2023-03-06,35,Female,6.7,poor,1,4.6,1,4,Happy,58
+P0036,2023-03-30,18,Male,6.8,Good,1,4.8,0,6,Neutral,31
+P0347,2023-04-18,49,Male,4,Fair ,1,4.2,1,6,Happy,14
+P0073,2023-03-09,42,Male,6.1,Fair,4,2.6,2,5,Anxious,49
+P0833,2023-03-07,35,Male,8.2,Excellent,3,5.5,1,3,Neutral,71
+P0760,2023-03-30,37,Female,6.3,Fair,2,1.6,3,3,Happy,54
+P0811,2023-01-06,21,Male,5.7,Fair,1,1.8,4,10,Neutral,33
+P0213,2023-01-03,36,Female ,7.4,Excellent,5,6,3,4,neutral ,48
+P0934,2023-04-22,28,Male,6.7,Good,2,6.4,6,4,Neutral,54
+P0769,2023-04-29,24,Male,6.4,Good,3,2.8,1,6,Neutral,47
+P0703,2023-01-26,23,male,5.1,Poor,1,3.8,2,5,Anxious,31
+P0527,2023-02-28,21,F,7.7,Good,2,6.1,1,9,Sad,41
+P0220,2023-01-30,20,Male,7.5,good,1,4.6,3,4,Neutral,58
+P0431,2023-02-27,59,Female,5.7,Fair,5,0,4,7,Anxious,27
+P0552,2023-04-16,39,Female,7.1,Good,2,4.2,3,1,Sad,55
+P0222,2023-03-18,31,Male,7.7,poor,1,6.1,1,2,Happy,62
+P0747,2023-04-24,29,Female,6.6,Fair,2,4.1,2,7,NA,NA
+P0442,2023-04-18,39,Female,7.9,Excellent,4,5.3,2,5,neutral ,57
+P0258,2023-03-28,36,Male,5.1,good,6,1.6,7,5,SAD,37
+P0037,2023-03-25,26,MALE,8.9,good,2,3,4,3,Happy,72
+P0449,2023-02-06,32,Female,6.8,Good,0,6.9,0,3,Neutral,54
+P0954,2023-03-27,21,Male,6.2,Fair,0,5.1,2,7,Happy,53
+P0929,2023-02-18,19,Female,6.7,Good,2,5,1,6,Happy,42
+P0461,2023-03-03,45,Male,5.1,Poor,4,6.3,4,5,Happy,51
+P0452,2023-03-12,32,Female,6.1,excellent,3,4.2,2,5,Happy,38
+P0637,2023-02-09,26,female,5.8,Poor,1,5.9,3,5,happy,52
+P0640,2023-01-24,30,male,9,Excellent,1,4.8,1,5,Neutral,75
+P0429,2023-02-02,37,Female,5.7,Fair,2,4.9,5,7,Happy,53
+P0434,2023-02-04,18,Male,7.3,Excellent,0,3.8,2,2,Anxious,N/A
+P0150,2023-02-10,22,Other,6.5,Fair,1,5.6,2,6,neutral ,47
+P0471,2023-04-26,35,Female,7.5,poor,0,3.3,1,7,Neutral,57
+P0816,2023-02-10,24,Female,8.7,Excellent,2,4.4,2,3,Anxious,83
+P0993,2023-02-27,31,Male,7.7,Good,3,6,0,4,Happy,NA
+P0132,2023-01-02,29,Male,6.9,great,1,5.7,2,5,happy,63
+P0958,2023-02-28,50,m,7,Good,1,7.2,3,4,Neutral,63
+P0793,2023-03-08,na,Female,5.8,Fair,2,4.8,3,2,Neutral,na
+P0886,2023-01-27,66,Male,9.2,Excellent,3,4.2,1,6,Happy,46
+P0774,2023-04-05,23,Female,7.6,great,4,5.7,5,6,Anxious,44
+P0189,2023-02-19,25,Female,6.6,Good,4,7.4,2,3,Neutral,73
+P0693,2023-02-11,42,female,7.5,Good,4,6,4,6,Happy,60
+P0399,2023-01-16,32,Female,na,Good,4,5.1,2,3,Anxious,68
+P0730,2023-03-01,26, f,5.9,Fair,2,2.8,4,5,stressed,33
+P0617,2023-02-13,27,m,7.5,Excellent,2,4.4,5,3,Happy,63
+P0790,2023-02-11,57,Male,7.7,excellent,3,5.6,2,5,Anxious,47
+P0031,2023-04-21,40,Female ,7.3,average,4,5.5,0,5,Anxious,51
+P0458,2023-01-26,44,female,6.3,excellent,3,3.1,0,2,Happy,36
+P0735,2023-03-17,30,Male,6,Fair,4,7.2,2,5,Sad,35
+P0871,2023-03-28,37,Male,7.6,Good,3,7.4,4,5,Neutral,54
+P0540,2023-03-08,22,Male,6.8,Good,1,2.9,4,2,Neutral,83
+P0034,2023-02-24,28,Female,7.1,Good,3,6.9,0,4,Sad,48
+P0548,2023-04-15,28,Male,8.2,GOOD,3,7.5,4,2,Anxious,79
+P0013,2023-01-05,18,female,8,average,3,4.5,4,6,stressed,64
+P0338,2023-01-09,19,Female,6.6,Fair ,2,2.8,5,5,Anxious,67
+P0983,2023-01-10,N/A,Male,7.7,Excellent,6,4.5,2,5,,52
+P0275,2023-03-10,30,M,4.6,Poor,1,7.1,4,6,happy,51
+P0594,2023-03-27,33,Female,6.8,Fair,2,6.6,3,4,stressed,61
+P0776,2023-01-06,31,Female,-2,Excellent,0,1,0,9,Neutral,150
+P0672,2023-02-14,41,Female,4.5,Poor,0,1.7,3,4,Anxious,53
+P0507,2023-03-02,23,F,8,Excellent,1,2.7,1,6,Neutral,58
+P0781,2023-02-06,32,Male,7.6,Excellent,0,4.9,2,2,Sad,70
+P0239,2023-03-06,38,Female,7.2,great,3,1.9,3,5,Happy,59
+P0054,2023-03-29,43,Male,7.7,Excellent,3,4.2,2,5,Neutral,59
+P0376,2023-03-22,27,Other,6.7,Good,2,5.4,3,5,Happy,37
+P0314,2023-01-13,27,Male,4.7,good,1,5.2,1,4,Happy,33
+P0002,2023-01-01,28,Female,7.6,poor,4,3.4,2,4,happy,63
+P0345,2023-01-01,42,Female,8,Excellent,4,4.8,2,1,Happy,78
+P0027,2023-03-01,32,Male,6,Fair,2,5.6,2,8,happy,37
+P0354,2023-01-22,25,Male,6.4,Fair,2,6.7,0,7,Anxious,41
+P0438,2023-03-15,32,Male,NA,Excellent,1,5.8,1,6,Sad,68
+P0026,2023-04-26,30,Male,7.5,Excellent,2,7.9,2,8,Anxious,52
+P0331,2023-03-07,44,Female,8.7,Excellent,2,7.5,3,5,Neutral,74
+P0590,2023-04-25,35,Male,7.9,Excellent,0,4.8,2,5,Sad,53
+P0891,2023-04-07,33,Female,6.3,Fair,1,6.5,1,3,Sad,52
+P0612,2023-03-18,38,Male,7.9,Excellent,0,5.6,0,6,Anxious,65
+P0862,2023-03-01,39,Male,7.5,Good,3,4.2,3,5,Sad,64
+P0579,2023-01-20,34,Female,5.8,Fair,2,6.1,2,3,Anxious,38
+P0313,2023-01-18,23,Male,8,Excellent,,5.2,1,2,Neutral,55
+P0025,2023-03-14,58,female,6.4,Good,3,6.3,1,6,Sad,NA
+P0691,2023-01-21,24,Female,8,Excellent,1,4.2,3,5,Sad,63
+P0149,2023-02-06,43,Male,9.7,Excellent,2,5.8,3,10,happy,49
+P0251,2023-03-30,22,Male,na,Poor,2,5.7,0,4,NA,20
+P0413,2023-04-09,18,Male,7.2,average,2,3.9,2,6,Neutral,47
+P0181,2023-01-28,37,MALE,7.8,Excellent,2,3.3,1,4,Sad,52
+P0296,2023-01-19,29,Female,7.8,good,na,3.1,2,8,Sad,43
+P0835,2023-02-02,18,Male,8.1,Excellent,1,1.3,3,2,Sad,
+P0356,2023-03-24,49,Male,7.7,Good,3,3.1,2,4,Happy,46
+P0158,2023-04-27,25,Female,7.3,poor,3,5.4,3,4,Sad,60
+P0820,2023-01-13,74,Male,9.3,good,1,4.1,2,4,Happy,70
+P0818,2023-03-29,44,Female,5.5,excellent,1,4.9,1,4,Neutral,46
+P0660,2023-01-16,43,Female,6.9,Good,2,3.8,3,8,Sad,41
+P0075,2023-04-30,28,Female,99,Good,NA,1.9,1,5,Anxious,54
+P0523,2023-04-13,42,Male,na,Good,2,7,2,9,Neutral,41
+P0742,2023-02-18,56,Male,7.7,Excellent,1,7.7,2,4,Sad,46
+P0563,2023-02-02,47,Male,7,Good,1,0.1,6,6,Neutral,62
+P0066,2023-01-08,51,Male,6.6,Good,4,3.1,0,5,Happy,20
+P0611,2023-03-20,18,Female,5.8,Fair,1,6.6,2,4,Happy,50
+P0133,2023-04-12,35,Male,7.2,Good,2,1.8,1,2,Happy,48
+P0642,2023-02-24,28,Female,6.4,Fair,1,4.1,4,5,Neutral,60
+P0733,2023-02-15,39,Female,6,Fair,4,7,2,6,Neutral,30
+P0744,2023-03-27,18,Male,6,Fair,2,3.8,4,5,Sad,43
+P0407,2023-01-07,35,Female,NA,Poor,2,4.4,2,5,Sad,36
+P0298,2023-02-06,45,Male,8.5,Excellent,3,  0.4  ,1,4,Happy,74
+P0880,2023-02-17,24, f,7.9,Excellent,3,9.2,1,2,anxious,60
+P0688,2023-01-04,35,Male,7.5,great,3,4.4,4,4,Happy,58
+P0404,2023-03-19,36,Female,6.5,Good,3,8.3,1,4,Sad,55
+P0064,2023-04-22,52,Female,6.5,Good,3,2.2,1,7,Sad,44
+P0683,2023-01-24,49,F,5.2,Poor,3,5.6,1,4,neutral ,42
+P0588,2023-01-17,19,MALE,N/A,Good,2,3.8,2,2,Sad,58
+P0737,2023-03-07,34,Male,5.7,Fair,2,3.7,1,4,Anxious,47
+P0392,2023-03-31,31,MALE,6.8,excellent,1,5,0,3,Anxious,56
+P0302,2023-03-15,44,Female,na,GOOD,1,0.9,0,8,Anxious,46
+P0278,2023-02-08,20,Male,8.6,Excellent,3,4.5,2,3,Anxious,64
+P0362,2023-03-09,22,Male,8.8,Excellent,1,6.5,1,5,Sad,62
+P0447,2023-03-23,39,F,7,Fair,1,10.5,1,5,Happy,
+P0638,2023-02-06,41,Female,6.2,Fair,0,3.3,7,6,Happy,65
+P0230,2023-04-16,N/A,Female,7.8,Excellent,2,6.2,1,6,Happy,57
+P0732,2023-04-18,35,Male,6.9,Good,1,6.4,2,4,Neutral,na
+P0093,2023-02-15,43,Female,6.3,Fair,3,8.4,1,3,Happy,44
+P0743,2023-04-07,21,Female,6,Fair,2,4.6,1,5,Neutral,50
+P0717,2023-03-11,51,Female,7.4,Good,1,6.3,4,6,Sad,63
+P0911,2023-04-19,38,Male,7.1,GOOD,1,8.9,0,2,stressed,71
+P0959,2023-04-29,999,Female,8.3,Excellent,4,6,0,6,Happy,49
+P0126,2023-01-23,,Male,6.2,Fair,2,3.6,2,4,Anxious,51
+P0320,2023-02-28,48,Female,6.3,Good,3,4.8,2,5,Neutral,39
+P0740,2023-03-24,35,Female,6.6,Fair,5,2.5,1,5,Happy,38
+P0645,2023-04-09,18,Female,8.9,Excellent,1,2.7,2,8,Neutral,53
+P0515,2023-03-22,62,Female,6.3,Fair,1,3.7,1,3,Happy,50
+P0422,2023-03-30,18,M,7.1,Good,2,5.3,2,6,Happy,50
+P0185,2023-01-31,32,Female,5.9,excellent,2,6.7,2,4,Sad,N/A
+P0343,2023-02-07,30,Male,5.2,poor,0,7.1,1,4,Happy,42
+P0243,2023-04-02,50,Female,7,Good,1,2.8,0,5,Anxious,38
+P0216,2023-02-18,35,Female,6.7,GOOD,1,6.9,2,5,N/A,58
+P0654,2023-01-07,42,Male,6.5,poor,5,6.6,0,3,stressed,39
+P0124,2023-02-27,23,Male,6.4,Fair,0,3.3,2,6,Sad,59
+P0950,2023-03-21,31,Female,5.5,Fair,2,2.7,3,5,SAD,43
+P0580,2023-01-26,47,Female,7.3,Excellent,0,4.7,0,9,happy,40
+P0506,2023-04-07,33,Female,7.4,Good,,8,2,5,Neutral,54
+P0234,2023-03-19,29,Male,8.6,Excellent,0,3,0,4,Neutral,50
+P0170,2023-03-12,46,Female,7.8,Excellent,2,10.5,2,8,Happy,51
+P0845,2023-02-05,36,m,6.3,Fair,1,0.2,0,5,Anxious,57
+P0052,2023-02-16,26,M,7.5,Good,2,8.4,5,7,Sad,60
+P0425,2023-04-22,46,Male,5.8,Poor,5,3.8,3,8,Happy,34
+P0304,2023-04-13,44,Male,7.6,Excellent,3,5.2,1,6,Sad,59
+P0391,2023-04-10,39,Female,7.4,Excellent,2,6.2,1,7,Anxious,48
+P0147,2023-03-08,29,Male,6.4,Fair,3,7.1,2,5,Neutral,69
+P0197,2023-03-21,40,Male,5.9,Fair,2,4.8,1,4,Sad,55
+P0432,2023-03-19,29,Female,6.5,Good,2,7.8,1,6,Neutral,42
+P0114,2023-04-02,29,Male,,Excellent,0,5.7,0,5,neutral ,58
+P0557,2023-02-08,53,Female,7.6,Excellent,0,4,1,10,Anxious,52
+P0136,2023-01-11,22,male,6,Fair,1,5.4,2,5,Neutral,45
+P0601,2023-01-27,32,Male,7,Good,2,6.1,1,5,Happy,46
+P0927,2023-04-28,24,M,5.9,Fair,1,6.1,2,3,Anxious,44
+P0184,2023-03-18,39,Male,6.2,Fair,2,5.7,1,5,Sad,35
+P0876,2023-03-04,23,female,8.3,GOOD,1,5,2,3,neutral ,52
+P0589,2023-03-29,33,Other,7.8,Excellent,2,4.5,1,7,Sad,51
+P0101,2023-04-21,49,Male,6.2,Fair,4,2.7,2,4,Neutral,42
+P0493,2023-03-18,34,male,8.1,Excellent,1,5.4,2,3,Neutral,63
+P0076,2023-02-11,42,Male,8.1,Excellent,3,8.2,2,6,Neutral,46
+P0881,2023-03-25,24,Female,8,Excellent,1,2.3,3,7,stressed,58
+P0201,2023-04-25,18,F,6.1,Fair,2,2.9,4,5,Sad,53
+P0335,2023-04-04,47,female,5.9,GOOD,N/A,7.3,4,5,Anxious,60
+P0914,2023-03-09,41,Male,7.2,Good,1,5.4,0,2,Anxious,53
+P0787,2023-01-29,27,Male,6.3,Fair,4,6.7,1,6,Sad,31
+P0325,2023-02-04,57,M,6.6,Good,2,5,1,3,Sad,42
+P0995,2023-01-10,48,Female,6.5,Good,1,4.1,2,4,Happy,50
+P0068,2023-02-09,47,Male,4.9,Poor,2,3.4,1,5,Happy,36
+P0649,2023-02-05,38,Female,6,Fair,1,3.1,3,4,Neutral,57
+P0792,2023-04-09,37,Female,6.5,Good,1,4.5,2,6,Anxious,55
+P0110,2023-04-04,36,MALE,8.1,Excellent,0,0,2,4,Happy,75
+P0634,2023-04-08,49,Male,7.8,Excellent,3,6.1,1,3,stressed,44
+P0970,2023-03-11,52,Female,7.5,great,3,5.5,2,7,Neutral,35
+P0265,2023-04-01,34,Other,5.8,Fair ,2,3.8,1,5,Neutral,N/A
+P0812,2023-03-03,55,m,7.6,Fair ,3,4.7,0,9,Sad,56
+P0648,2023-03-12,45,MALE,7,GOOD,3,4,1,6,Sad,34
+P0512,2023-03-21,30,F,8.8,Excellent,2,6.6,1,6,Happy,66
+P0421,2023-02-07,45,Female,7.6,Good,3,3.7,1,8,anxious,30
+P0720,2023-04-29,21,Male,7.1,Good,3,4.5,1,4,Neutral,36
+P0186,2023-01-26,19,Female ,5.2,excellent,3,7.3,2,1,Happy,40
+P0924,2023-04-27,40,Male,5.2,Poor,2,7,2,1,Neutral,62
+P0151,2023-01-03,35,Male,6.7,Fair,1,2.2,3,9,Anxious,28
+P0745,2023-01-09,18,Female,N/A,Excellent,0,6.6,2,8,Neutral,37
+P0252,2023-02-19,36,Female,6.5,great,0,4.8,4,8,Happy,NA
+P0819,2023-02-14,21,Male,6,Fair,1,3.9,1,8,Anxious,38
+P0217,2023-04-24,33,Female,9.7,Excellent,2,6.9,1,5,Anxious,63
+P0715,2023-01-13,44,F,7.8,Excellent,2,4.3,2,4,anxious,50
+P0342,2023-04-10,43,Male,7.9,Excellent,2,3.9,5,4,Sad,55
+P0802,2023-01-24,44,male,6.5,GOOD,0,6.9,1,5,Sad,43
+P0103,2023-03-24,23,Male,6.4,Good,,6.5,2,5,Happy,33
+P0006,2023-03-28,34,Female,6.3,Fair,3,3,1,6,Neutral,41
+P0546,2023-01-14,52,Male,6.8,great,2,7.8,4,1,anxious,88
+P0867,2023-01-29,51,Female,8.4,Excellent,1,2.4,2,2,happy,69
+P0427,2023-02-05,28,Female,6.6,Good,1,5.9,3,4,Happy,69
+P0111,2023-04-04,35,Male,6.1,Fair,0,3.4,4,6,Happy,47
+P0668,2023-04-10,38,Female,11.3,Excellent,0,7.5,1,6,na,74
+P0758,2023-02-09,51,Male,5.7,Fair,1,6,3,1,Anxious,47
+P0289,2023-01-09,18,Male,8.8,Excellent,5,5.2,2,4,Happy,68
+P0539,2023-01-15,51,Male,7.8,Good,3,5.6,4,8,Anxious,46
+P0190,2023-03-18,18,Female,4.5,great,0,4.1,2,8,Anxious,35
+P0496,2023-02-05,43,Female,8.5,Excellent,2,8.6,2,4,Neutral,64
+P0145,2023-02-17,na,F,6.3,Fair,2,3.3,2,9,Neutral,27
+P0729,2023-04-20,27,Female,9.8,Excellent,2,3.5,1,2,Anxious,77
+P0577,2023-02-20,58,Male,6.7,Good,2,2,5,5,Sad,67
+P0639,2023-04-23,24,Male,7.8,Excellent,7,7.3,2,9,stressed,NA
+P0370,2023-01-10,-5,Female,4.7,Poor,2,2.7,3,5,Happy,44
+P0749,2023-03-26,38,Male,7.5,Good,0,8.6,0,5,Happy,46
+P0405,2023-02-04,28,MALE,6.8,Good,1,5.3,3,5,Anxious,63
+P0351,2023-03-07,44,Male,6.5,Fair,2,6.4,2,5,Happy,32
+P0341,2023-03-10,35,Female,7.1,Good,1,3.6,3,4,Neutral,56
+P0756,2023-02-18,38,m,7.3,Good,2,4.4,1,5,neutral ,67
+P0671,2023-01-21,44,Female,8.8,Excellent,2,5.6,0,7,Neutral,51
+P0595,2023-01-20,32,Female,7.8,Good,2,9,1,7,Sad,51
+P0532,2023-04-28,22,Female,6.3,average,2,7.2,1,4,Happy,43
+P0974,2023-04-21,56,m,8.2,Excellent,1,3.1,2,8,Happy,na
+P0390,2023-02-23,43,F,4.9,Poor,2,6.3,5,6,Happy,46
+P0368,2023-02-01,18,Male,6.4,Fair,2,5.9,2,4,Sad,48
+P0463,2023-01-26,39,Female,7,good,1,5,2,2,Sad,61
+P0509,2023-02-21,20,Female,8.2,Excellent,3,4,0,6,Anxious,53
+P0566,2023-04-26,18,F,8.5,Excellent,2,1.6,0,6,Anxious,55
+P0821,2023-01-30,18, f,7.8,Excellent,3,10,3,6,Anxious,64
+P0852,2023-01-28,42,Female,7.3,great,2,7.6,2,8,Sad,40
+P0366,2023-01-30,32,Male,NA,poor,1,7.2,5,3,Happy,74
+P0520,2023-04-26,35,Female,5.3,poor,0,3.4,4,7,Neutral,NA
+P0895,2023-01-21,23,Female,6.5,Fair,3,5.2,1,4,Neutral,58
+P0424,2023-04-13,28,Female,6.9,Good,3,3,2,8,anxious,51
+P0423,2023-04-05,36,Female,6.1,Fair,1,6,4,7,Anxious,46
+P0168,2023-01-26,40,Female,6,Fair,3,4.1,1,6,happy,39
+P0900,2023-01-22,68,m,8.4,Excellent,3,1.6,3,5,Sad,54
+P0464,2023-02-08,22,Male,4.9,Poor,1,2.8,2,4,Neutral,46
+P0644,2023-01-06,43,Male,9,Excellent,1,6.2,1,1,Neutral,66
+P0592,2023-01-06,37,Female,7.9,Good,0,3.3,1,5,Anxious,
+P0549,2023-03-26,36,male,5.7,average,3,4.9,1,6,Sad,29
+P0395,2023-02-18,32,Female,7.5,Good,3,4,0,3,Anxious,56
+P0344,2023-03-27,22,Female,6.2,Fair,0,2.8,2,5,Neutral,40
+P0474,2023-01-27,18,Male,6.7,Good,1,9.4,0,8,happy,37
+P0048,2023-04-28,52,Other,6.1,average,4,  5.8  ,0,4,Neutral,47
+P0353,2023-01-05,44,Female,7.9,Excellent,1,2.7,1,5,Sad,63
+P0231,2023-03-06,32,male,5.2,Poor,2,2.6,2,4,Happy,48
+P0497,2023-03-28,46,Female,7.4,Excellent,0,5.6,1,3,Anxious,55
+P0049,2023-02-09,30,Male,6,Fair,0,4.8,2,4,Neutral,62
+P0766,2023-03-02,30,m,6,Fair,NA,6,2,2,neutral ,64
+P0583,2023-02-19,18,Female,7.8,Excellent,1,5.2,6,7,SAD,70
+P0990,2023-02-01,48,Male,8,Excellent,1,5.7,0,2,Happy,74
+P0138,2023-03-06,49,Male,7.5,Excellent,0,3.3,5,5,Neutral,66
+P0708,2023-04-12,22,Male,8.3,Excellent,3,2.9,1,5,Happy,55
+P0869,2023-01-29,28,MALE,8,Excellent,1,3.4,1,3,Neutral,51
+P0754,2023-03-28,37,Female,8.5,Excellent,5,2.3,1,6,Happy,64
+P0901,2023-04-22,46,Male,7.1,Good,1,6.3,1,4,Neutral,62
+P0453,2023-03-15,37,Male,8.7,Excellent,2,6.3,0,5,Anxious,55
+P0140,2023-01-05,34,Female,7.7,Good,2,3.1,2,9,Happy,42
+P0127,2023-03-02,28,Male,6.3,poor,5,2.9,2,6,Sad,57
+P0141,2023-04-24,34,Male,5.3,Poor,1,2.2,2,1,Sad,54
+P0641,2023-01-12,45,Male,8.5,excellent,0,1.3,1,5,Sad,58
+P0418,2023-02-15,38,Female,7.3,Good,0,4.3,2,6,na,53
+P0761,2023-04-24,42,Male,8.9,Fair ,2,3.7,2,4,anxious,63
+P0402,2023-02-28,25,Male,4.9,Poor,3,4.7,3,4,anxious,44
+P0999,2023-03-18,19,Male,7.4,Excellent,1,6.3,1,5,Anxious,56
+P0657,2023-02-05,28,F,7.6,Excellent,2,7.1,0,3,Neutral,53
+P0067,2023-01-08,39,Male,7,Excellent,0,5.6,3,8,Sad,50
+P0219,2023-03-10,32,Female,7.5,Good,0,4.3,3,2,Anxious,76
+P0410,2023-01-11,18,Female,5.2,Poor,2,4.7,1,5,Sad,40
+P0597,2023-01-21,30,Male,5.8,excellent,4,5.9,2,5,Anxious,47
+P0268,2023-04-24,33,Male,7,Good,2,3.6,1,1,Neutral,65
+P0678,2023-03-28,42,female,8.6,Excellent,2,7.1,0,7,Anxious,43
+P0979,2023-04-11,35,Male,4.8,Poor,2,5.2,1,6,Neutral,50
+P0535,2023-02-17,32,Male,7.4,Good,2,0.2,1,6,Happy,37
+P0192,2023-03-02,31,Female,7.9,Excellent,3,7.1,3,1,Happy,76
+P0615,2023-03-20,49,male,7.6,Good,1,4.7,1,5,Neutral,48
+P0042,2023-04-16,31,female,5.9,Poor,3,1.7,4,4,Sad,55
+P0433,2023-04-27,29,Male,7.6,Excellent,2,4.4,4,4,stressed,60
+P0285,2023-03-27,36,Female,6,Fair,N/A,5.9,1,8,Happy,40
+P0913,2023-02-12,50,M,8,Excellent,3,4.9,1,2,happy,56
+P0947,2023-02-22,18,m,6.4,great,1,4,0,6,Sad,32
+P0775,2023-02-12,46,Female,6.6,Good,2,1.2,4,3,Anxious,53
+P0495,2023-01-03,28,male,8.4,Excellent,1,4.7,2,3,N/A,61
+P0309,2023-04-05,20,Female,7.1,Good,3,6.9,1,5,Anxious,43
+P0923,2023-01-13,18,m,5.2,Poor,2,1,1,5,Neutral,39
+P0998,2023-01-11,55,Female,5.6,average,2,7.3,2,4,Happy,52
+P0188,2023-03-30,42,Female,6.5,GOOD,2,7.9,0,5,na,45
+P0838,2023-04-04,31,Female,6.8,Fair,2,5.8,3,2,Happy,58
+P0237,2023-04-30,51,Female ,6.7,Good,0,2.7,1,3,Happy,61
+P0164,2023-03-22,31,Male,9.1,Excellent,1,3.9,2,5,Sad,57
+P0473,2023-04-13,43,Female,6.3,Good,2,4.9,3,6,Happy,48
+P0226,2023-04-02,na,Male,6,Fair,1,5.6,4,9,Neutral,NA
+P0457,2023-01-12,54, f,5.7,great,4,5.1,3,6,Anxious,52
+P0692,2023-02-12,20,Female,7.4,Good,2,3.8,1,4,Neutral,50
+P0070,2023-04-12,44,Male,6.3,Fair,1,7.4,1,5,Happy,50
+P0083,2023-03-20,36,m,6.3,Fair,0,6.2,2,4,Neutral,53
+P0365,2023-02-21,33,Female,6.2,Fair,1,3.6,2,4,Happy,44
+P0349,2023-04-30,36,Female,8,Excellent,1,8,0,6,Happy,48
+P0208,2023-02-20,22,Male,9.1,Excellent,3 cups,0.9,2,8,Neutral,65
+P0596,2023-03-25,37,Male,6.7,Good,NA,6.4,1,8,Sad,35
+P0581,2023-01-30,36,Female,6.1,Fair,3,3.4,2,3,Sad,55
+P0174,2023-01-10,55,Female,na,Good,3,7.2,2,4,Neutral,61
+P0333,2023-03-23,26,Male,5.6,Poor,1,4.4,1,10,Neutral,34
+P0245,2023-01-20,18,m,6.3,Good,0,6.8,1,3,Neutral,61
+P0635,2023-03-05,52,F,8,average,3,6.3,1,6,Neutral,58
+P0134,2023-02-07,NA,Female,8.9,Fair ,2,7.6,5,5,Anxious,77
+P0800,2023-04-13,23,Female,6,Fair,2,6.4,1,5,Sad,36
+P0829,2023-04-06,36,Male,7,Good,1,7.3,1,3,Happy,49
+P0937,2023-01-30,41,Male,4.7,excellent,3,5.3,3,2,Neutral,57
+P0378,2023-01-09,22,Male,7.5,Excellent,2,2.6,2,4,neutral ,60
+P0448,2023-03-23,31,m,7.1,Good,1,4.4,3,5,stressed,69
+P0877,2023-02-13,25,female,6.4,Good,1,6,3,3,Sad,46
+P0910,2023-01-13,18,Female,7.3,Good,2,5.4,2,5,Neutral,54
+P0521,2023-01-08,54,MALE,6.4,Fair,3,5.2,3,9,Happy,31
+P0375,2023-01-30,52,Female,7.1,Good,2,8,1,6,Anxious,
+P0491,2023-05-01,33,Female,8.1,Excellent,2,7.1,1,3,happy,76
+P0165,2023-01-06,42,Female ,7.4,Excellent,2,10.1,3,5,Happy,65
+P0469,2023-04-10,18,Male,6.4,Fair,NA,7,2,1,Neutral,56
+P0604,2023-01-30,45,Female,6.8,Good,1,8,5,5,SAD,61
+P0060,2023-04-15,38,Female,8.8,Excellent,NA,6.5,1,6,Anxious,56
+P0212,2023-01-11,59,Male,8.1,Excellent,4,1.4,1,2,Happy,43
+P0202,2023-03-14,39,Female,7,Good,3,5,2,5,Anxious,60
+P0598,2023-03-14,53,Male,5.3,average,1,5.4,1,5,Neutral,53
+P0865,2023-02-04,35,Other,6.1,great,0,3.5,2,3,Neutral,60
+P0748,2023-01-11,32, f,6.1,GOOD,2,5.9,2,4,Sad,45
+P0817,2023-02-15,34,Female,7.5,Excellent,3,6.6,3,3,Sad,48
+P0009,2023-01-20,59,Male,6,Fair,2,7,4,3,Happy,53
+P0796,2023-01-21,22,M,7,Good,2,3.3,3,7,Anxious,49
+P0945,2023-05-01,20,Male,5.4,Poor,3,4.6,3,3,Happy,70
+P0948,2023-01-15,32,Female,6.5,Poor,2,8.2,1,3,Sad,45
+P0440,2023-03-08,52,Male,5.3,Fair,2,4.8,3,8,anxious,25
+P0199,2023-01-13,57,Female,7.4,Good,na,8.1,1,3,Neutral,61
+P0183,2023-04-29,39,Female,6.7,Good,0,4,0,4,Happy,65
+P0406,2023-04-11,23,Female,8.3,Good,2,4.1,4,5,na,53
+P0705,2023-03-30,23,Female,NA,Good,3,4.2,1,3,Anxious,57
+P0221,2023-04-25,40,Male,7.5,Excellent,3,1.2,2,9,neutral ,32
+P0902,2023-02-28,32,Male,8.8,Excellent,5,3.9,2,7,Neutral,48
+P0673,2023-02-09,33,Other,6.7,Fair ,4,3.9,2,7,NA,34
+P0366,2023-01-30,32,Male,NA,poor,1,7.2,5,3,Happy,74
+P0528,2023-04-14,28,Female,6.6,Fair,0,6.6,2,3,Anxious,59
+P0952,2023-04-09,57,m,6.5,Fair,0,5.6,5,4,Happy,63
+P0825,2023-04-28,31,Male,7.2,Good,N/A,2.9,0,4,Anxious,45
+P0798,2023-04-28,,Male,6.9,average,3,4.2,3,5,Happy,55
+P0018,2023-04-02,18,Male,5,Poor,2,6.9,1,8,Sad,31
+P0951,2023-03-17,51,Female,7.5,Good,3,0,3,1,happy,75
+P0396,2023-01-05,48,Other,6.4,Good,1,7.3,0,5,Sad,70
+P0863,2023-01-13,38,Female,9.1,Excellent,2,6.3,1,5,Anxious,59
+P0650,2023-04-25,41,Female,6.9,excellent,2,2.3,2,7,Happy,47
+P0367,2023-03-18,58,F,6.8,excellent,5,6.5,0,9,SAD,33
+P0677,2023-02-23,20,Female,6.9,Excellent,2,5.7,6,6,Sad,68
+P0576,2023-02-19,48,Female,8.8,average,4,4.1,2,6,Neutral,61
+P0584,2023-02-14,20,M,8.9,Excellent,0,2.2,0,9,Happy,NA
+P0575,2023-02-07,32,Male,6.6,Fair,2,2.5,2,6,anxious,44
+P0925,2023-01-28,43,Male,5.9,Fair ,1,5.1,1,5,Neutral,54
+P0160,2023-02-10,50, f,4.3,average,2,4.5,3,9,Anxious,29
+P0728,2023-03-31,22,MALE,7.2,Good,0,5.5,3,3,Happy,56
+P0035,2023-03-12,41,Female,6.4,average,3,3.8,0,6,Anxious,52
+P0137,2023-03-22,34,Male,,Good,0,4.7,2,3,Anxious,77
+P0412,2023-01-28,31,Female,7,Good,3,9.6,2,4,Happy,55
+P0047,2023-01-21,25,Female,6.7,Good,2,2.5,1,3,stressed,51
+P0779,2023-02-22,22,female,8,Excellent,1,7.7,4,4,Happy,47
+P0963,2023-04-07,24,M,6.2,Fair,1,8,2,3,Sad,74
+P0622,2023-02-05,44,Male,6.8,Good,2,5.5,1,8,Sad,37
+P0814,2023-02-02,38,Male,9.3,Excellent,2,5.3,3,4,Neutral,67
+P0260,2023-03-11,30,Male,7.6,Excellent,1,  8  ,1,6,anxious,N/A
+P0084,2023-04-02,34,m,NA,Fair,2,4.6,1,3,Anxious,67
+P0982,2023-04-26,30,female,8.7,good,1,3.1,0,2,Happy,62
+P0479,2023-02-21,39,Female ,6.6,Good,4,8.4,1,4,Anxious,58
+P0330,2023-01-07,34,Male,8.2,Excellent,3,5,1,6,Sad,46
+P0733,2023-02-15,39,Female,6,Fair,4,7,2,6,Neutral,30
+P0032,2023-02-02,43,Male,7.1,Fair,3,5.7,3,4,Happy,56
+P0308,2023-02-26,47,Male,6.7,Fair,2,4.9,1,6,Neutral,46
+P0171,2023-04-13,32,Male,7.6,Good,0,3.3,3,6,Happy,56
+P0426,2023-02-03,36,Male,7.1,Fair,2,1.6,0,4,Sad,61
+P0209,2023-04-09,27,Female ,7.5,Good,2,2,4,6,Anxious,57
+P0679,2023-01-06,20,Male,5.4,Poor,1,5,1,6,Sad,40
+P0470,2023-02-25,27,Female,6.2,great,1,6.2,2,4,Neutral,na
+P0661,2023-01-16,28,Male,9.9,Excellent,2,3.5,0,5,Sad,
+P0249,2023-03-24,43,Female,6.7,poor,3,4,3,2,Happy,58
+P0943,2023-01-20,50,MALE,6.9,Good,2,6.7,-1,1,anxious,47
+P0224,2023-02-25,22,Female,8.4,Excellent,1,4.7,1,6,Anxious,74
+P0599,2023-01-24,18,female,10.2,average,2,5.2,5,5,neutral ,80
+P0727,2023-04-22,43,Female,6.4,Good,2,9.8,4,4,Anxious,50
+P0472,2023-01-15,18,Female,6.6,Fair,5,2,3,7,Anxious,43
+P0712,2023-03-18,56,female,6,Fair,3,2.9,1,4,Neutral,53
+P0229,2023-04-04,27,Female,7.5,Excellent,4,7,3,5,Neutral,51
+P0902,2023-02-28,32,Male,8.8,Excellent,5,3.9,2,7,Neutral,48
+P0203,2023-03-07,49,Female ,7.4,Good,1,6.1,0,5,neutral ,60
+P0534,2023-01-19,50,Male,8.6,Excellent,1,5.1,0,1,Neutral,71
+P0119,2023-03-11,19,female,7.6,Good,2,3,1,5,Happy,57
+P0861,2023-04-30,38,Male,9.2,Excellent,0,1.1,3,6,Happy,65
+P0663,2023-01-01,36,Female ,8.9,Excellent,2,5.7,1,1,Happy,65
+P0162,2023-04-27,22,Female,5.8,Fair,0,3.6,0,2,Sad,44
+P0266,2023-02-17,48, f,5.6,Fair,1,7.5,0,6,Anxious,49
+P0408,2023-04-03,43,Male,6.7,good,0,4.1,5,4,Neutral,56
+P0225,2023-02-23,40,Female,4.1,Poor,2,0,1,4,Happy,40
+P0704,2023-02-13,31,female,8.6,Excellent,1,7.5,3,9,neutral ,43
+P0385,2023-04-28,33,Female,8.2,Excellent,4,6.3,0,8,anxious,46
+P0834,2023-03-23,44,Male,7.8,Good,3,4.6,3,3,Neutral,53
+P0857,2023-04-30,46,Male,5.5,great,1,1.8,2,5,Neutral,50
+P0072,2023-04-10,34, f,7.3,Good,2,2.3,2,3,anxious,62
+P0964,2023-01-16,26,Male,6.9,Excellent,0,4.1,0,2,Sad,69
+P0016,2023-03-09,43,Other,5.3,Poor,3,6.1,1,7,Sad,30
+P0840,2023-02-08,23,Female,6.3,Fair,1,5.8,1,5,stressed,53
+P0414,2023-04-19,26,Female,6.4,Fair,0,4.6,1,6,Neutral,57
+P0667,2023-03-01,48,Female,7.1,excellent,5,5.3,3,3,Sad,61
+P0364,2023-04-09,31,Female,6,Fair,3,3.9,4,3,Anxious,56
+P0514,2023-04-10,34,Male,8.1,Excellent,2,5.5,3,3,Neutral,NA
+P0927,2023-04-28,24,M,5.9,Fair,1,6.1,2,3,Anxious,44
+P0526,2023-02-19,46,Female,6.7,Good,3,6.4,2,6,Anxious,54
+P0975,2023-02-19,58,Female,7.4,Good,2,8.8,3,7,Happy,60
+P0065,2023-02-03,26,MALE,3.9,Poor,2,3.6,1,1,Happy,34
+P0872,2023-03-22,27,Male,8.5,excellent,2,6.1,2,9,anxious,41
+P0499,2023-02-24,36,m,5.9,good,2,4.9,2,5,Sad,39
+P0050,2023-01-01,43,Male,na,excellent,2,5.4,1,5,Sad,50
+P0501,2023-02-23,47,Male,6.3,Good,3,4.6,1,6,Neutral,48
+P0372,2023-04-27,36,Female,7,Good,2,5.3,1,4,Happy,47
+P0321,2023-04-07,29,F,6.7,poor,1,2.5,0,6,Sad,39
+P0051,2023-03-31,39,m,7.3,Excellent,5,1.8,2,6,Anxious,48
+P0561,2023-01-10,42,Other,7.9,Excellent,2,4.2,4,6,SAD,55
+P0887,2023-01-09,38,Female,4.8,excellent,3,6.8,4,9,Sad,43
+P0797,2023-01-14,18,Female,4.7,Poor,N/A,2.8,1,3,Neutral,45
+P0973,2023-02-09,42,Female,NA,Excellent,0,5.7,2,6,Neutral,53
+P0695,2023-01-28,18,Female,8.3,Excellent,3,2.8,1,6,Anxious,63
+P0687,2023-04-01,28,MALE,7,Good,1,4.5,1,6,Sad,58
+P0889,2023-03-26,36,Female,N/A,Excellent,3,2.9,0,5,Sad,42
+P0799,2023-03-27,36,Male,7,GOOD,1,3,2,6,neutral ,51
+P0467,2023-04-23,51,Male,8.6,Excellent,2,7.4,0,6,Neutral,N/A
+P0734,2023-04-21,27,Female,4.4,Poor,1,3.6,0,7,Happy,34
+P0352,2023-03-28,25,Male,6.8,Good,3,3.6,0,5,Happy,32
+P0131,2023-03-06,42,Female,6.8,Good,4,7,1,1,Happy,-10
+P0553,2023-01-19,33,Other,6.9,Excellent,6,8.2,2,3,Neutral,54
+P0294,2023-01-02,62,Female,7.4,Good,1,3.3,2,4,neutral ,57
+P0984,2023-01-08,27,Female,4.2,Poor,4,2.6,3,3,Happy,53
+P0030,2023-01-18,27,Female,5.8,excellent,2,3,2,5,Happy,46
+P0784,2023-03-18,21,Male,7.1,Excellent,0,0.2,3,3,Sad,60
+P0446,2023-02-24,28,Male,3.9,Poor,1,  7.8  ,0,7,,38
+P0323,2023-04-25,36,Male,5,Poor,4,10,2,7,Neutral,36
+P0017,2023-04-09,32,MALE,5.5,Fair,1,1.4,3,8,Sad,NA
+P0079,2023-02-08,24,M,5.4,Fair,1,3.5,3,7,Anxious,42
+P0346,2023-04-22,38,Female ,6.5,great,1,4.2,1,4,Sad,51
+P0211,2023-04-25,21,MALE,5.7,Fair,3,5.3,1,6,Happy,36
+P0215,2023-01-05,41,Female ,NA,great,3,3.9,2,7,Happy,34
+P0555,2023-02-24,44,Female,5,Fair ,1,3.4,1,5,happy,32
+P0850,2023-01-25,44,M,6.3,Good,2,3.1,0,7,Anxious,42
+P0182,2023-03-02,28,Other,5.1,Fair ,4,1.2,1,7,Sad,25
+P0632,2023-02-13,42,Female,-2,Good,0,5.8,4,1,Anxious,66
+P0676,2023-01-17,24,Female,5.9,Fair,2,8.5,0,1,Sad,73
+P0646,2023-01-26,19,Male,7.3,Good,3,5.1,2,4,Sad,62
+P0248,2023-02-12,35,Female,8.9,Excellent,1,5.1,1,7,Sad,50
+P0218,2023-04-08,53,M,4.6,Poor,1,5,4,6,Happy,34
+P0714,2023-01-10,29,Male,6.6,Fair,1,1.3,0,6,Sad,42
+P0444,2023-02-20,25,Female,5.9,Fair,NA,4.8,2,6,Neutral,45
+P0946,2023-03-26,42,Male,NA,good,4,6.3,3,7,anxious,34
+P0519,2023-04-10,53,Male,8.2,Excellent,4,6.4,7,6,anxious,72
+P0089,2023-04-29,46,Female,5.3,Poor,2,6.4,2,6,happy,32
+P0605,2023-01-06,27,Female,7.6,Good,1,4.7,1,6,Anxious,47
+P0925,2023-01-28,43,Male,5.9,Fair ,1,5.1,1,5,Neutral,54
+P0115,2023-04-01,18,Female,7.2,Excellent,1,1.8,1,3,Neutral,39
+P0711,2023-03-26,32,M,5.8,Fair,5,3.4,1,4,Neutral,52
+P0707,2023-03-29,20,F,9.3,Excellent,0,5.1,2,7,Sad,58
+P0938,2023-04-19,47,male,6.5,Fair,,3.3,4,1,Happy,64
+P0445,2023-04-25,46,Female,9.9,Excellent,5,3.4,4,4,SAD,77
+P0953,2023-01-15,21,Female,7.1,Good,1,3,3,4,Anxious,67
+P0564,2023-04-16,36,F,,Excellent,1,4,2,4,Anxious,59
+P0329,2023-03-24,25,Female,5.6,Fair,3,6.6,3,7,happy,49
+P0358,2023-02-26,45, f,6.9,Excellent,4,4.8,3,5,Anxious,41
+P0931,2023-01-01,39,Female,5.8,Fair,2,2.8,2,6,Neutral,45
+P0767,2023-03-06,29,Female,7.1,average,1,3.5,1,3,anxious,66
+P0810,2023-01-02,41,Female,7.3,Good,0,8.4,2,5,Happy,55
+P0538,2023-03-10,27,Male,7.1,GOOD,1,4,1,6,Happy,42
+P0608,2023-03-26,45,M,6.3,Fair,1,7.8,0,6,,43
+P0008,2023-01-02,34,Female,3.5,Poor,2,2.8,3,4,Anxious,41
+P0783,2023-04-08,20,Female,9.6,great,3,2.1,2,5,stressed,59
+P0665,2023-04-15,54,Other,6,Good,2,5.8,2,6,happy,51
+P0550,2023-03-14,52,Male,3.9,Poor,3,6.4,0,3,neutral ,35
+P0118,2023-02-02,67,MALE,6.1,Fair,5,5,0,3,Anxious,45
+P0435,2023-02-23,35,Male,8.1,great,2,5,4,2,Anxious,69
+P0897,2023-01-26,49,Male,6.4,Good,1,5.5,2,4,stressed,52
+P0039,2023-03-19,18,MALE,5.4,Poor,1,4.3,4,8,Anxious,36
+P0618,2023-03-15,46,Male,5.5,great,5,6.1,1,7,Neutral,N/A
+P0374,2023-04-19,18,Female,7.3,Fair ,5,7.3,1,8,Anxious,38
+P0483,2023-01-24,18,Male,6.5,Fair ,5,7.8,1,8,Sad,45
+P0806,2023-03-12,31,Female,na,Fair,1,3,3,9,Happy,45
+P0322,2023-01-03,N/A,Female,9.1,Excellent,1,8.4,3,4,neutral ,52
+P0441,2023-03-28,51,F,8.1,Excellent,-1,5.2,4,6,Happy,48
+P0636,2023-01-10,27,F,9.8,good,1,4.8,0,2,Happy,68
+P0269,2023-03-09,18,Female,6.6,Fair,2,3.5,2,1,Happy,60
+P0485,2023-03-16,44,Male,6.9,Good,1,  1.8  ,0,2,SAD,52
+P0841,2023-01-21,44,Female,NA,Excellent,4,4.5,2,4,Anxious,56
+P0173,2023-04-01,18,Other,7.2,Good,3,4.7,4,4,Anxious,68
+P0417,2023-02-12,18,Female,6.8,Good,2,3.9,3,6,anxious,48
+P0768,2023-03-29,25,m,8.1,Excellent,1,6,2,6,Happy,41
+P0489,2023-03-26,29,Male,8.5,Excellent,0,8.9,2,6,Happy,69
+P0327,2023-03-26,49,male,6.3,Poor,1,5.6,0,4,Happy,58
+P0178,2023-02-02,43, f,9.2,Excellent,4,2.5,1,4,,63
+P0144,2023-03-25,35,F,8.1,Excellent,2,5.8,4,2,Sad,91
+P0860,2023-02-19,29,Female,6.5,Excellent,1,1.8,5,4,Neutral,72
+P0626,2023-04-06,43,Male,6.4,Fair,1,8.3,0,7,stressed,50
+P0128,2023-02-05,18,Female,7.7,Good,0,6.2,1,6,Anxious,51
+P0647,2023-01-15,18,Male,9,good,2,4.8,4,4,happy,69
+P0739,2023-03-25,47,Female,8.1,Excellent,2,6.5,6,8,neutral ,58
+P0490,2023-03-07,42,Male,5.8,Fair,4,5.8,1,7,Neutral,25
+P0394,2023-03-28,28,Female,7,Fair,0,5.6,1,2,Happy,61
+P0770,2023-01-26,39,Male,7.7,Good,3,6.4,2,5,Anxious,50
+P0177,2023-02-27,18,Male,7.5,average,4,2.8,4,10,Anxious,42
+P0273,2023-03-18,37,Male,6.3,Fair,0,5,1,7,Sad,35
+P0981,2023-02-08,44,Male,4.8,Poor,2,5.8,2,6,Happy,39
+P0751,2023-04-08,-5,m,6,Fair,1,4.3,2,7,NA,43
+P0468,2023-02-18,44, f,6.7,Good,1,5.3,3,5,Sad,47
+P0238,2023-02-16,35,M,6.9,good,2,5.5,2,4,SAD,74
+P0843,2023-03-09,22,Male,6.8,Good,3,4.6,1,7,stressed,52
+P0306,2023-04-04,34,Male,6.9,great,2,3.6,4,5,Anxious,57
+P0456,2023-02-15,31, f,6.2,GOOD,1,5.8,0,7,anxious,48
+P0180,2023-02-20,35,m,8.8,Excellent,1,6.3,1,5,N/A,66
+P0785,2023-04-11,44,Male,6,Fair,2,8.1,2,4,na,49
+P0788,2023-02-17,36,Female,6.5,Fair,0,4.6,3,3,Neutral,74
+P0559,2023-04-06,46,Male,5.3,excellent,1,4.6,3,8,,47
+P0936,2023-02-03,18,Female,7.6,Excellent,1,3.8,5,2,Anxious,68
+P0455,2023-03-24,36,female,7.7,Excellent,2,11,1,6,Happy,42
+P0926,2023-03-30,46,Female,7.9,Good,2,7.4,2,2,Neutral,73
+P0187,2023-03-24,43,Male,6.4,average,1,4.1,2,6,Neutral,61
+P0139,2023-04-30,29,Female ,7.3,great,0,3.3,2,8,Sad,36
+P0380,2023-01-20,56,Male,6.5,average,N/A,7.8,2,3,Neutral,
+P0971,2023-03-08,22,Female,7.4,good,1,6.1,4,4,Sad,63
+P0562,2023-04-10,36,Other,6.8,Good,2,3.8,3,6,Happy,43
+P0382,2023-01-10,22,M,N/A,Good,2,8,0,7,Sad,33
+P0411,2023-04-02,27,Male,6.2,Fair,0,7,3,5,stressed,36
+P0082,2023-03-15,38,female,6.7,good,1,4.6,1,7,Sad,28
+P0803,2023-02-14,38,MALE,6.2,Good,0,7.2,0,2,Sad,70
+P0153,2023-01-11,49,Female,N/A,Good,2,6.6,2,3,Neutral,-10
+P0681,2023-01-27,35,Female,8.1,Excellent,2,8.8,5,5,Anxious,51
+P0960,2023-02-25,48, f,6.7,Good,3,6.9,2,2,Sad,52
+P0256,2023-03-06,23,Female,7.1,Good,1,1.3,2,5,anxious,59
+P0242,2023-02-02,47,Male,5.4,Fair,1,7.2,5,6,Happy,51
+P0801,2023-03-17,43,Male,5.5,Fair,1,7.5,2,3,Anxious,150
+P0674,2023-04-19,20,Female,7.4,good,,4.5,2,6,Anxious,62
+P0531,2023-03-31,18,Female,6.4,Fair,3,2,5,1,Happy,60
+P0194,2023-04-06,19,MALE,7.9,poor,3,8,0,3,Happy,63
+P0808,2023-04-08,43,Male,8.4,Excellent,0,9.3,0,4,Sad,60
+P0334,2023-01-19,37,Male,7.7,Excellent,1,5.9,3,8,Happy,48
+P0117,2023-01-09,29,Female,8,Excellent,0,0.7,2,4,Anxious,67
+P0603,2023-04-24,47,Female,8,Excellent,1,5.6,1,6,Sad,44
+P0719,2023-03-18,28,M,5.2,Poor,3,2,7,5,Neutral,67
+P0276,2023-01-13,51,female,7.3,poor,1,6.7,3,8,Neutral,37
+P0994,2023-03-14,48,Male,7.6,Fair ,3,4.2,2,9,Anxious,52
+P0846,2023-02-02,20,Female,7.2,Good,2,6.8,6,6,Anxious,45
+P0105,2023-02-28,27,Female,7.7,Excellent,4,6.5,2,4,Sad,56
+P0163,2023-04-12,37,Female,7.1,Good,2,4.4,1,6,Anxious,37
+P0297,2023-04-19,33, f,6.8,Good,1,1,3,5,Anxious,57
+P0625,2023-02-15,24,Female,7.2,Excellent,1,5.8,4,5,Neutral,58
+P0939,2023-04-24,24,m,7.1,Fair ,3,3.5,0,1,Sad,55
+P0154,2023-02-18,32,Female,7.8,Good,1,3.2,2,7,Anxious,41
+P0969,2023-02-02,25,female,9.8,Excellent,0,4.4,2,4,Sad,61
+P0710,2023-03-15,999,Female,6.8,Good,5,7.5,0,4,Anxious,43
+P0778,2023-04-03,39,F,na,Good,1,5.4,4,8,Happy,51
+P0690,2023-02-03,31,Male,8.4,Excellent,1,4.3,1,7,Anxious,61
+P0847,2023-02-22,26,Male,8.7,Excellent,3,2.8,0,6,NA,69
+P0882,2023-03-11,56,Male,7.1,Good,0,7.9,1,3,happy,
+P0450,2023-03-01,42,Male,30,Excellent,3,7.2,2,7,Happy,46
+P0780,2023-04-02,34,Male,6.7,Fair,1,7.8,1,8,Neutral,47
+P0996,2023-02-16,42,Male,6.4,good,0,6.1,4,1,Neutral,74
+P0662,2023-04-16,50,Male,8.9,Excellent,2,3.3,1,1,Sad,69
+P0078,2023-04-04,41,Male,4.6,excellent,3,6.9,3,8,Sad,22
+P0773,2023-02-28,33,Female,4.3,Poor,4,6.2,0,4,neutral ,32
+P0763,2023-02-01,34,Female ,7.8,Excellent,2,4.8,0,6,Neutral,45
+P0859,2023-03-21,49,Female,7.2,average,2,3.2,0,1,Anxious,56
+P0106,2023-03-07,36,Male,7.5,Good,2,1.5,4,4,anxious,43
+P0696,2023-04-18,29,Male,6.9,Good,3,4.2,2,9,Anxious,48
+P0991,2023-01-11,44,Female,6.3,Fair,1,7.1,2,3,Neutral,55
+P0152,2023-01-02,18,female,8.3,Excellent,0,6.6,1,3,Sad,63
+P0545,2023-03-28,41,Female,6.9,Good,0,4.6,2,3,Sad,66
+P0568,2023-01-21,34,Female,8.8,Excellent,1,8.1,4,1,Sad,70
+P0582,2023-04-10,30,Male,5.4,Poor,0,3.1,0,8,Happy,40
+P0257,2023-03-05,26,female,8.5,Excellent,2,3.1,1,4,anxious,67
+P0628,2023-02-02,40,Female,7.5,Good,2,  3.8  ,1,5,Happy,NA
+P0907,2023-01-27,36,Male,6.6,Fair,3,3.2,2,5,Happy,61
+P0045,2023-03-15,19,MALE,7.8,Excellent,3,10.4,2,4,Happy,66
+P0794,2023-02-24,34,Female,5.5,Poor,2,6.9,1,4,Anxious,47
+P0565,2023-04-23,18,Other,7.5,Good,3,6.9,3,4,anxious,57
+P0609,2023-03-10,29,Male,8.7,Excellent,2,7.9,2,5,Happy,58
+P0921,2023-01-13,53,Female,7.2,Good,1,1.8,4,5,Anxious,67
+P0569,2023-04-15,28,Male,6.9,Good,3,3.1,1,4,SAD,42
+P0723,2023-02-03,31,Male,7.9,Good,2,4.5,2,5,Anxious,48
+P0894,2023-01-28,41,Female ,6.9,Good,2,5.1,2,6,Neutral,na
+P0379,2023-03-04,37,m,7.4,Good,2,3.1,3,7,Sad,55
+P0884,2023-03-16,26,Male,7.3,Excellent,1,3.5,2,5,Neutral,61
+P0480,2023-02-08,40,Male,9.2,Excellent,4,6.9,3,7,,54
+P0537,2023-04-09,34,male,7.8,Excellent,99,  6.6  ,1,6,stressed,59
+P0815,2023-03-01,18,male,8,Fair ,2,3.1,0,5,Sad,53
+P0967,2023-01-14,55,Female,7.3,Fair,2,4.4,1,8,Neutral,35
+P0585,2023-01-12,40,Male,6.1,Fair ,1,9.1,2,6,Sad,35
+P0107,2023-03-19,30,Female,6.9,Fair,2,5.2,1,5,happy,49
+P0955,2023-01-18,24,Female,8,Excellent,1,1.9,2,7,Neutral,54
+P0830,2023-01-06,35,F,7.9,Fair ,4,4.9,4,4,Anxious,78
+P0957,2023-02-01,45,Male,7.2,Fair ,2,4.5,5,5,Happy,51
+P0956,2023-01-18,41,Female,5,Poor,2,6.9,1,5,Neutral,42
+P0856,2023-03-03,31,m,8.7,Excellent,1,4.4,3,4,Anxious,64
+P0864,2023-03-31,37,Male,6.9,Fair ,1,2,2,4,Anxious,63
+P0757,2023-02-04,40,Male,6.2,Fair,4,2.2,1,6,SAD,26
+P0028,2023-04-27,18,MALE,7.9,Excellent,na,6.8,1,8,Sad,
+P0682,2023-03-10,19,Male,5.5,Poor,2,5.1,2,1,Happy,
+P0253,2023-03-04,21,Female,9.1,Excellent,4,3.3,1,6,Happy,64
+P0324,2023-01-10,35,Male,7.9,Fair ,2,4.9,0,8,Happy,39
+P0024,2023-04-26,50,Female ,9.3,Excellent,2,5.6,1,7,Sad,52
+P0146,2023-04-19,48,Male,4.8,Poor,2,6.7,4,7,Sad,NA
+P0511,2023-01-15,48,Female,7.3,Excellent,3,5.3,1,1,Neutral,64
+P0038,2023-03-23,25,Male,7,Good,1,6.3,1,7,Happy,58
+P0270,2023-03-18,36,Male,8.3,Excellent,1,4.4,4,5,Happy,50
+P0292,2023-04-30,40,Female,6,Fair,N/A,3.4,3,8,Sad,58
+P0430,2023-04-11,33,Female,6.7,Good,1,5.1,3,6,Anxious,47
+P0166,2023-02-12,52,Male,6.7,Good,1,6.2,2,5,Anxious,51
+P0866,2023-04-11,34,Male,4.6,Poor,2,5.9,0,10,Happy,29
+P0718,2023-04-09,30,Male,6.5,Fair,1,1.3,2,5,Sad,61
+P0752,2023-02-10,18,F,5.8,Poor,3,3.7,2,8,Happy,36
+P0281,2023-01-07,45,Female ,7,Good,1,2.7,3,1,Sad,65
+P0023,2023-02-09,33,m,8.6,Excellent,2,1.2,3,3,Sad,62
+P0112,2023-04-23,36,Female,7.8,Excellent,2,6.6,2,3,Anxious,51
+P0547,2023-01-25,44,Female,6.5,Fair ,2,5.7,2,9,Sad,54
+P0359,2023-04-12,32,m,6.4,Fair,3,8.2,0,7,Neutral,38
+P0019,2023-01-29,18,Female,7.1,Good,2,7.7,1,6,Happy,41
+P0081,2023-01-27,53,F,7.5,Good,4,5.9,3,5,neutral ,71
+P0403,2023-03-09,36,Male,6.9,poor,1,2.4,3,5,N/A,na
+P0196,2023-02-15,48,Female,8.8,Excellent,1,6,4,5,Anxious,77
+P0669,2023-03-16,NA,Female,4.7,Poor,3,6,3,5,,21
+P0122,2023-03-23,18,Female,na,Excellent,3,8.6,3,4,Happy,76
+P0932,2023-03-07,46,Male,5.9,average,3,4.8,3,9,Anxious,47
+P0823,2023-02-16,32,Female,6.2,Good,1,6.3,1,6,Happy,27
+P0303,2023-01-10,,Male,8.3,Excellent,4,4.7,1,4,Sad,61
+P0484,2023-04-08,18,Female,4.2,Poor,1,7.3,0,7,Neutral,38
+P0675,2023-04-13,43,Male,6.7,Fair,2,0,0,7,Happy,48
+P0810,2023-01-02,41,Female,7.3,Good,0,8.4,2,5,Happy,55
+P0968,2023-04-18,18,Male,7.3,Good,5,6.9,2,3,Anxious,60
+P0058,2023-02-19,36,Female,9,Excellent,1,2.6,2,4,Anxious,65
+P0022,2023-01-13,18,Male,6.9,GOOD,2,1.7,3,4,Anxious,42
+P0697,2023-04-25,25,Female,7.4,Good,1,5.5,0,10,Neutral,35
+P0701,2023-01-20,39,Other,8.7,good,0,8.4,2,4,Anxious,62
+P0764,2023-03-15,36,Male,8.3,Excellent,4,6.5,4,6,Anxious,65
+P0143,2023-03-27,30,MALE,N/A,Excellent,5,2.3,2,2,,NA
+P0664,2023-02-17,44,Female,7.1,Good,2,1.3,5,7,Sad,37
+P0791,2023-02-22,38,Male,8.7,Fair ,0,5.6,3,8,Sad,56
+P0824,2023-04-17,27,Female,5.9,excellent,2,7.6,3,6,Anxious,41
+P0786,2023-01-20,28,Female,5.7,good,1,4.9,1,6,happy,33
+P0475,2023-03-25,37,Male,8.3,Excellent,2,6.5,2,1,Neutral,80
+P0613,2023-02-24,62,Male,7.2,Good,2,5.8,4,6,Happy,68
+P0631,2023-03-07,41,Female,6.7,Good,1,6,0,7,Neutral,N/A
+P0504,2023-02-07,37,MALE,8,Excellent,1,3.5,1,6,Happy,47
+P0813,2023-03-10,47,Female,8.3,Excellent,0,4.7,3,7,Neutral,60
+P0725,2023-03-09,39,Female,5.8,Fair ,2,7.9,2,6,Happy,33
+P0987,2023-02-13,37,Female ,6.7,Fair,2,6.4,2,8,Happy,35
+P0572,2023-04-07,33,Male,5.7,great,0,5.3,4,6,Neutral,51
+P0080,2023-02-20,22,Female,6,Fair,0,3.7,1,6,Happy,33
+P0074,2023-03-11,24,male,7.2,excellent,2,6.5,3,7,anxious,56
+P0899,2023-04-20,50,Female,5.4,Poor,1,7.6,3,4,Sad,55
+P0011,2023-02-02,51,Female,6.6,great,1,3.3,1,2,Sad,39
+P0466,2023-02-09,35,female,6.6,Good,1,5.2,1,10,Anxious,35
+P0478,2023-03-10,32,female,7,Excellent,0,7.6,3,5,Neutral,65
+P0972,2023-01-13,18,Male,7.6,good,3,1.2,3,6,happy,60
+P0130,2023-03-17,37,Male,6.8,Excellent,2,4.7,4,6,Anxious,52
+P0586,2023-04-20,18,Male,5.9,Fair,0,2.8,0,4,happy,35
+P0307,2023-03-29,41,MALE,7.9,Excellent,0,6.6,3,3,Happy,68
+P0919,2023-02-11,38,Female,7.2,Good,4,5.9,1,7,Anxious,43
+P0401,2023-04-07,51,female,8.1,Excellent,1,6.9,0,8,Sad,52
+P0905,2023-03-07,61,Male,5.4,Poor,5,7.8,3,6,Sad,37
+P0235,2023-04-23,32,Female,6.9,Good,2,2.9,2,6,Happy,41
+P0336,2023-03-13,34,female,6.2,great,1,4.4,4,4,NA,61
+P0527,2023-02-28,21,F,7.7,Good,2,6.1,1,9,Sad,41
+P0176,2023-02-18,33,Female,7.3,Good,0,9.1,1,5,Sad,65
+P0915,2023-04-23,48,Male,5.8,Fair,1,3.2,3,6,Neutral,29
+P0373,2023-01-09,50,Male,5.1,Fair ,2,6.1,1,3,happy,51
+P0629,2023-04-16,39,male,6.8,Good,2,9.9,1,7,happy,34
+P0909,2023-03-17,38, f,6.3,Fair,2,5.3,1,3,Anxious,54
+P0071,2023-01-02,22,Female,8.7,Excellent,NA,4.1,2,1,Happy,68
+P0883,2023-01-20,58,Male,7.9,GOOD,4,4.3,6,7,Neutral,44
+P0570,2023-02-11,31,female,8.1,Excellent,0,9.6,0,1,Neutral,70
+P0437,2023-04-13,18,F,7.1,great,0,8.1,1,5,Happy,49
+P0591,2023-03-02,35,Male,7.5,Good,0,6.1,1,5,stressed,65
+P0059,2023-03-04,18,female,5.7,good,4,6.1,1,7,anxious,42
+P0721,2023-01-09,39,Female,5.8,Fair,2,3.2,0,8,na,29
+P0387,2023-02-16,31, f,N/A,Fair,1,2.6,5,8,Anxious,39
+P0560,2023-01-26,18,Male,7.7,Excellent,4,3.1,2,7,Anxious,51
+P0357,2023-02-01,32, f,5.8,Fair,2,7,3,4,Anxious,47
+P0020,2023-02-20,51,Female,6.8,Good,1,3.5,0,5,Neutral,47
+P0069,2023-03-20,46,Female,7.7,excellent,2,5.9,2,4,Anxious,61
+P0169,2023-03-10,36,Female,6.3,Fair,3,4.6,1,8,Anxious,37
+P0722,2023-03-19,53,Male,7.8,Excellent,1,5.7,4,5,Sad,71
+P0468,2023-02-18,44, f,6.7,Good,1,5.3,3,5,Sad,47
+P0633,2023-02-24,32,Male,6.7,excellent,3,4,1,3,Anxious,59
+P1000,2023-04-04,30,Female,7.2,excellent,4,6,3,3,Neutral,45
+P0944,2023-02-22,35,Female,5.9,good,0,5.4,2,3,Neutral,56
+P0870,2023-03-13,52,Male,7.1,Good,6,4.1,0,1,Happy,N/A
+P0214,2023-04-22,na,Female,8.3,good,1,7.1,3,7,Sad,53
+P0508,2023-02-17,23,Female,5.6,Poor,3,2.4,2,7,Neutral,24
+P0007,2023-02-22,53,Female,7.2,Good,2,5.6,0,5,Neutral,56
+P0328,2023-03-09,35,Female,8.3,Excellent,1,7,0,5,Anxious,64
+P0063,2023-02-27,42,Female,7.1,Good,4,0.3,1,7,Happy,49
+P0363,2023-02-12,29,Other,8.6,Excellent,1,5.2,4,8,SAD,64
+P0653,2023-02-05,22,Female,6.8,Good,1,3.4,3,5,Neutral,71
+P0988,2023-02-15,77,Female,6.1,Fair,1,4.7,4,5,Happy,57
+P0156,2023-02-20,20,Male,7.2,Good,2,5.7,0,7,Neutral,37
+P0918,2023-04-21,37,Male,5.1,Poor,4,3.1,5,2,Happy,54
+P0312,2023-03-20,26,Female,7.9,Good,1,4.7,5,4,Anxious,72
+P0892,2023-02-21,53,F,6.7,Good,2,4.7,3,6,neutral ,36
+P0092,2023-01-13,29,Male,7.1,Good,3,7.7,3,6,Sad,62
+P0658,2023-04-21,31,Female,7.6,Excellent,3,5.4,2,4,Happy,62
+P0738,2023-03-16,27,Male,7.9,Good,1,7.7,4,4,Anxious,72
+P0001,2023-02-04,51,MALE,9.8,Excellent,2,4.7,1,6,Neutral,61
+P0874,2023-02-17,33,Male,6.4,Fair,0,2.7,1,2,NA,61
+P0390,2023-02-23,43,F,4.9,Poor,2,6.3,5,6,Happy,46
+P0659,2023-04-23,20,Male,6.7,good,3,5.2,3,3,Neutral,60
+P0826,2023-03-12,44,Female,6.7,poor,2,4.3,3,5,Sad,37
+P0179,2023-01-25,41,Male,5.7,Poor,3,4.3,0,5,Neutral,41
+P0600,2023-04-08,47,Male,5,Poor,5,1.1,1,5,Sad,41
+P0355,2023-01-16,30,Male,7.6,Excellent,0,2.4,1,8,Sad,44
+P0293,2023-04-12,25,Female,6.9,Good,1,6.5,1,8,Neutral,45
+P0236,2023-04-30,30,Other,8.9,Excellent,2,7.7,2,3,Anxious,67
+P0928,2023-03-24,32,Male,7.7,Fair ,0,8,2,2,NA,68
+P0129,2023-03-01,20,Male,5.9,Fair,6,3,5,6,Sad,28
+P0300,2023-03-23,18, f,7.8,Excellent,2,5.2,4,8,Anxious,43
+P0033,2023-04-21,47,Male,7.3,Excellent,1,0.9,3,3,Happy,51
+P0505,2023-03-05,26,Male,6,Fair,1,7.4,3,6,Sad,54
+P0878,2023-03-21,51,Male,6.8,average,1,5.1,3,7,Anxious,na
+P0096,2023-03-19,25,M,7.4,Excellent,0,5.9,3,1,Sad,58
+P0795,2023-01-11,36,Female,7.9,Excellent,0,0,4,1,Neutral,84
+P0536,2023-02-19,37,Female,8,poor,2,4.8,2,4,Anxious,49
+P0822,2023-04-09,32,Male,6.2,Fair,3,3.6,1,8,Anxious,30
+P0762,2023-04-11,35,Female ,6.2,Fair,1,2.9,4,8,Anxious,57
+P0842,2023-01-25,27,Female,7.5,Excellent,3,1.5,0,3,happy,68
+P0057,2023-03-16,43,M,7.6,Excellent,1,  2.2  ,1,6,Sad,48
+P0348,2023-02-01,18,Female,6,Fair,0,5.3,3,6,Sad,38
+P0305,2023-03-11,33,Female,6.8,Excellent,3,8.3,5,3,Happy,67
+P0476,2023-02-22,30,Female,8.9,Excellent,0,6,2,3,Happy,66
+P0419,2023-02-18,27,M,7.4,Good,2,5.4,5,4,Neutral,56
+P0935,2023-04-16,37,Female,4.9,Poor,3,2,3,7,Anxious,36
+P0922,2023-03-23,28,Male,25.5,Excellent,1,7.7,1,7,Neutral,46
+P0439,2023-01-10,21,Female,8.4,Excellent,0,2.8,3,6,anxious,52
+P0666,2023-04-14,38,Female,7.7,average,1,2.6,3,1,Neutral,60
+P0005,2023-03-22,40,Male,5.8,Fair,2,1,1,2,Sad,50
+P0917,2023-03-31,34,Female,6.2,Fair,2,3.5,5,1,Sad,76
+P0614,2023-01-31,38,Female,7.8,excellent,2,6,2,10,Neutral,35
+P0805,2023-02-16,19,Female,4.2,Poor,3,6.7,1,1,Neutral,N/A
+P0200,2023-02-17,37,Male,NA,Excellent,4,7.6,4,5,Neutral,69
+P0700,2023-03-28,37,Male,5.8,average,4,3.8,4,3,Sad,48
+P0409,2023-01-05,53,Female,10.1,Excellent,1,1.6,1,4,Anxious,62
+P0777,2023-02-25,37,Female ,5.7,Fair,3,9.1,5,1,Neutral,60
+P0310,2023-04-12,35,Female,na,Poor,3,5.3,3,8,Anxious,34
+P0198,2023-01-21,42,Male,5.5,Fair,1,3.6,3,5,Neutral,44
+P0317,2023-03-07,26,Male,5.3,Poor,2,6.7,4,6,Happy,
+P0228,2023-04-08,32,Female ,7.2,excellent,1,3.3,2,9,Anxious,43
+P0587,2023-01-27,48,Female,5.7,Fair,3,4.9,0,4,Anxious,30
+P0477,2023-02-14,29,Female ,6.2,Fair,2,6.3,0,5,Neutral,41
+P0381,2023-03-26,64,Female,8.4,Excellent,1,5.8,1,4,neutral ,73
+P0513,2023-02-09,21,Male,7.7,Fair ,0,3,0,5,happy,54
+P0041,2023-03-16,37,Male,5.7,poor,2,5.6,2,3,Anxious,47
+P0920,2023-03-06,27,F,8.8,Excellent,0,6.1,1,5,happy,63
+P0992,2023-03-27,28,Other,6.8,Good,2,6.8,6,7,Anxious,54
+P0627,2023-04-17,30,Female,NA,Fair,3,7.1,0,5,happy,33
+P0755,2023-02-21,18,Female,5.9,Poor,3,6.2,3,4,Sad,49
+P0986,2023-04-27,50,Male,7.1,GOOD,1,4.5,2,3,Happy,54
+P0286,2023-04-21,39,Male,7,Good,2,5.5,2,7,Happy,NA
+P0135,2023-01-30,52, f,6.5,GOOD,3,6.1,2,4,Anxious,45
+P0962,2023-01-07,37,Female,7.5,Good,3,5.4,2,7,neutral ,49
+P0829,2023-04-06,36,Male,7,Good,1,7.3,1,3,Happy,49
+P0481,2023-03-20,32,Female,7.7,Excellent,1,7.6,3,1,SAD,67
+P0142,2023-02-19,24,Other,8.3,Excellent,2,6.1,1,2,Anxious,58
+P0533,2023-03-14,31,MALE,7,Good,na,6.9,1,6,Sad,40
+P0709,2023-04-16,43,M,6.6,Good,2,5.9,1,6,Sad,51
+P0904,2023-04-28,30,m,8.7,Excellent,0,4.9,1,3,Neutral,73
+P0518,2023-04-18,31,MALE,5.4,Poor,4,5.2,1,4,Happy,46
+P0383,2023-01-26,41,Male,6.8,Good,2,3.6,3,6,Neutral,45
+P0699,2023-03-06,32,Male,8.8,Excellent,0,5.2,0,6,na,42
+P0949,2023-02-06,48,Female,NA,Excellent,2,3.8,1,2,Happy,56
+P0246,2023-04-22,60,Male,8.4,Excellent,2,6.2,10,6,Neutral,61
+P0159,2023-04-14,29,m,5.2,Poor,0,6.3,3,7,Sad,44
+P0207,2023-03-07,27,Male,4.1,Poor,1,4.3,3,9,Neutral,28
+P0279,2023-04-09,52,MALE,na,Good,1,7,1,6,Anxious,30
+P0315,2023-04-24,42,Female,7,Good,4,4.7,1,4,Sad,63
+P0056,2023-01-06,38,Male,7.7,Excellent,4,5.8,1,4,SAD,55
+P0148,2023-01-24,30,Female,5.9,Fair,2,  5  ,1,7,neutral ,40
+P0706,2023-03-11,27,Male,8.2,Excellent,1,8.4,2,6,Neutral,58
+P0713,2023-03-30,34,Female,7.6,Excellent,0,5.6,6,1,Sad,91
+P0978,2023-04-01,42,Female,7.2,Good,0,4.4,2,5,Happy,56
+P0311,2023-01-18,34,Male,9.1,great,4,5.3,0,6,Happy,50
+P0210,2023-01-29,33,Female,6.3,Good,1,3.2,2,2,Sad,68
+P0750,2023-03-19,29,Female,na,great,1,4.5,5,4,Happy,48
+P0868,2023-02-17,46,Male,5.9,Fair,2,8,2,7,Happy,32
+P0191,2023-01-21,37,Female,7.5,poor,0,6.8,1,2,Happy,NA
+P0724,2023-02-07,38,Male,7.4,Excellent,2,3.9,3,7,Neutral,47
+P0004,2023-03-04,43,male,7.5,Excellent,1,5.8,0,1,happy,62
+P0099,2023-05-01,36,Male,6.8,Good,0,7.5,5,3,Happy,NA
+P0966,2023-01-19,55,Male,8.3,Excellent,2,9,2,6,Happy,60
+P0617,2023-02-13,27,m,7.5,Excellent,2,4.4,5,3,Happy,63
+P0621,2023-01-02,47,m,7.1,Good,3,6.5,2,7,Happy,49
+P0205,2023-02-25,18,male,8.1,Excellent,1,4.1,3,7,Neutral,61
+P0161,2023-04-06,na,M,7.8,Excellent,2,4.7,2,7,Happy,54
+P0510,2023-02-05,45,Female,4.5,Poor,5,4.9,1,8,Sad,N/A
+P0284,2023-02-16,43,Female,7.4,Excellent,1,3,3,3,Anxious,69
+P0620,2023-01-08,37,Female,7.9,Good,1,1.1,0,5,anxious,58
+P0267,2023-03-27,45,Male,6.7,Fair ,0,3,0,6,Sad,54
+P0827,2023-01-20,25,Male,5.9,good,4,5.8,2,3,Happy,51
+P0272,2023-03-22,36,Male,6.9,Good,2,2,1,5,Happy,58
+P0298,2023-02-06,45,Male,8.5,Excellent,3,  0.4  ,1,4,Happy,74
+P0578,2023-02-18,35,Male,8.1,Excellent,2,6.7,0,5,Happy,46
+P0494,2023-02-06,50,m,8.2,Excellent,4,4.6,3,6,Anxious,56
+P0384,2023-04-19,52,Male,8.1,poor,0,4.9,2,4,Sad,64
+P0542,2023-02-23,31,Female ,7.4,Excellent,2,2.3,4,4,Neutral,58
+P0277,2023-03-03,41,Other,7,great,3,5.5,3,3,Neutral,72
+P0040,2023-02-02,35,MALE,6,Fair,3,2.2,1,8,Anxious,38
+P0765,2023-02-26,44,Male,9.6,Excellent,1,7,2,4,Sad,70
+P0086,2023-02-02,42,Female,6,Fair,0,8.5,2,5,SAD,42
+P0087,2023-02-02,32,male,6.5,average,4,6,3,1,Happy,44
+P0567,2023-03-28,41,Female,6.9,good,1,7.9,2,1,Neutral,64
+P0172,2023-03-22,45,Female,7,Good,3,3.7,2,4,Anxious,61
+P0053,2023-01-07,54,Female ,7,Good,0,6.1,2,3,Sad,41
+P0556,2023-01-12,39,Male,5.9,Poor,0,7.4,2,4,Sad,48
+P0524,2023-03-12,38,Male,6.9,Good,2,4.9,0,8,Neutral,-10
+P0397,2023-03-25,40,Female,5.8,Fair,N/A,7,1,6,Happy,43
+P0558,2023-04-07,18,Male,7,Good,2,0,1,5,Sad,50
+P0554,2023-04-05,46,Female ,6.5,great,4,6.8,0,3,Anxious,52
+P0500,2023-04-13,35,m,99,Poor,2,3.8,2,6,Happy,N/A
+P0460,2023-03-25,25,m,7.6,GOOD,2,6.4,1,4,Happy,61
+P0107,2023-03-19,30,Female,6.9,Fair,2,5.2,1,5,happy,49
+P0015,2023-01-04,33,Female,7.8,Good,3,5.8,0,5,Happy,51
+P0573,2023-03-07,24,Male,8.2,Excellent,5,4.2,5,7,anxious,58
+P0369,2023-03-06,30,Female,7.1,Good,1,6.8,2,7,anxious,46
+P0498,2023-02-22,21,Male,7.2,Good,0,5.7,1,6,stressed,52
+P0656,2023-04-09,18,Male,,good,2,5.6,2,10,Anxious,47
+P0393,2023-04-08,41,Female,7.8,average,2,9.1,2,5,Neutral,55
+P0055,2023-03-17,36,Male,7.5,Excellent,3,0.9,5,10,anxious,37
+P0255,2023-01-30,51,F,na,good,1,4.4,2,2,Sad,45
+P0989,2023-02-03,46,Male,5.5,Poor,1,6.5,3,9,SAD,27
+P0517,2023-03-03,18,female,8.3,Excellent,3,6.1,1,4,Sad,N/A
+P0770,2023-01-26,39,Male,7.7,Good,3,6.4,2,5,Anxious,50
+P0486,2023-04-09,32,Female,7.8,Good,3,3.5,2,7,Sad,37
+P0623,2023-02-18,27,Female ,5,Poor,2,3.6,3,5,Neutral,50
+P0288,2023-02-27,25,Female,5.6,Fair,1,2.1,0,8,Neutral,24
+P0652,2023-03-06,34,Male,5.1,great,3,2.8,2,7,Neutral,34
+P0102,2023-02-26,48,Male,5.8,Fair,7,4.4,3,7,Neutral,46
+P0167,2023-01-20,23,Female,,Poor,1,7.3,0,2,Sad,45
+P0906,2023-03-20,18,Female,7.7,Excellent,5,2.2,3,4,na,57
+P0360,2023-02-20,18,Male,7.5,Excellent,0,10.4,1,5,anxious,59
+P0848,2023-01-31,20,Male,6.6,Good,2,6.2,3,4,Anxious,68
+P0459,2023-02-26,na,M,5.7,Poor,3,5,2,1,Happy,50
+P0116,2023-02-23,30,Female,5.6,Fair,2,4.4,2,4,Neutral,45
+P0097,2023-01-20,21,Female,8.5,Excellent,1,3.7,0,5,Happy,NA
+P0233,2023-04-06,21,Male,7.6,Excellent,6,4.6,0,1,Neutral,60
+P0482,2023-04-12,18,Male,4.9,Poor,1,7.1,2,3,Anxious,61
+P0195,2023-02-13,23,Male,25.5,Excellent,2,4.8,2,7,Anxious,49
+P0318,2023-04-19,37,Female,7.9,Excellent,1,4.6,4,4,Happy,73
+P0241,2023-03-21,26,Female,7.9,Excellent,2,6.1,0,7,Sad,36
+P0043,2023-01-08,44,Female,5.5,Fair,1,4.6,1,4,Neutral,36
+P0420,2023-03-17,na,Female,7.5,Excellent,2,0.5,1,6,Sad,34
+P0571,2023-01-23,27,Female,6.6,Good,2,2.8,2,5,Anxious,55
+P0227,2023-03-05,41,Female,6.9,Good,2,6.1,1,5,Anxious,41
+P0280,2023-04-28,49,M,8,Excellent,4,6.2,2,6,Neutral,43
+P0415,2023-02-11,26,MALE,6.7,Fair,3,6.3,5,5,Neutral,46
+P0003,2023-03-25,39,Male,8.2,Excellent,0,4.3,1,2,Anxious,69
+P0127,2023-03-02,28,Male,6.3,poor,5,2.9,2,6,Sad,57
+P0388,2023-04-28,42,female,6.2,Fair,0,2,1,7,Anxious,NA
+P0090,2023-04-03,45,Female,8.1,Excellent,0,3.6,1,7,stressed,39
+P0098,2023-03-09,18,Female,7.4,Excellent,2,4,2,1,stressed,72
+P0997,2023-04-17,23, f,7.3,Good,3,3.4,0,5,Anxious,31
+P0619,2023-02-18,39,Male,5.3,great,3,4.2,0,4,Neutral,45
+P0961,2023-01-08,46,Female,7.6,Excellent,0,6.1,2,4,Anxious,57
+P0980,2023-04-22,18,Female,5.2,Poor,N/A,5.7,3,8,Neutral,44
+P0885,2023-01-17,19,Female ,6.2,Good,0,6.4,1,4,Sad,59
+P0046,2023-02-09,40,Male,7.8,Good,2,6,0,4,Happy,73
+P0104,2023-02-02,57,Female,6.9,Good,,5.5,1,3,Sad,61
+P0274,2023-01-14,40,Female,5.4,Fair,2,1.5,4,6,Happy,42
+P0875,2023-02-05,36,Male,6.7,Good,4,7.1,2,4,Happy,41
+P0782,2023-04-26,43,Male,8.6,Excellent,2,2.4,1,4,Sad,50
+P0095,2023-01-02,22,Male,7.3,Good,1,1.9,4,5,Neutral,68
+P0839,2023-03-04,46,Female,6.2,Fair,2,4.9,10,2,Neutral,37
+P0574,2023-03-06,18,Female,9.8,Excellent,5,7.5,3,7,Sad,49
+P0389,2023-02-14,52, f,5.6,Fair ,5,0.1,3,1,Neutral,47
+P0736,2023-03-14,44,Other,6.6,Fair,3,5.5,3,4,Sad,51
+P0062,2023-03-25,37,MALE,6.9,Good,3,1.7,3,7,Happy,47
+P0250,2023-03-06,23,Female,7,good,3,6.4,2,6,Neutral,63
+P0264,2023-02-15,18,Female,6.5,Good,3,2.5,0,4,Happy,46
+P0340,2023-04-23,29,male,6.3,Fair,0,0.2,1,8,Anxious,34
+P0326,2023-04-08,25,Male,6.9,Excellent,1,3,6,7,Happy,47
+P0726,2023-01-15,52,Male,6.1,Fair,2,0.9,0,3,Sad,43
+P0670,2023-02-12,35,Female,6.8,Fair,0,4.5,1,1,Neutral,64
+P0844,2023-04-02,31,Male,8.1,Excellent,0,4.7,2,5,anxious,62
+P0121,2023-01-24,18,Female,5.3,Poor,1,5.3,2,6,happy,N/A
+P0855,2023-04-17,40,Female,9.2,Excellent,0,5.1,1,5,neutral ,48
+P0651,2023-04-01,45,Female,7.1,Good,1,5.5,3,4,happy,67
+P0123,2023-02-04,36,Female,8.6,Excellent,2,1.8,2,7,Sad,59
+P0175,2023-01-18,45,Female,7,Good,0,0,0,6,Happy,48
+P0108,2023-02-20,34,F,6,Fair,2,6.4,1,6,Sad,45
+P0077,2023-02-02,44,Female,6.8,Good,1,5.6,6,3,Happy,64
+P0551,2023-03-30,18,Female,7.9,Excellent,0,6.1,0,8,SAD,29
+P0451,2023-02-15,19,male,7.1,excellent,3,6.8,2,4,Sad,43
+P0741,2023-01-07,N/A,Female,5.2,Poor,0,6.7,0,4,Neutral,50
+P0873,2023-04-02,37,Female,6.4,good,1,6.7,2,6,Anxious,52
+P0643,2023-01-14,18,Female,6.2,Good,3,5.5,4,4,SAD,40
+P0218,2023-04-08,53,M,4.6,Poor,1,5,4,6,Happy,34
+P0858,2023-01-14,33,Female,9.4,Excellent,3,5.3,1,8,stressed,NA
+P0347,2023-04-18,49,Male,4,Fair ,1,4.2,1,6,Happy,14
+P0157,2023-02-20,,M,9.3,Excellent,4,2.8,2,6,Anxious,62
+P0029,2023-02-12,41,Male,5.7,Poor,2,3.9,2,7,Happy,41
+P0896,2023-02-12,na,Male,5.9,Fair,3,4,0,5,Anxious,44
+P0530,2023-02-28,18,male,7.6,Good,2,3.3,2,5,Anxious,54
+P0942,2023-03-14,22,Male,6.5,Fair,2,5.4,4,4,Sad,48
+P0602,2023-02-10,40,Other,9.3,Excellent,2,4,0,6,Sad,57
+P0371,2023-04-07,55,Male,7.2,excellent,2,2.8,2,5,Neutral,51
+P0295,2023-01-19,34,Female,6.9,Good,1,5.6,2,4,Sad,63
+P0012,2023-02-24,62,M,6.7,Good,0,4.5,1,6,Neutral,50
+P0454,2023-01-01,30,Male,6.6,Good,1,7.5,1,5,Sad,51
+P0731,2023-01-17,37,Male,N/A,Poor,1,2.9,2,6,Anxious,37
+P0694,2023-01-29,25, f,8.4,Excellent,3,5.6,0,6,Sad,35
+P0094,2023-03-24,52,Other,5.7,Poor,3,1,3,7,Happy,31
+P0301,2023-03-15,35,female,5.6,poor,1,5.8,4,7,Neutral,35
+P0416,2023-01-16,26,Female,8.3,GOOD,1,4.7,3,3,Neutral,82
+P0837,2023-02-07,39,Female,7.2,Good,2,5.6,3,6,Happy,59
+P0686,2023-04-26,29,Male,8.4,Excellent,3,6.3,0,9,Sad,48
+P0044,2023-04-16,26,Male,3.8,Poor,1,5,2,4,Anxious,35
+P0287,2023-02-17,65,Female ,9.4,Excellent,2,5.3,2,4,Happy,63
+P0377,2023-03-26,32,M,na,Fair ,6,2.8,2,3,Sad,48
+P0985,2023-03-10,18,Male,7.6,Good,1,7.9,3,4,Neutral,66
+P0261,2023-01-23,45,MALE,9.4,Excellent,3,9.7,0,3,Anxious,58
+P0244,2023-01-05,50,Female,6.4,Good,0,3.5,0,3,Anxious,48
+P0893,2023-02-15,32,Male,9.2,Excellent,na,6,1,7,Neutral,58
+P0299,2023-02-25,36,Male,7.2,Good,N/A,6.7,1,3,Neutral,53
+P0941,2023-01-21,18,female,5.3,Poor,4,2.9,1,5,,46
+P0254,2023-01-22,37,Male,6.5,Fair,3,5.6,2,3,Anxious,53
+P0282,2023-04-21,18,Female,6,Fair,na,10,2,6,Anxious,52
+P0316,2023-01-14,30,Male,6.5,Good,1,4.7,2,7,Neutral,43
+P0443,2023-03-31,52,Male,8.1,Excellent,1,7,0,6,happy,49
+P0492,2023-02-16,34,MALE,7.3,Good,2,4.5,10,6,Sad,47
+P0091,2023-04-23,52,Female ,5.4,poor,3,5.1,3,7,Sad,41
+P0965,2023-01-06,NA,Female ,6.8,Good,2,2.4,1,5,Sad,41
+P0502,2023-02-17,46,Female,6.8,Fair,0,2.6,4,5,Anxious,75
+P0746,2023-03-04,43,Male,5.8,Fair,2,8.1,4,4,Sad,53
+P0155,2023-02-21,29,Female,10.2,Excellent,2,3,4,7,Happy,67
+P0488,2023-02-26,18,Female ,5.5,Fair ,1,5,0,2,happy,51
+P0685,2023-01-17,49,Female,7.3,Excellent,1,5.8,3,6,Anxious,56
+P0339,2023-03-10,26,m,7.8,Excellent,1,3.2,0,6,Happy,47
+P0061,2023-04-05,31,M,6.6,poor,2,4.2,0,3,SAD,48
+P0262,2023-01-25,47,Male,30,excellent,4,9.3,2,10,Neutral,30
+P0716,2023-04-28,29,Male,8,excellent,1,3.8,0,5,Anxious,56
+P0828,2023-01-10,18,Female ,8.5,Excellent,2,7.4,0,3,Neutral,62
+P0933,2023-04-27,42,MALE,6.9,great,3,7.8,3,5,neutral ,38
+P0930,2023-01-24,45,Male,7.5,good,1,6.7,3,10,Happy,39
+P0487,2023-03-03,38,Female,5.9,Fair,3,4.5,3,6,Neutral,52
+P0753,2023-01-19,31,Female,7,Good,2,2.8,0,8,Neutral,43
+P0624,2023-04-19,40,Female,6.3,Fair,2,4.5,4,4,Anxious,44
+P0888,2023-02-27,37,Female,8,Excellent,1,3.1,0,8,Neutral,44
+P0853,2023-02-05,32,Female,7.4,Excellent,4,5.4,2,4,Anxious,51
+P0903,2023-04-16,36,Female,8.2,Excellent,1,  3.9  ,2,6,Anxious,39
+P0204,2023-03-14,60,Male,7.5,Good,5,1.4,6,3,Anxious,66
+P0529,2023-01-16,39,Female,4.2,Poor,3,5.3,0,5,Anxious,38
+P0541,2023-03-20,0,Male,5.5,Poor,1,6,3,5,Sad,44
+P0610,2023-04-16,18,Female,9.2,Excellent,2,6.5,1,5,Sad,54
+P0109,2023-04-16,37,Female,8.4,Excellent,1,7.8,1,4,Happy,61
+P0807,2023-01-08,30,Female ,8.1,Excellent,2,1.4,1,6,anxious,57
+P0804,2023-02-11,33,Female,6.2,Good,0,6.7,3,10,Neutral,30
+P0283,2023-02-12,28,Other,7.3,average,1,3.7,1,2,Neutral,70
+P0088,2023-02-15,33,m,5.9,Fair,1,0.3,1,5,Sad,NA
+P0593,2023-03-02,42,F,6.4,Fair,1,3.1,2,4,Happy,51
+P0428,2023-03-09,40,Male,6.9,Good,3,6.3,3,4,neutral ,57
+P0462,2023-02-20,60,female,5.8,Fair,5,3.2,0,5,happy,40
+P0616,2023-04-19,45,Female ,7,Good,2,3.9,2,5,Neutral,52
+P0544,2023-04-26,54,Other,5.8,GOOD,1,7.5,1,5,Anxious,52
+P0240,2023-01-26,24,Male,6.4,Good,2,5,4,4,N/A,60
+P0912,2023-02-04,37,Female,4.5,Poor,6,5.5,0,6,Happy,25
+P0836,2023-01-13,21,Female,4.8,Fair,3,4.5,4,6,Happy,59
+P0259,2023-01-27,23,Male,6.7,good,1,6.9,2,5,Happy,49
+P0680,2023-03-27,38,male,8.7,Excellent,2,6,3,3,Happy,64
+P0771,2023-01-28,54,Female,6.5,Good,5,4.7,0,4,neutral ,41
+P0386,2023-01-27,32,Female,6.2,Fair,2,5.7,1,3,Anxious,51
+P0940,2023-02-11,18,male,6.2,average,1,8.4,0,4,Neutral,59
+P0831,2023-02-24,35,MALE,6.5,Fair,2,5.7,3,6,Neutral,60
+P0262,2023-01-25,47,Male,30,excellent,4,9.3,2,10,Neutral,30
+P0193,2023-05-01,38,Male,7.9,Excellent,0,2.2,2,4,Neutral,64
+P0516,2023-01-10,59,Male,7.4,Good,2,3.8,4,6,Sad,51
+P0021,2023-01-02,31,Female,8.7,Excellent,1,1.2,2,6,Anxious,69
+P0772,2023-03-19,23,MALE,5.6,Fair,2,4.2,2,6,Anxious,33
+P0100,2023-02-09,43,Male,10.1,Excellent,1,4.1,4,4,neutral ,79
+P0206,2023-03-28,21,Female,8.1,Excellent,2,6,3,2,Happy,64
+P0824,2023-04-17,27,Female,5.9,excellent,2,7.6,3,6,Anxious,41
+P0085,2023-03-02,21,Male,7.2,Good,3,4.6,2,1,Sad,55
+P0680,2023-03-27,38,male,8.7,Excellent,2,6,3,3,Happy,64
+P0113,2023-04-29,29,Male,7.5,excellent,1,6,5,5,Happy,59
+P0010,2023-03-01,na,M,8,Good,1,3,1,6,Sad,51
+P0350,2023-01-08,51,Female,6.5,Good,two,2.7,4,2,Neutral,36
+P0879,2023-03-17,47,Female,8,Excellent,1,4.6,3,10,anxious,48
+P0977,2023-04-02,44,Female,7.4,Good,4,7.4,1,2,Neutral,67
+P0908,2023-01-29,36,F,6.9,Good,0,4.6,2,9,SAD,40
+P0400,2023-01-26,46,Male,4.9,Poor,4,6.8,1,6,Happy,45
+P0232,2023-02-16,46,Female,7,Fair,4,3.1,1,3,Neutral,65
+P0789,2023-04-28,31,Other,5.5,Poor,2,7.5,3,3,Sad,45
+P0655,2023-03-18,51,Male,7.6,Good,3,4,1,6,Happy,53
+P0337,2023-01-13,18,Male,6.5,Good,2,5.3,1,9,Anxious,23
+P0607,2023-01-13,18,Male,7.2,Good,1,3.6,3,5,Sad,49
+P0606,2023-04-16,54,Female,9.1,Excellent,2,6.2,5,4,SAD,64
+P0522,2023-01-28,31,m,10.1,Excellent,0,4.6,0,7,Happy,57
+P0398,2023-02-04,38,Male,7.9,great,2,3.6,1,5,Neutral,46
+P0525,2023-04-03,74, f,8.2,Excellent,3,3.4,2,6,Happy,42
+P0702,2023-01-24,40,m,6.9,Good,2,5.9,1,4,Neutral,67
+P0689,2023-02-07,31,Male,8.5,average,0,2.7,2,7,Sad,64
+P0849,2023-02-22,47,Male,6,Fair,4,5.5,1,3,Neutral,58
+P0319,2023-03-22,20,Male,8.5,Excellent,3,3.3,2,5,SAD,51
+P0851,2023-01-07,23,MALE,5.7,Fair,1,5.5,2,2,stressed,49
+P0120,2023-01-14,37,Male,9,Excellent,3,2.1,4,2,happy,86
+P0898,2023-04-01,33,Male,6.9,Good,1,4.8,0,6,Happy,41
+P0223,2023-04-04,29,Other,6.7,Fair,4,5.7,1,8,Neutral,38
+P0809,2023-02-02,51,Female,9.5,Excellent,N/A,3.8,2,6,Happy,51
+P0684,2023-01-20,28,Male,7,Good,0,6.1,4,4,Happy,52
+P0976,2023-03-26,41,M,6.3,Fair,3,6.4,3,5,Happy,54
+P0698,2023-01-11,18,MALE,9,Excellent,0,5.7,0,3,Happy,68
+P0332,2023-01-08,30,Female,5,Poor,1,8.5,0,5,Happy,32
+P0263,2023-03-03,40,Male,N/A,Excellent,2,3.5,1,6,Happy,54
+P0247,2023-04-01,47,Female,8.3,good,3,4.4,1,4,Anxious,55
+P0014,2023-01-04,32,Female ,6.3,Fair,3,4.5,4,3,Anxious,48
+P0630,2023-01-03,32,Male,7.5,Excellent,5,7.6,2,6,stressed,53
+P0832,2023-04-18,43,Female,7.2,Fair ,0,5.4,4,5,Anxious,54
+P0465,2023-03-07,23,Male,6.4,Good,2,5.8,0,1,Anxious,60
+P0271,2023-03-15,42,Male,7.2,Good,4,6.3,1,7,Anxious,35
+P0759,2023-03-24,37,M,8.3,Excellent,1,3.8,0,8,Happy,38
+P0890,2023-01-23,52,Male,7,Good,2,7.5,1,7,Neutral,70
+P0916,2023-03-30,24,Male,5.7,Fair,1,6.5,1,3,stressed,35

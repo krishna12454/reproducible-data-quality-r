@@ -1,0 +1,8 @@
+variable,n,missing,mean,sd,median,min,max
+age,976,24,35.08,11.19,35,0,77
+caffeine_cups,967,33,1.93,1.34,2,0,7
+exercise_days_per_week,996,4,1.97,1.43,2,0,7
+screen_time_hours,1000,0,4.97,2.02,5,0,11
+sleep_hours,952,48,6.99,1.18,7,3.5,11.3
+stress_level,1000,0,5.02,2.03,5,1,10
+wellbeing_score,945,55,51.81,12.28,52,14,91

@@ -1,0 +1,21 @@
+# R package dependencies for the Reproducible Research Data Quality project.
+#
+# R does not use requirements.txt natively. Install everything with:
+#     Rscript setup/install.R
+# or manually:
+#     install.packages(c("tidyverse","janitor","testthat","rmarkdown","knitr"))
+#
+# Package      Purpose
+# -----------  --------------------------------------------------------------
+# tidyverse    dplyr, tidyr, readr, stringr, purrr, ggplot2, tibble
+# janitor      clean_names(), tabyl() frequency tables, duplicate detection
+# testthat     automated unit tests (tests/testthat/)
+# rmarkdown    render the reproducible report (report/report.Rmd)
+# knitr        tables and knitting support
+#
+# Tested with R >= 4.1 (R 4.2).
+tidyverse
+janitor
+testthat
+rmarkdown
+knitr

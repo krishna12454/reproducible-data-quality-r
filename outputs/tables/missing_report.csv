@@ -1,0 +1,13 @@
+variable,missing,pct_missing
+wellbeing_score,50,4.9
+sleep_hours,41,4.02
+caffeine_cups,30,2.94
+mood,30,2.94
+age,20,1.96
+participant_id,0,0
+survey_date,0,0
+gender,0,0
+sleep_quality,0,0
+screen_time_hours,0,0
+exercise_days_per_week,0,0
+stress_level,0,0

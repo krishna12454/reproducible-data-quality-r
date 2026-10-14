@@ -1,0 +1,8 @@
+variable,n_invalid,lower,upper
+age,4,0,120
+sleep_hours,9,0,24
+caffeine_cups,2,0,30
+screen_time_hours,0,0,24
+exercise_days_per_week,4,0,7
+stress_level,0,1,10
+wellbeing_score,5,0,100
