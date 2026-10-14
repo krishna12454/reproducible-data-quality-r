@@ -120,6 +120,8 @@ function App() {
   const [anovaFactor, setAnovaFactor] = useState("sleep_quality");
   const [anovaData, setAnovaData] = useState(null);
   const [anovaLoading, setAnovaLoading] = useState(false);
+  const [regData, setRegData] = useState(null);
+  const [regLoading, setRegLoading] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -184,6 +186,16 @@ function App() {
     } catch (e) {
       setAnovaData(null);
     } finally { setAnovaLoading(false); }
+  };
+
+  const runRegression = async () => {
+    setRegLoading(true);
+    try {
+      const { data } = await axios.get(`${API}/analysis/regression`);
+      setRegData(data);
+    } catch (e) {
+      setRegData(null);
+    } finally { setRegLoading(false); }
   };
 
   const runTests = async () => {
@@ -603,6 +615,70 @@ function App() {
                     </div>
                   )}
                   </>
+                )}
+              </Card>
+            </Section>
+
+            {/* ----------------- Multiple Linear Regression ----------------- */}
+            <Section id="regression">
+              <Card testid="regression-card">
+                <CardHead icon={Sigma} title="Multiple Linear Regression"
+                  sub="Models wellbeing from all numeric predictors at once. lm() in R."
+                  right={
+                    <button data-testid="run-regression-button" onClick={runRegression} disabled={regLoading}
+                      className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-60 transition-opacity">
+                      {regLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />}
+                      Fit model in R
+                    </button>
+                  } />
+                {!regData && (
+                  <p className="p-5 text-sm text-muted-foreground">
+                    Click “Fit model in R” to estimate a multiple linear regression of wellbeing on sleep, stress, exercise, caffeine, screen time and age.
+                  </p>
+                )}
+                {regData && (
+                  <div className="p-5 space-y-4">
+                    <p className="font-mono text-xs text-muted-foreground break-all">{regData.formula}</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <Stat testid="reg-r2" label="R²" value={regData.r_squared} />
+                      <Stat testid="reg-adj-r2" label="Adjusted R²" value={regData.adj_r_squared} />
+                      <Stat testid="reg-f" label="F statistic" tone="violet" value={regData.f_statistic} />
+                      <Stat testid="reg-n" label="Observations" tone="emerald" value={regData.n} />
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table data-testid="regression-coef-table" className="w-full text-sm">
+                        <thead>
+                          <tr className="bg-secondary/70 text-left">
+                            {["term", "estimate", "std_error", "t_value", "p_value", "sig."].map((c) => (
+                              <th key={c} className="px-4 py-2.5 font-semibold text-foreground/80 whitespace-nowrap border-b border-border">{c}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {regData.coefficients.map((c, i) => {
+                            const sig = c.p_value < 0.05;
+                            return (
+                              <tr key={i} data-testid={`reg-coef-${i}`} className="odd:bg-background even:bg-secondary/30">
+                                <td className="px-4 py-2 font-mono text-xs border-b border-border/60 font-medium text-primary">{c.term}</td>
+                                <td className={`px-4 py-2 font-mono text-xs border-b border-border/60 font-semibold ${c.estimate >= 0 ? "text-foreground/80" : "text-rose-600 dark:text-rose-400"}`}>{c.estimate}</td>
+                                <td className="px-4 py-2 font-mono text-xs border-b border-border/60 text-muted-foreground">{c.std_error}</td>
+                                <td className="px-4 py-2 font-mono text-xs border-b border-border/60">{c.t_value}</td>
+                                <td className="px-4 py-2 font-mono text-xs border-b border-border/60">{c.p_value < 0.0001 ? "<0.0001" : c.p_value}</td>
+                                <td className="px-4 py-2 border-b border-border/60">
+                                  <span className={`rounded px-2 py-0.5 text-xs font-medium ${sig ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400" : "bg-secondary text-muted-foreground"}`}>
+                                    {sig ? "***" : "ns"}
+                                  </span>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      The model explains ~{Math.round(regData.r_squared * 100)}% of the variance in (synthetic) wellbeing — recovering the relationships built into the data generator.
+                    </p>
+                  </div>
                 )}
               </Card>
             </Section>

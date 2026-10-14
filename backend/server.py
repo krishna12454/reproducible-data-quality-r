@@ -154,6 +154,19 @@ async def analysis_results():
     }
 
 
+@api_router.get("/analysis/regression")
+def regression():
+    """Multiple linear regression of wellbeing on the numeric predictors (lm in R)."""
+    import json as _json
+    res = _run_r("scripts/regression.R")
+    if not res["success"]:
+        raise HTTPException(status_code=500, detail={"message": "R regression failed", **res})
+    try:
+        return _json.loads(res["stdout"])
+    except ValueError:
+        raise HTTPException(status_code=500, detail="Could not parse R output.")
+
+
 @api_router.get("/analysis/anova")
 def anova(factor: str = "sleep_quality"):
     """One-way ANOVA of wellbeing across a categorical factor, computed in R."""
