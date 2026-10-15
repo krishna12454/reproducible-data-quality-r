@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import {
   UploadCloud, Sparkles, Loader2, Play, Download, FileCode2, ClipboardList,
-  CheckCircle2, Wand2, Database, AlertTriangle,
+  CheckCircle2, Wand2, Database, AlertTriangle, X, Plus,
 } from "lucide-react";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
@@ -71,7 +71,11 @@ export default function CsvCleaner() {
     setBusy("suggest"); setError(null);
     try {
       const { data } = await axios.post(`${API}/clean/suggest`, { profile });
-      const cols = (data.rules.columns || []).map((c) => ({ ...c, _include: true }));
+      const cols = (data.rules.columns || []).map((c) => ({
+        ...c,
+        _include: true,
+        label_pairs: Object.entries(c.label_map || {}),
+      }));
       setRules({ ...data.rules, columns: cols });
       setSource(data.source);
     } catch (e) {
@@ -83,12 +87,40 @@ export default function CsvCleaner() {
     const cols = r.columns.slice(); cols[i] = { ...cols[i], ...patch }; return { ...r, columns: cols };
   });
 
+  const setPair = (i, j, field, value) => setRules((r) => {
+    const cols = r.columns.slice();
+    const pairs = cols[i].label_pairs.map((p) => p.slice());
+    pairs[j][field === "raw" ? 0 : 1] = value;
+    cols[i] = { ...cols[i], label_pairs: pairs };
+    return { ...r, columns: cols };
+  });
+  const removePair = (i, j) => setRules((r) => {
+    const cols = r.columns.slice();
+    cols[i] = { ...cols[i], label_pairs: cols[i].label_pairs.filter((_, k) => k !== j) };
+    return { ...r, columns: cols };
+  });
+  const addPair = (i) => setRules((r) => {
+    const cols = r.columns.slice();
+    cols[i] = { ...cols[i], label_pairs: [...cols[i].label_pairs, ["", ""]] };
+    return { ...r, columns: cols };
+  });
+
   const applyRules = async () => {
     setBusy("apply"); setError(null);
     try {
       const payload = {
         ...rules,
-        columns: rules.columns.filter((c) => c._include !== false).map(({ _include, ...c }) => c),
+        columns: rules.columns
+          .filter((c) => c._include !== false)
+          .map(({ _include, label_pairs, ...c }) => {
+            const lm = {};
+            (label_pairs || []).forEach(([k, v]) => {
+              if (k && k.trim() && v && v.trim()) lm[k] = v;
+            });
+            if (Object.keys(lm).length > 0) c.label_map = lm;
+            else delete c.label_map;
+            return c;
+          }),
       };
       const fd = new FormData();
       fd.append("file", file);
@@ -221,13 +253,33 @@ export default function CsvCleaner() {
                   {(c.numeric_min != null || c.numeric_max != null) && (
                     <span className="text-xs text-muted-foreground font-mono">range [{c.numeric_min ?? "−∞"}, {c.numeric_max ?? "∞"}]</span>
                   )}
-                  {c.label_map && Object.keys(c.label_map).length > 0 && (
-                    <details className="text-xs">
-                      <summary className="cursor-pointer text-primary">{Object.keys(c.label_map).length} label fixes</summary>
-                      <div className="mt-1 flex flex-wrap gap-1">
-                        {Object.entries(c.label_map).map(([k, v]) => (
-                          <span key={k} className="rounded bg-secondary px-1.5 py-0.5 font-mono">{k} → {v}</span>
+                  {(c.type === "category" || (c.label_pairs && c.label_pairs.length > 0)) && c._include !== false && (
+                    <details data-testid={`labelmap-${c.name}`} className="w-full text-xs" open={c.label_pairs?.length > 0 && c.label_pairs.length <= 6}>
+                      <summary className="cursor-pointer text-primary">
+                        {c.label_pairs?.length || 0} label fix{(c.label_pairs?.length || 0) === 1 ? "" : "es"} · edit
+                      </summary>
+                      <div className="mt-2 space-y-1.5 pl-1">
+                        {(c.label_pairs || []).map(([k, v], j) => (
+                          <div key={j} className="flex items-center gap-1.5">
+                            <input data-testid={`labelmap-${c.name}-raw-${j}`} value={k}
+                              onChange={(e) => setPair(i, j, "raw", e.target.value)}
+                              placeholder="raw value"
+                              className="w-32 rounded border border-border bg-card px-2 py-1 font-mono" />
+                            <span className="text-muted-foreground">→</span>
+                            <input data-testid={`labelmap-${c.name}-canon-${j}`} value={v}
+                              onChange={(e) => setPair(i, j, "canon", e.target.value)}
+                              placeholder="canonical"
+                              className="w-32 rounded border border-primary/40 bg-card px-2 py-1 font-mono" />
+                            <button data-testid={`labelmap-${c.name}-remove-${j}`} onClick={() => removePair(i, j)}
+                              className="rounded p-1 text-muted-foreground hover:text-rose-500" title="remove">
+                              <X className="h-3.5 w-3.5" />
+                            </button>
+                          </div>
                         ))}
+                        <button data-testid={`labelmap-${c.name}-add`} onClick={() => addPair(i)}
+                          className="inline-flex items-center gap-1 text-primary hover:underline">
+                          <Plus className="h-3.5 w-3.5" /> add mapping
+                        </button>
                       </div>
                     </details>
                   )}
