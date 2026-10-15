@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for file in `ls *.r` ; do
+	stem=`basename $file .r`
+	ratfor $file > $stem.f
+	/bin/mv $stem.f ../../src
+done

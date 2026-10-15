@@ -1,0 +1,73 @@
+as.data.frame           Converts to data.frame
+as.dimRedData           Converts to dimRedData
+AUC_lnK_R_NX,dimRedResult-method
+                        Method AUC_lnK_R_NX
+AutoEncoder-class       AutoEncoder
+cophenetic_correlation,dimRedResult-method
+                        Method cophenetic_correlation
+dataSets                Example Data Sets for dimensionality reduction
+DiffusionMaps-class     Diffusion Maps
+dimRed-package          The dimRed package
+dimRedData-class        Class "dimRedData"
+dimRedMethod-class      Class "dimRedMethod"
+dimRedMethodList        dimRedMethodList
+dimRedResult-class      Class "dimRedResult"
+distance_correlation,dimRedResult-method
+                        Method distance_correlation
+DrL-class               Distributed Recursive Graph Layout
+DRR-class               Dimensionality Reduction via Regression
+embed                   dispatches the different methods for
+                        dimensionality reduction
+FastICA-class           Independent Component Analysis
+FruchtermanReingold-class
+                        Fruchterman Reingold Graph Layout
+getData                 Method getData
+getDimRedData           Method getDimRedData
+getMeta                 Method getMeta
+getNDim                 Method getNDim
+getOrgData              Method getOrgData
+getOtherData            Method getOtherData
+getPars                 Method getPars
+getRotationMatrix       getRotationMatrix
+HLLE-class              Hessian Locally Linear Embedding
+installSuggests         getSuggests
+Isomap-class            Isomap embedding
+KamadaKawai-class       Graph Embedding via the Kamada Kawai Algorithm
+kPCA-class              Kernel PCA
+LaplacianEigenmaps-class
+                        Laplacian Eigenmaps
+LCMC,dimRedResult-method
+                        Method LCMC
+makeKNNgraph            makeKNNgraph
+maximize_correlation,dimRedResult-method
+                        Maximize Correlation with the Axes
+MDS-class               Metric Dimensional Scaling
+mean_R_NX,dimRedResult-method
+                        Method mean_R_NX
+mixColorRamps           Mixing color ramps
+ndims                   Method ndims
+nMDS-class              Non-Metric Dimensional Scaling
+NNMF-class              Non-Negative Matrix Factorization
+PCA_L1-class            Principal Component Analysis with L1 error.
+PCA-class               Principal Component Analysis
+plot                    Plotting of dimRed* objects
+plot_R_NX               plot_R_NX
+print                   Method print
+Q_global,dimRedResult-method
+                        Method Q_global
+Q_local,dimRedResult-method
+                        Method Q_local
+Q_NX,dimRedResult-method
+                        Method Q_NX
+quality,dimRedResult-method
+                        Quality Criteria for dimensionality reduction.
+R_NX,dimRedResult-method
+                        Method R_NX
+reconstruction_error,dimRedResult-method
+                        Method reconstruction_error
+reconstruction_rmse,dimRedResult-method
+                        Method reconstruction_rmse
+total_correlation,dimRedResult-method
+                        Method total_correlation
+tSNE-class              t-Distributed Stochastic Neighborhood Embedding
+UMAP-class              Umap embedding

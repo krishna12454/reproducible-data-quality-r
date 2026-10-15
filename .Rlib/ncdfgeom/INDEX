@@ -1,0 +1,10 @@
+calculate_area_intersection_weights
+                        Area Weighted Intersection (areal
+                        implementation)
+create_cell_geometry    Create Cell Geometry
+read_attribute_data     Read attribute dataframe from NetCDF-DSG file
+read_geometry           Read NetCDF-CF spatial geometries
+read_timeseries_dsg     Read NetCDF-CF timeSeries featuretype
+write_attribute_data    Write attribute data to NetCDF-CF
+write_geometry          Write geometries and attributes to NetCDF-CF
+write_timeseries_dsg    Write time series to NetCDF-CF

@@ -16,6 +16,34 @@ statistics — everything runs through `Rscript`.
 
 ---
 
+## Universal CSV Cleaner — "AI suggests, R proves" (the unique feature)
+
+Upload **any** messy CSV and get back a tidy one — but unlike OpenRefine or
+pandas-profiling, this tool is built for **reproducibility**:
+
+1. **R profiles** your CSV (types, missing, duplicates, raw category labels).
+2. **An LLM suggests** deterministic cleaning rules (e.g. merge `NYC`/`new york` →
+   `New York`, coerce `"3 cups"` → `3`, flag `age = 200` as invalid).
+3. **You approve / edit** the rules (toggle columns, change types).
+4. **Real R executes** them deterministically (nothing is cleaned by the AI).
+5. You download the **cleaned CSV**, an **audit** of every change, and an
+   **auto-generated, standalone R script** that reproduces the exact cleaning on
+   new data — the part no free tool gives you.
+
+The backend is stateless: the CSV is streamed to R on **stdin** (never stored on
+disk) and all artefacts are returned inline. Endpoints:
+
+| Endpoint | What it does |
+|----------|--------------|
+| `POST /api/clean/profile` | R profiles an uploaded CSV |
+| `POST /api/clean/suggest` | LLM proposes cleaning rules (deterministic fallback) |
+| `POST /api/clean/apply` | R applies approved rules; returns cleaned CSV + audit + reproducible script |
+
+R engine: `rclean/engine.R` (deterministic `rc_apply_rules`), `rclean/profile.R`,
+`rclean/apply.R`. These depend only on `dplyr/readr/stringr/tibble/jsonlite`.
+
+---
+
 ## What it does
 
 1. **Imports** a synthetic CSV of sleep & wellbeing data.

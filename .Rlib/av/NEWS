@@ -1,0 +1,56 @@
+0.8.3
+  - Remove a harmless warning
+  - Windows: update to ffmpeg 4.4.3
+
+0.8.2
+  - Fix Wstrict-prototype warnings
+
+0.8.1
+  - Better version check for new new AVChannelLayout (fixes build on ffmpeg 5.0)
+
+0.8.0
+  - Fix build with ffmpeg 5.1
+  - Switch to new AVChannelLayout APIs for ffmpeg 5.1
+
+0.7.0
+  - Internal changes needed for FFMPEG-5 (issue #40)
+
+0.6.0
+  - Remove accidental NA values from read_audio_bin()
+  - Windows: add ucrt libs
+
+0.5.1
+  - Fix bug on Catalina that fails loading av if base packages aren't attached. (#29)
+  - Workaround for false positives in CleanupReporter
+
+0.5
+  - Ported read_audio_bin() to pure C, match parameters with read_audio_fft()
+  - Fix total_time parameter in av_audio_convert() to account for start time
+  - Unit test now uses CPU time instead of elapsed time (BDR)
+  - Added start_time and end_time parameters to read_audio_fft()
+  - Rename av_video_info to av_media_info
+  - Minor tweaks to configure script
+
+0.4
+  - Windows/MacOS: CRAN binary packages now ship with ffmpeg 4.2.2 + drivers: vorbis,
+    vpx, ogg, lame, xvid, x264
+  - Removed forced keyframes (gop_size) when encoding video from graphics or PNG images.
+    This reduces output video size, hopefully no major quality regressions.
+  - New functions for audio! read_audio_fft() and read_audio_bin()
+  - New method plot.fft_data() for spectogram, e.g: plot(read_audio_fft('sample.mp3'))
+  - New function av_spectrogram_video() to create spectrogram movie
+  - Detect and error in configure if FFmpeg is too old
+  - New parameters channel and sample_rate in av_audio_convert()
+
+0.3
+  - Input can now contain video, i.e. multiple images per file. Previously
+    we would only read a single image from each input file, but now we read
+    all of them.
+  - Major refactoring to suppor the above, hopefully no breakage.
+  - New functions av_video_convert() and av_audio_convert()
+  - New function av_video_images()
+  - Switch to R_UnwindProtect to implement cleanup on exit
+  - Test, tests, tests, so many tests.
+
+0.2
+  - Initial CRAN release

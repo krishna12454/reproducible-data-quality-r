@@ -1,0 +1,21 @@
+checkExamples           Internal functions
+cholesky                Cholesky Decomposition of Positive Definite
+                        Matrices
+confirm                 Test if Two Objects are (Nearly) Equal
+dbinorm                 Density of a bivariate normal distribution
+FileExists              Files
+gauss                   Gaussian Covariance Model
+hostname                System calls
+matern                  Whittle-Matern Model
+nonstwm                 nonstwm
+orderx                  Ordering Permutation
+Print                   Print method returning also the names
+                        automatically
+RFoptions               Setting control arguments
+rowMeansx               Some Further Row and Column Functions
+sleep.milli             Sleep
+solve                   Solve a System of Equations for Positive
+                        Definite Matrices
+sortx                   Sorting Vectors
+Struve                  Modified Struve functions and related functions
+uses.simd.instruction   CPU instruction set

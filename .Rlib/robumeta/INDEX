@@ -1,0 +1,17 @@
+corrdat                 Data for Fitting Correlated Effects Model
+corrdat.sm              Data for Fitting Correlated Effects Model With
+                        Small-Sample Corrections
+forest.robu             Forest Plots for Robust Variance Estimation
+                        Meta-Analysis
+group.center            Convenience function for calculating
+                        group-centered covariates.
+group.mean              Convenience function for calculating group-mean
+                        covariates.
+hedgesdat               hedgesdat
+hierdat                 Data for Fitting Hierarchical Effects Model
+oswald2013              IAT Criterion-Related Correlations
+oswald2013.ex1          IAT Criterion-Related Correlations
+predict.robu            Prediction method for a robumeta object.
+print.robu              Outputs Model Information
+robu                    Fitting Robust Variance Meta-Regression Models
+sensitivity             Sensitivity Analysis for Correlated Effects RVE

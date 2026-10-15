@@ -1,0 +1,12 @@
+## R >= 2.8.0 passes package metadata to citation().
+if(!exists("meta") || is.null(meta)) meta <- packageDescription("dynlm")
+
+bibentry(bibtype = "Manual",
+         title = "{dynlm}: Dynamic Linear Regression",
+         author = person("Achim", "Zeileis"),
+         year = sub("-.*", "", meta$Date),
+         note = sprintf("R package version %s", meta$Version),
+         url = "https://CRAN.R-project.org/package=dynlm",
+	 
+	 header = "To cite dynlm in publications use"
+)

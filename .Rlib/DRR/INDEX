@@ -1,0 +1,5 @@
+constructFastKRRLearner
+                        Fast implementation for Kernel Ridge
+                        Regression.
+drr                     Dimensionality Reduction via Regression
+DRR-package             Dimensionality Reduction via Regression.

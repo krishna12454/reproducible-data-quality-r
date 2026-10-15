@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>gert</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css">
+<script src="https://cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" async></script>
+
+
+
+<style type="text/css">
+body, td {
+  font-family: sans-serif;
+  background-color: white;
+  font-size: 13px;
+}
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+}
+tt, code, pre {
+  font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+a:visited { color: #80007f; }
+pre, img { max-width: 100%; }
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+code[class] { background-color: #F8F8F8; }
+code.language-undefined { background-color: inherit; }
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+blockquote {
+  color:#666;
+  margin:0;
+  padding-left: 1em;
+  border-left: 0.5em #eee solid;
+}
+hr { border: 1px #ddd dashed; }
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+  }
+  body {
+    font-size: 12pt;
+    max-width: 100%;
+  }
+  a, a:visited { text-decoration: underline; }
+  hr {
+    visibility: hidden;
+    page-break-before: always;
+  }
+  pre, blockquote {
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>gert is a simple git client based on ‘libgit2’ (<a href="https://libgit2.org">libgit2.org</a>):</p>
+<blockquote>
+<p>libgit2 is a portable, pure C implementation of the Git core methods provided as a re-entrant linkable library with a solid API, allowing you to write native speed custom Git applications in any language which supports C bindings.</p>
+</blockquote>
+<p>What this means for R users is that we can work with local and remote Git repositories from the comfort of R!</p>
+<p>User-friendly authentication is a high priority for gert, which supports both SSH and HTTPS remotes on all platforms. User credentials are shared with command line Git through the git-credential store and ssh keys stored on disk or ssh-agent.</p>
+<p>Let’s attach gert.</p>
+<pre><code class="language-r">library(gert)
+#&gt; Error in library(gert): there is no package called 'gert'
+</code></pre>
+<h2>Introduce yourself to Git</h2>
+<p>Before you can do anything with Git, you must first configure your user name and email. When you attach gert, it actually reveals whether you’ve already done this and, above, you can see that we have.</p>
+<p>But what if you have not already configured your user name and email? Do this with <code>git_config_global_set()</code>:</p>
+<pre><code class="language-r">git_config_global_set(&quot;user.name&quot;, &quot;Jerry Johnson&quot;)
+git_config_global_set(&quot;user.email&quot;, &quot;jerry@gmail.com&quot;)
+</code></pre>
+<p>We can verify our success (and see all global options) with <code>git_config_global()</code>.</p>
+<pre><code class="language-r">git_config_global()
+#&gt; Error in git_config_global(): could not find function &quot;git_config_global&quot;
+</code></pre>
+<p>This is equivalent to these commands in command line Git:</p>
+<pre><code>git config --global user.name 'Jerry Johnson'
+git config --global user.email 'jerry@gmail.com'
+git config --global --list
+</code></pre>
+<p>To inspect and change local Git config, i.e. options specific to one repository, use <code>git_config()</code> and <code>git_config_set()</code>.</p>
+<h2>Local repository basics</h2>
+<p><code>gert::git_init()</code> is essentially <code>git init</code>; it’s how we create a new local repository. You provide the path to the repository you want to create.</p>
+<pre><code class="language-r">(path &lt;- file.path(tempdir(), &quot;aaa&quot;, &quot;bbb&quot;, &quot;repo_ccc&quot;))
+#&gt; [1] &quot;/tmp/RtmpLPDmjN/aaa/bbb/repo_ccc&quot;
+dir.exists(path)
+#&gt; [1] FALSE
+
+(r &lt;- git_init(path))
+#&gt; Error in git_init(path): could not find function &quot;git_init&quot;
+dir.exists(path)
+#&gt; [1] FALSE
+</code></pre>
+<p>Note that all non-existing parts of the path are created: <code>aaa</code>, <code>bbb</code>, and <code>repo_ccc</code> (the actual git repository).</p>
+<p><code>git_find()</code> finds a git repository at or above the path you provide and errors otherwise.</p>
+<pre><code class="language-r">git_find(r)
+#&gt; Error in git_find(r): could not find function &quot;git_find&quot;
+
+dir.create(file.path(r, &quot;child_dir&quot;))
+#&gt; Error in file.path(r, &quot;child_dir&quot;): object 'r' not found
+git_find(file.path(r, &quot;child_dir&quot;))
+#&gt; Error in git_find(file.path(r, &quot;child_dir&quot;)): could not find function &quot;git_find&quot;
+
+git_find(file.path(tempdir(), &quot;aaa&quot;, &quot;bbb&quot;))
+#&gt; Error in git_find(file.path(tempdir(), &quot;aaa&quot;, &quot;bbb&quot;)): could not find function &quot;git_find&quot;
+</code></pre>
+<p><code>git_init()</code> can also create a repository in a pre-existing directory, as long as it is empty.</p>
+<pre><code class="language-r">r2 &lt;- file.path(tempdir(), &quot;repo_ddd&quot;)
+dir.create(r2)
+
+git_init(r2)
+#&gt; Error in git_init(r2): could not find function &quot;git_init&quot;
+</code></pre>
+<p>Cleanup.</p>
+<pre><code class="language-r">unlink(r, recursive = TRUE)
+#&gt; Error in unlink(r, recursive = TRUE): object 'r' not found
+unlink(r2, recursive = TRUE)
+</code></pre>
+
+
+<script src="https://cdn.jsdelivr.net/combine/npm/@xiee/utils/js/center-img.min.js" async></script>
+</body>
+
+</html>

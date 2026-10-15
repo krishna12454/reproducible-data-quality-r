@@ -1,0 +1,36 @@
+abstract                get abstract from a datagroup
+algorithm               the algorithm of a webprocess object
+attribute<-             the attribute of an webgeom object
+cancel                  cancel a geo-web processing request
+check                   Check status of processing request
+datagroup               create datagroup object
+datagroup-class         datagroup class
+defaultProcessInputs    Default Process Inputs
+download                download output from geojob
+gconfig                 configure geoknife settings
+geojob                  create geojob object
+geojob-class            geojob class
+geoknife                geoknife
+geom<-                  the geom of an object
+parseCategorical        parse categorical coverage file into R
+                        environment
+parseTimeseries         parse timeseries file into R environment
+query                   query webdata for various fields
+result                  parse process output into R environment
+simplegeom              Create simplegeom object
+simplegeom-class        simplegeom class
+start                   Submit a GDP web processing request
+successful              Convenience function for GDP process state
+times                   the times of an webdata object
+url<-                   the url of an object
+values<-                the values of a webgeom
+variables               the variables of a webdata object
+version<-               the version of an object
+wait                    hold up R while GDP is processing
+webdata                 create webdata object
+webdata-class           webdata class
+webgeom                 create webgeom object
+webgeom-class           webgeom class
+webprocess              create webprocess object
+webprocess-class        webprocess class
+XML                     XML from set of objects

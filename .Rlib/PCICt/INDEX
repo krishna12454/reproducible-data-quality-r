@@ -1,0 +1,6 @@
+as.PCICt                PCICt
+c.PCICt                 c.PCICt
+Ops.PCICt               Ops.PCICt
+PCICt-package           PCICt, a POSIXct work-alike for 360- and
+                        365-day calendars
+round.PCICt             round.PCICt

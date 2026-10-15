@@ -1,0 +1,33 @@
+activePar               free parameters under maximization
+AIC.maxLik              Methods for the various standard functions
+bread.maxLik            Bread for Sandwich Estimator
+compareDerivatives      function to compare analytic and numeric
+                        derivatives
+condiNumber             Print matrix condition numbers column-by-column
+confint.maxLik          confint method for maxLik objects
+fnSubset                Call fnFull with variable and fixed parameters
+gradient                Extract Gradients Evaluated at each Observation
+hessian                 Hessian matrix
+logLik.maxLik           Return the log likelihood value
+maxBFGS                 BFGS, conjugate gradient, SANN and Nelder-Mead
+                        Maximization
+MaxControl-class        Class '"MaxControl"'
+maximType               Type of Minimization/Maximization
+maxLik                  Maximum likelihood estimation
+maxLik-package          Maximum Likelihood Estimation
+maxNR                   Newton- and Quasi-Newton Maximization
+maxSGA                  Stochastic Gradient Ascent
+maxValue                Function value at maximum
+nIter                   Return number of iterations for iterative
+                        models
+nObs.maxLik             Number of Observations
+nParam.maxim            Number of model parameters
+numericGradient         Functions to Calculate Numeric Derivatives
+objectiveFn             Optimization Objective Function
+returnCode              Success or failure of the optimization
+storedValues            Return the stored values of optimization
+summary.maxim           Summary method for maximization
+summary.maxLik          summary the Maximum-Likelihood estimation
+sumt                    Equality-constrained optimization
+tidy.maxLik             tidy and glance methods for maxLik objects
+vcov.maxLik             Variance Covariance Matrix of maxLik objects

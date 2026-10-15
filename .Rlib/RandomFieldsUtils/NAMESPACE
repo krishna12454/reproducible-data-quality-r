@@ -1,0 +1,39 @@
+
+############exportPattern("^[^\\.]")
+
+export(cholx, cholPosDef, Print, solvex, solvePosDef, chol2mv, tcholRHS,
+       crossprodx, scalarx,
+       colMax, rowMeansx, rowProd, SelfDivByRow, quadratic, dotXV,
+       sleep.milli, sleep.micro,
+       hostname, pid, 
+#       gpu_info,
+       FileExists, LockRemove, WaitOthers,
+       sortx, orderx,
+       gauss, matern, nonstwm, whittle,
+       I0L0, struveH, struveL,
+       # besselKx,
+       RFoptions, confirm,
+       checkExamples, Dependencies, debugging_level,
+       dbinorm,
+       uses.simd.instruction, misses.simd.instruction,
+        LA_AUTO, LA_INTERN, LA_R, LA_GPU, LA_QUERY,
+       PIVOT_NONE, PIVOT_AUTO, PIVOT_DO, PIVOT_IDX
+        )
+
+useDynLib(RandomFieldsUtils, .registration = TRUE, .fixes = "C_")
+#useDynLib(spam)
+
+importFrom("utils", "str", "packageDescription", "contrib.url", "read.table",
+           "install.packages", "available.packages", "compareVersion",
+             "installed.packages")
+importFrom("methods", "hasArg", "is")
+importFrom("grDevices", "dev.off")
+importFrom("parallel", "detectCores")
+
+S3method(print, RFopt)
+S3method(summary, RFopt)
+S3method(print, summary.RFopt)
+S3method(print, RFoptElmnt)
+S3method(summary, RFoptElmnt)
+S3method(print, summary.RFoptElmnt)
+S3method(print, gpu_list)

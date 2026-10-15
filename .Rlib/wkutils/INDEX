@@ -1,0 +1,14 @@
+coords_point_translate_wkt
+                        Parse coordinates into well-known formats
+wkb_coords              Extract coordinates from well-known geometries
+wkb_debug               Debug well-known geometry
+wkb_draw_points         Draw well-known geometries
+wkb_meta                Extract meta information
+wkb_ranges              Extract ranges information
+wkt_grob                Generate grid geometries from well-known
+                        geometries
+wkt_has_missing         Test well-known geometries for missing and
+                        non-finite coordinates
+wkt_plot                Plot well-known geometry vectors
+wkt_set_srid            Modify well-known geometries
+wkt_unnest              Flatten nested geometry structures

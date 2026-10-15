@@ -1,0 +1,16 @@
+Package: BH
+Type: Package
+Title: Boost C++ Header Files -- Metapackage
+Version: 1.74.0-1
+Date: 2018-02-12
+Author: Dirk Eddelbuettel, John W. Emerson and Michael J. Kane
+Maintainer: Dirk Eddelbuettel <edd@debian.org>
+Description: Boost provides free peer-reviewed portable C++ source 
+ libraries.  A large part of Boost is provided as C++ template code
+ which is resolved entirely at compile-time without linking.  This 
+ package aims to provide the most useful subset of Boost libraries 
+ for template use among CRAN package. This package is actually empty
+ as it isembedded in a virtual Debian/Ubuntu package pulling in
+ libboost-all-dev for Boost itself.
+License: GPL (>= 2)
+Built: R 4.1.1; ; 'Tue, 31 Aug 2021 06:40:29 -0500'; unix

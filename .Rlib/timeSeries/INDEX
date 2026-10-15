@@ -1,0 +1,77 @@
+aggregate-methods       Aggregate time series
+align-methods           Align a 'timeSeries' object to equidistant time
+                        stamps
+as                      Coercion and transformation to/from class
+                        'timeSeries'
+attach                  Attach a 'timeSeries' to the search path
+attributes              Get and set optional attributes of a
+                        'timeSeries'
+cbind                   Bind '"timeSeries"' objects by column or row
+colCum                  Cumulated Column Statistics
+colStats                Column statistics
+comment,timeSeries-method
+                        Get and set comments for 'timeSeries' objects
+cumulated               Cumulated time series from returns
+daily                   Special daily time series
+description             Creates date and user information
+diff                    Difference a 'timeSeries' object
+dim,timeSeries-method   Time series columns and rows
+drawdowns               Calculations of drawdowns
+dummyTimeSeries         Dummy time series
+durations               Durations from a 'timeSeries'
+endOfPeriod             End-of-Period series, stats, and benchmarks
+fapply                  Apply functions over time series periods
+filter                  Linear filtering on a time series
+finCenter               Get and set Financial center of a 'timeSeries'
+getDataPart,timeSeries-method
+                        DataPart,timeSeries-method
+getUnits                Get and set unit names of a 'timeSeries'
+index2wealth            Conversion of an index to wealth
+is.timeSeries           Check if an object is from class 'timeSeries'
+isDaily,timeSeries-method
+                        Checks if a time series is regular
+isUnivariate            Checks if a time series is univariate
+lag                     Lag a 'timeSeries' object
+math                    Mathematical time series operations
+merge                   Merge 'timeSeries' objects
+model.frame             Model frames for time series objects
+monthly                 Special monthly series
+na                      Handling missing time series values
+na.contiguous,timeSeries-method
+                        Find longest contiguous stretch of non-NAs
+orderColnames           Reorder column names of a time series
+orderStatistics         Order statistics
+plot                    Plot a time series
+rank,timeSeries-method
+                        Sample ranks of a time series
+readSeries              Read a 'timeSeries' from a text file
+returns                 Financial returns
+rev,timeSeries-method   Reversion of a 'timeSeries'
+rollMean                Rolling statistics
+rowCum                  Cumulative column and row statistics
+runlengths              Runlengths of a time series
+sample                  Resample 'timeSeries' objects
+scale                   Center and scale 'timeSeries' objects
+sd-methods              Time Series Correlations
+series                  Get and set the data component of a
+                        'timeSeries'
+seriesData              Deprecated functions in 'timeSeries' package
+show,timeSeries-method
+                        Print 'timeSeries' objects
+smoothLowess            Smoothes time series objects
+sort,timeSeries-method
+                        Sort a 'timeSeries' by time stamps
+splits                  splits
+spreads                 Spreads and mid quotes
+start,timeSeries-method
+                        Start and end of a 'timeSeries'
+str                     timeSeries object structure
+t,timeSeries-method     Transpose 'timeSeries' objects
+time                    Get and set time stamps of a 'timeSeries'
+timeSeries-class        Class 'timeSeries' in package timeSeries
+timeSeries-package      Utilities and tools package
+TimeSeriesClass         Create objects from class 'timeSeries'
+TimeSeriesData          Time series data sets
+TimeSeriesSubsettings   Subsetting time series
+turns                   Turning points of a time series
+window                  Methods for 'window' in package 'timeSeries'

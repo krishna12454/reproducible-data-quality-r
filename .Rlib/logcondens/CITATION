@@ -1,0 +1,20 @@
+citHeader("To cite logcondens in publications use:")
+
+citEntry(entry = "Article",
+  title        = "{logcondens}: Computations Related to Univariate Log-Concave Density Estimation",
+  author       = personList(as.person("Lutz D\\\"umbgen"),
+                   as.person("Kaspar Rufibach")),
+  journal      = "Journal of Statistical Software",
+  year         = "2011",
+  volume       = "39",
+  number       = "6",
+  pages        = "1--28",
+  doi          = "10.18637/jss.v039.i06",
+
+  textVersion  =
+  paste("Lutz Duembgen, Kaspar Rufibach (2011).",
+        "logcondens: Computations Related to Univariate Log-Concave Density Estimation.",
+        "Journal of Statistical Software, 39(6), 1-28.",
+        "DOI https://doi.org/10.18637/jss.v039.i06.")
+)
+
