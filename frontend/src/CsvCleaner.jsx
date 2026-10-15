@@ -334,6 +334,18 @@ export default function CsvCleaner() {
               <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Reproducible R script (generated)</p>
               <pre data-testid="generated-script" className="max-h-64 overflow-auto rounded-md bg-[#0B0F17] p-4 font-mono text-[11px] leading-relaxed text-emerald-300">{result.script}</pre>
             </div>
+
+            {result.figures && result.figures.length > 0 && (
+              <div className="border-t border-border p-4">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">ggplot2 figures of the cleaned data (by R)</p>
+                <div data-testid="cleaner-figures" className="grid sm:grid-cols-2 gap-4">
+                  {result.figures.map((f, i) => (
+                    <img key={i} data-testid={`cleaner-figure-${i}`} src={f.src} alt={f.title}
+                      className="w-full rounded border border-border bg-white" />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
