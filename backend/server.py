@@ -77,6 +77,59 @@ def _ensure_raw():
 
 
 # --------------------------------------------------------------------------
+# Self-heal: keep the durable R library (/app/.Rlib) complete across resets
+# --------------------------------------------------------------------------
+RLIB = "/app/.Rlib"
+REQUIRED_R_PKGS = ["tidyverse", "janitor", "ggplot2", "testthat", "dplyr",
+                   "readr", "stringr", "jsonlite", "rmarkdown", "snakecase", "lubridate"]
+
+
+def _missing_r_pkgs():
+    quoted = ",".join('"%s"' % p for p in REQUIRED_R_PKGS)
+    expr = ('.libPaths(c("%s", .libPaths())); '
+            'cat(paste(setdiff(c(%s), rownames(installed.packages())), collapse=" "))'
+            % (RLIB, quoted))
+    try:
+        proc = subprocess.run([RSCRIPT, "-e", expr], cwd=str(R_PROJECT_DIR),
+                              capture_output=True, text=True, timeout=90)
+        return [p for p in proc.stdout.split() if p]
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _ensure_r_lib():
+    """Verify required R packages are present; repair /app/.Rlib if any are missing."""
+    try:
+        Path(RLIB).mkdir(parents=True, exist_ok=True)
+        missing = _missing_r_pkgs()
+        if not missing:
+            logger.info("R self-heal: all packages present.")
+            return
+        logger.warning("R self-heal: missing %s — repairing /app/.Rlib", missing)
+        # 1. restore anything still present in the (non-durable) system library
+        subprocess.run("cp -rn /usr/lib/R/site-library/. %s/ 2>/dev/null" % RLIB,
+                       shell=True, timeout=180)
+        missing = _missing_r_pkgs()
+        # 2. install whatever is still missing directly into the durable library
+        if missing:
+            quoted = ",".join('"%s"' % p for p in missing)
+            subprocess.run(
+                [RSCRIPT, "-e",
+                 'install.packages(c(%s), lib="%s", repos="https://cloud.r-project.org", quiet=TRUE)'
+                 % (quoted, RLIB)],
+                cwd=str(R_PROJECT_DIR), timeout=R_TIMEOUT)
+        logger.info("R self-heal: repair complete (was missing %s).", missing)
+    except Exception as e:  # noqa: BLE001
+        logger.error("R self-heal failed: %s", e)
+
+
+@app.on_event("startup")
+async def _startup_self_heal():
+    import threading
+    threading.Thread(target=_ensure_r_lib, daemon=True).start()
+
+
+# --------------------------------------------------------------------------
 # API routes
 # --------------------------------------------------------------------------
 @api_router.get("/")
