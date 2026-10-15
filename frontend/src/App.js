@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import CsvCleaner from "@/CsvCleaner";
+import { Button } from "@/components/ui/button";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -104,6 +105,7 @@ const corrColor = (v) => {
 function App() {
   const [dark, setDark] = useState(false);
   const [health, setHealth] = useState(null);
+  const [checkingHealth, setCheckingHealth] = useState(false);
   const [results, setResults] = useState(null);
   const [running, setRunning] = useState(false);
   const [testing, setTesting] = useState(false);
@@ -140,10 +142,18 @@ function App() {
     }
   }, []);
 
+  const checkHealth = useCallback(() => {
+    setCheckingHealth(true);
+    return axios.get(`${API}/health`)
+      .then((r) => setHealth(r.data))
+      .catch(() => setHealth({ r_available: false }))
+      .finally(() => setCheckingHealth(false));
+  }, []);
+
   useEffect(() => {
-    axios.get(`${API}/health`).then((r) => setHealth(r.data)).catch(() => setHealth({ r_available: false }));
+    checkHealth();
     loadResults();
-  }, [loadResults]);
+  }, [loadResults, checkHealth]);
 
   const runPipeline = async () => {
     setRunning(true); setError(null);
@@ -280,6 +290,27 @@ function App() {
             </span>
           )}
         </div>
+
+        {health && !health.r_available && (
+          <div data-testid="engine-down-banner"
+            className="flex flex-col gap-3 rounded-lg border border-rose-400/60 bg-rose-50 dark:bg-rose-950/30 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-3 text-sm text-rose-700 dark:text-rose-300">
+              <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
+              <div>
+                <p className="font-semibold">R analysis engine is unavailable</p>
+                <p className="text-rose-600/90 dark:text-rose-400/90">
+                  Analyses can't run until the engine recovers. It self-heals automatically on restart — click retry in a moment.
+                </p>
+              </div>
+            </div>
+            <Button data-testid="retry-engine-btn" variant="outline" size="sm"
+              disabled={checkingHealth} onClick={checkHealth}
+              className="shrink-0 border-rose-400/60 text-rose-700 dark:text-rose-300">
+              {checkingHealth ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />}
+              Retry
+            </Button>
+          </div>
+        )}
 
         {error && (
           <div data-testid="error-banner" className="rounded-md border border-rose-400/50 bg-rose-50 dark:bg-rose-950/30 px-4 py-3 text-sm text-rose-700 dark:text-rose-300">

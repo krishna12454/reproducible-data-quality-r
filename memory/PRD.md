@@ -34,6 +34,21 @@ synthetic. No invented affiliations/publications.
 ## Backlog (P1/P2)
 - Optional Quarto (.qmd) variant of the report.
 - Optional renv lockfile for exact package pinning.
+- Residual & QQ diagnostic plots (P1); seed control (P2).
+
+## R engine resilience (2026-06) — verified in-environment
+- Root cause of recurring "R engine unavailable": system shared lib
+  `libuv.so.1` (needed by the `fs`/tidyverse packages) lives in `/usr/lib`,
+  which is wiped on pod resets. The `/app/.Rlib` durable R-package fix did not
+  cover system `.so` files.
+- Fix: durable copy of `libuv.so.1` kept at `/app/.Rsys/lib`; all Rscript
+  subprocesses run with `LD_LIBRARY_PATH` prepending it (`_r_env()` in
+  server.py). Startup self-heal (`_ensure_r_syslib`) restores it from /usr if
+  the durable copy is ever deleted. R now resolves libuv independent of /usr.
+- `/api/health` now actually LOADS tidyverse/janitor/ggplot2/testthat (was only
+  checking `installed.packages()`), so it no longer falsely reports healthy.
+- Frontend: prominent "engine unavailable" banner with Retry (data-testid
+  `engine-down-banner` / `retry-engine-btn`) + reusable `checkHealth()`.
 
 ## Web interface (added 2026-06) — verified 100% by testing agent
 - FastAPI (`backend/server.py`) shells out to `Rscript` for real execution:

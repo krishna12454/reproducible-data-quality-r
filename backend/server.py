@@ -24,6 +24,19 @@ R_PROJECT_DIR = ROOT_DIR.parent
 RSCRIPT = os.environ.get("RSCRIPT_BIN", "Rscript")
 R_TIMEOUT = int(os.environ.get("R_TIMEOUT_SECONDS", "240"))
 
+# Durable copy of critical system shared libraries (e.g. libuv.so.1, needed by
+# the R `fs`/tidyverse packages). `/usr/lib` is wiped on pod resets, so we keep
+# our own copy under /app and point the dynamic linker at it via LD_LIBRARY_PATH.
+RSYS_LIB = "/app/.Rsys/lib"
+
+
+def _r_env():
+    """Environment for R subprocesses with the durable system-lib path prepended."""
+    env = os.environ.copy()
+    existing = env.get("LD_LIBRARY_PATH", "")
+    env["LD_LIBRARY_PATH"] = RSYS_LIB + ((":" + existing) if existing else "")
+    return env
+
 app = FastAPI(title="Reproducible Research Data Quality API")
 api_router = APIRouter(prefix="/api")
 
@@ -47,6 +60,7 @@ def _run_r(script_rel_path: str, args=None, stdin_data=None) -> dict:
             cwd=str(R_PROJECT_DIR),
             input=stdin_data,
             capture_output=True, text=True, timeout=R_TIMEOUT,
+            env=_r_env(),
         )
     except FileNotFoundError:
         raise HTTPException(status_code=500,
@@ -93,15 +107,31 @@ def _missing_r_pkgs():
             % (RLIB, quoted))
     try:
         proc = subprocess.run([RSCRIPT, "-e", expr], cwd=str(R_PROJECT_DIR),
-                              capture_output=True, text=True, timeout=90)
+                              capture_output=True, text=True, timeout=90,
+                              env=_r_env())
         return [p for p in proc.stdout.split() if p]
     except Exception:  # noqa: BLE001
         return []
 
 
+def _ensure_r_syslib():
+    """Ensure the durable system libs (libuv.so.1) exist; restore from /usr if wiped."""
+    try:
+        Path(RSYS_LIB).mkdir(parents=True, exist_ok=True)
+        if not Path(RSYS_LIB, "libuv.so.1").exists():
+            logger.warning("R self-heal: libuv.so.1 missing from %s — restoring", RSYS_LIB)
+            subprocess.run(
+                "cp -P /usr/lib/aarch64-linux-gnu/libuv.so.1* %s/ 2>/dev/null || "
+                "cp -P /usr/lib/x86_64-linux-gnu/libuv.so.1* %s/ 2>/dev/null" % (RSYS_LIB, RSYS_LIB),
+                shell=True, timeout=60)
+    except Exception as e:  # noqa: BLE001
+        logger.error("R syslib self-heal failed: %s", e)
+
+
 def _ensure_r_lib():
     """Verify required R packages are present; repair /app/.Rlib if any are missing."""
     try:
+        _ensure_r_syslib()
         Path(RLIB).mkdir(parents=True, exist_ok=True)
         missing = _missing_r_pkgs()
         if not missing:
@@ -119,7 +149,7 @@ def _ensure_r_lib():
                 [RSCRIPT, "-e",
                  'install.packages(c(%s), lib="%s", repos="https://cloud.r-project.org", quiet=TRUE)'
                  % (quoted, RLIB)],
-                cwd=str(R_PROJECT_DIR), timeout=R_TIMEOUT)
+                cwd=str(R_PROJECT_DIR), timeout=R_TIMEOUT, env=_r_env())
         logger.info("R self-heal: repair complete (was missing %s).", missing)
     except Exception as e:  # noqa: BLE001
         logger.error("R self-heal failed: %s", e)
@@ -141,18 +171,23 @@ async def root():
 
 @api_router.get("/health")
 def health():
-    """Report whether R and the key packages are available."""
+    """Report whether R and the key packages can actually be loaded (not just installed)."""
     try:
         proc = subprocess.run(
             [RSCRIPT, "-e",
-             'cat(as.character(getRversion())); '
-             'cat("|"); '
-             'cat(all(c("tidyverse","janitor","ggplot2","testthat") %in% rownames(installed.packages())))'],
-            capture_output=True, text=True, timeout=60,
+             'cat(as.character(getRversion())); cat("|"); '
+             'ok <- tryCatch({ suppressMessages(suppressWarnings({ '
+             'library(tidyverse); library(janitor); library(ggplot2); library(testthat) })); TRUE }, '
+             'error = function(e) FALSE); cat(ok)'],
+            capture_output=True, text=True, timeout=120,
+            env=_r_env(),
         )
         version, _, pkgs = proc.stdout.partition("|")
-        return {"r_available": proc.returncode == 0, "r_version": version.strip(),
-                "packages_ok": pkgs.strip() == "TRUE"}
+        packages_ok = pkgs.strip() == "TRUE"
+        return {"r_available": proc.returncode == 0 and packages_ok,
+                "r_version": version.strip(),
+                "packages_ok": packages_ok,
+                "error": proc.stderr.strip() if not packages_ok else None}
     except Exception as e:  # noqa: BLE001
         return {"r_available": False, "error": str(e)}
 
