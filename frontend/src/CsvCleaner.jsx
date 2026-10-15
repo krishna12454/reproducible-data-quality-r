@@ -3,11 +3,35 @@ import axios from "axios";
 import JSZip from "jszip";
 import {
   UploadCloud, Sparkles, Loader2, Play, Download, FileCode2, ClipboardList,
-  CheckCircle2, Wand2, Database, AlertTriangle, X, Plus,
+  CheckCircle2, Database, AlertTriangle, X, Plus,
 } from "lucide-react";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const TYPES = ["numeric", "integer", "date", "category", "text"];
+
+const PRESET_KEY = "csvCleanerPresets";
+const readPresets = () => { try { return JSON.parse(localStorage.getItem(PRESET_KEY) || "{}"); } catch { return {}; } };
+
+const normalizeRules = (raw) => ({
+  ...raw,
+  columns: (raw.columns || []).map((c) => ({
+    ...c,
+    _include: c._include !== false,
+    label_pairs: c.label_pairs || Object.entries(c.label_map || {}),
+  })),
+});
+
+const buildPayload = (r) => ({
+  ...r,
+  columns: r.columns
+    .filter((c) => c._include !== false)
+    .map(({ _include, label_pairs, ...c }) => {
+      const lm = {};
+      (label_pairs || []).forEach(([k, v]) => { if (k && k.trim() && v && v.trim()) lm[k] = v; });
+      if (Object.keys(lm).length > 0) c.label_map = lm; else delete c.label_map;
+      return c;
+    }),
+});
 
 const downloadText = (filename, text, mime) => {
   const blob = new Blob([text], { type: mime });
@@ -54,6 +78,33 @@ export default function CsvCleaner() {
   const [busy, setBusy] = useState("");
   const [error, setError] = useState(null);
   const [dragOver, setDragOver] = useState(false);
+  const [presets, setPresets] = useState(readPresets());
+  const rulesFileRef = useRef(null);
+
+  const savePreset = () => {
+    const name = window.prompt("Save these rules as a preset named:");
+    if (!name) return;
+    const all = { ...presets, [name]: buildPayload(rules) };
+    localStorage.setItem(PRESET_KEY, JSON.stringify(all));
+    setPresets(all);
+  };
+  const loadPreset = (name) => {
+    if (!name || !presets[name]) return;
+    setRules(normalizeRules(JSON.parse(JSON.stringify(presets[name]))));
+    setSource("preset");
+  };
+  const deletePreset = (name) => {
+    const all = { ...presets }; delete all[name];
+    localStorage.setItem(PRESET_KEY, JSON.stringify(all));
+    setPresets(all);
+  };
+  const importRules = async (f) => {
+    if (!f) return;
+    try {
+      const obj = JSON.parse(await f.text());
+      setRules(normalizeRules(obj)); setSource("imported");
+    } catch { setError("Invalid rules JSON file."); }
+  };
 
   const reset = () => { setProfile(null); setRules(null); setResult(null); setSource(null); setError(null); };
 
@@ -96,8 +147,7 @@ export default function CsvCleaner() {
         label_pairs: Object.entries(c.label_map || {}),
       }));
       setRules({ ...data.rules, columns: cols });
-      setSource(data.source);
-    } catch (e) {
+      setSource(data.source);    } catch (e) {
       setError("AI suggestion failed.");
     } finally { setBusy(""); }
   };
@@ -127,20 +177,7 @@ export default function CsvCleaner() {
   const applyRules = async () => {
     setBusy("apply"); setError(null);
     try {
-      const payload = {
-        ...rules,
-        columns: rules.columns
-          .filter((c) => c._include !== false)
-          .map(({ _include, label_pairs, ...c }) => {
-            const lm = {};
-            (label_pairs || []).forEach(([k, v]) => {
-              if (k && k.trim() && v && v.trim()) lm[k] = v;
-            });
-            if (Object.keys(lm).length > 0) c.label_map = lm;
-            else delete c.label_map;
-            return c;
-          }),
-      };
+      const payload = buildPayload(rules);
       const fd = new FormData();
       fd.append("file", file);
       fd.append("rules", JSON.stringify(payload));
@@ -155,10 +192,6 @@ export default function CsvCleaner() {
     <section id="cleaner" data-testid="csv-cleaner-section" className="rounded-xl border-2 border-primary/30 bg-card shadow-sm overflow-hidden">
       {/* banner */}
       <div className="bg-primary/5 border-b border-border px-5 md:px-7 py-5">
-        <div className="flex items-center gap-2 text-primary">
-          <Wand2 className="h-5 w-5" />
-          <span className="text-xs font-bold uppercase tracking-widest">Unique Feature</span>
-        </div>
         <h2 className="font-display text-xl md:text-2xl font-extrabold tracking-tight mt-1">
           Universal CSV Cleaner — <span className="text-primary">AI suggests, R proves</span>
         </h2>
@@ -321,6 +354,31 @@ export default function CsvCleaner() {
                   )}
                 </div>
               ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-2 border-t border-border bg-secondary/30 px-4 py-2.5 text-xs">
+              <span className="font-semibold text-muted-foreground">Presets:</span>
+              <button data-testid="save-preset-button" onClick={savePreset}
+                className="rounded border border-border bg-card px-2 py-1 hover:bg-accent">Save current</button>
+              <select data-testid="preset-select" defaultValue=""
+                onChange={(e) => { loadPreset(e.target.value); e.target.value = ""; }}
+                className="rounded border border-border bg-card px-2 py-1">
+                <option value="" disabled>Load preset…</option>
+                {Object.keys(presets).map((n) => <option key={n} value={n}>{n}</option>)}
+              </select>
+              {Object.keys(presets).map((n) => (
+                <button key={n} data-testid={`delete-preset-${n}`} onClick={() => deletePreset(n)}
+                  className="rounded px-1.5 py-1 text-muted-foreground hover:text-rose-500" title={`delete ${n}`}>
+                  <X className="h-3 w-3" />
+                </button>
+              ))}
+              <span className="mx-1 h-4 w-px bg-border" />
+              <button data-testid="export-rules-button"
+                onClick={() => downloadText("cleaning_rules.json", JSON.stringify(buildPayload(rules), null, 2), "application/json")}
+                className="rounded border border-border bg-card px-2 py-1 hover:bg-accent">Export JSON</button>
+              <input ref={rulesFileRef} type="file" accept=".json,application/json" className="hidden"
+                data-testid="import-rules-input" onChange={(e) => importRules(e.target.files?.[0])} />
+              <button data-testid="import-rules-button" onClick={() => rulesFileRef.current?.click()}
+                className="rounded border border-border bg-card px-2 py-1 hover:bg-accent">Import JSON</button>
             </div>
             <div className="border-t border-border p-4">
               <button data-testid="apply-cleaning-button" onClick={applyRules} disabled={busy === "apply"}

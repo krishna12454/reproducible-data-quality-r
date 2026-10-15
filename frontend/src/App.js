@@ -279,9 +279,6 @@ function App() {
               R engine {health.r_available ? `online · v${health.r_version}` : "unavailable"}
             </span>
           )}
-          <span className="text-muted-foreground">
-            Every number &amp; figure below is produced live by <span className="font-mono">Rscript</span> — nothing is hardcoded.
-          </span>
         </div>
 
         {error && (
@@ -769,9 +766,6 @@ function App() {
                       <iframe data-testid="report-iframe" title="R Markdown report" src={`${API}/report`}
                         className="mt-2 h-[520px] w-full rounded-md border border-border bg-white" />
                     )}
-                    <div className="rounded-md border border-amber-400/50 bg-amber-50 dark:bg-amber-950/30 p-3 text-xs text-amber-700 dark:text-amber-400">
-                      All dataset records are 100% synthetic, generated for academic demonstration only. They do not describe real people and carry no empirical claims.
-                    </div>
                   </div>
                 </Card>
               </div>
