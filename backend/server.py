@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter, HTTPException, UploadFile, File, Form
-from fastapi.responses import FileResponse, PlainTextResponse
+from fastapi.responses import FileResponse, PlainTextResponse, Response
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -11,6 +11,8 @@ import json
 import uuid
 import asyncio
 import tempfile
+import io
+import zipfile
 from pathlib import Path
 
 
@@ -330,6 +332,33 @@ async def get_report():
     if not path.exists():
         raise HTTPException(status_code=404, detail="Report not rendered yet.")
     return PlainTextResponse(path.read_text(), media_type="text/html")
+
+
+@api_router.get("/analysis/export")
+def export_bundle():
+    """Zip all generated outputs (tables, figures, processed data, report) in-memory."""
+    buf = io.BytesIO()
+    added = 0
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        for sub in ["outputs/tables", "outputs/figures", "data/processed"]:
+            d = R_PROJECT_DIR / sub
+            if d.exists():
+                for f in sorted(d.iterdir()):
+                    if f.is_file():
+                        z.write(f, arcname=f"sleep_analysis/{sub}/{f.name}")
+                        added += 1
+        for extra in ["report/report.html", "README.md", "data_dictionary.md"]:
+            p = R_PROJECT_DIR / extra
+            if p.exists():
+                z.write(p, arcname=f"sleep_analysis/{extra}")
+                added += 1
+    if added == 0:
+        raise HTTPException(status_code=404, detail="No outputs yet. Run the analysis first.")
+    buf.seek(0)
+    return Response(
+        content=buf.getvalue(), media_type="application/zip",
+        headers={"Content-Disposition": "attachment; filename=sleep_analysis_bundle.zip"},
+    )
 
 
 # ==========================================================================

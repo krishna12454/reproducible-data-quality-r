@@ -696,7 +696,13 @@ function App() {
             <Section id="figures">
               <Card testid="figures-gallery-card">
                 <CardHead icon={FlaskConical} title="Publication Figures (ggplot2)"
-                  sub="High-resolution PNGs rendered directly by R." />
+                  sub="High-resolution PNGs rendered directly by R."
+                  right={
+                    <a data-testid="export-bundle-button" href={`${API}/analysis/export`}
+                      className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:opacity-90 transition-opacity">
+                      <Download className="h-3.5 w-3.5" /> Download all (zip)
+                    </a>
+                  } />
                 <div data-testid="figures-gallery-grid" className="grid sm:grid-cols-2 gap-px bg-border">
                   {FIGS.map((f) => (
                     <div key={f.key} data-testid={f.testid} className="bg-card p-4">
