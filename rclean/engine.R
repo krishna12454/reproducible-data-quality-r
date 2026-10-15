@@ -144,14 +144,34 @@ rc_apply_rules <- function(df, rules) {
     }
   }
 
-  # 4. remove exact duplicate rows
+  # 4. optionally winsorize (cap) outliers at the IQR fences — destructive, opt-in
+  if (isTRUE(rules$winsorize_outliers)) {
+    for (nm in names(df)) {
+      x <- df[[nm]]
+      if (is.numeric(x)) {
+        q <- stats::quantile(x, c(0.25, 0.75), na.rm = TRUE)
+        iqr <- q[2] - q[1]
+        if (is.finite(iqr) && iqr > 0) {
+          lo <- q[1] - 1.5 * iqr; hi <- q[2] + 1.5 * iqr
+          capped <- sum(!is.na(x) & (x < lo | x > hi))
+          x[!is.na(x) & x < lo] <- lo
+          x[!is.na(x) & x > hi] <- hi
+          if (capped > 0) add("winsorize", nm, capped,
+                              sprintf("capped %d value(s) to [%.2f, %.2f]", capped, lo, hi))
+          df[[nm]] <- x
+        }
+      }
+    }
+  }
+
+  # 5. remove exact duplicate rows
   if (isTRUE(rules$remove_duplicate_rows)) {
     before <- nrow(df)
     df <- dplyr::distinct(df)
     add("remove_duplicate_rows", NULL, before - nrow(df))
   }
 
-  # 5. standardise column names (done last so rules can use original names)
+  # 6. standardise column names (done last so rules can use original names)
   if (isTRUE(rules$clean_column_names)) {
     old <- names(df)
     names(df) <- rc_clean_names(names(df))

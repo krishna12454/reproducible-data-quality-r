@@ -265,6 +265,11 @@ export default function CsvCleaner() {
                     onChange={(e) => setRules({ ...rules, flag_outliers: e.target.checked })} />
                   flag outliers (IQR)
                 </label>
+                <label className="inline-flex items-center gap-1.5 cursor-pointer">
+                  <input type="checkbox" data-testid="toggle-winsorize" checked={!!rules.winsorize_outliers}
+                    onChange={(e) => setRules({ ...rules, winsorize_outliers: e.target.checked })} />
+                  cap outliers (winsorize)
+                </label>
               </div>
             </div>
             <div className="divide-y divide-border">
