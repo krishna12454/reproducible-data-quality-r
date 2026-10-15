@@ -231,6 +231,8 @@ function App() {
     { key: "sleep_wellbeing", title: "Sleep hours vs. wellbeing", testid: "figure-card-sleep-wellbeing" },
     { key: "wellbeing_by_quality", title: "Wellbeing by sleep quality", testid: "figure-card-wellbeing-quality" },
     { key: "corr_heatmap", title: "Correlation heatmap", testid: "figure-card-correlation-heatmap" },
+    { key: "resid_fitted", title: "Residuals vs. fitted (regression diagnostic)", testid: "figure-card-resid-fitted" },
+    { key: "qq", title: "Normal Q-Q of residuals (regression diagnostic)", testid: "figure-card-qq" },
   ];
 
   return (

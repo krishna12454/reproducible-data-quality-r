@@ -326,6 +326,8 @@ FIGURES = {
     "sleep_wellbeing": "02_sleep_wellbeing.png",
     "wellbeing_by_quality": "03_wellbeing_by_quality.png",
     "corr_heatmap": "04_corr_heatmap.png",
+    "resid_fitted": "05_resid_fitted.png",
+    "qq": "06_qq.png",
 }
 
 

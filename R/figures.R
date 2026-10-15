@@ -63,6 +63,33 @@ fig_corr_heatmap <- function(df, cols) {
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 }
 
+# -- Regression model-assumption diagnostics --------------------------------
+WELLBEING_FORMULA <- wellbeing_score ~ sleep_hours + stress_level +
+  exercise_days_per_week + caffeine_cups + screen_time_hours + age
+
+fig_resid_fitted <- function(fit) {
+  d <- tibble::tibble(fitted = fitted(fit), resid = resid(fit))
+  ggplot(d, aes(x = fitted, y = resid)) +
+    geom_point(alpha = 0.3, color = "#2c7fb8") +
+    geom_hline(yintercept = 0, linetype = "dashed", color = "grey40") +
+    geom_smooth(method = "loess", formula = y ~ x, se = FALSE, color = "#d95f0e") +
+    labs(title = "Residuals vs. fitted values",
+         subtitle = paste0("Linearity & homoscedasticity check \u00b7 ", SYNTH_TAG),
+         x = "Fitted wellbeing score", y = "Residual") +
+    theme_pub()
+}
+
+fig_qq <- function(fit) {
+  d <- tibble::tibble(std_resid = as.numeric(scale(resid(fit))))
+  ggplot(d, aes(sample = std_resid)) +
+    stat_qq(alpha = 0.3, color = "#2c7fb8") +
+    stat_qq_line(color = "#d95f0e", linetype = "dashed") +
+    labs(title = "Normal Q-Q plot of residuals",
+         subtitle = paste0("Normality-of-residuals check \u00b7 ", SYNTH_TAG),
+         x = "Theoretical quantiles", y = "Standardized residuals") +
+    theme_pub()
+}
+
 #' Render and save all figures as PNGs
 save_figures <- function(df, out_dir = "outputs/figures") {
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
@@ -79,5 +106,16 @@ save_figures <- function(df, out_dir = "outputs/figures") {
          fig_wellbeing_by_quality(df), width = 7, height = 4.5, dpi = 150)
   ggsave(file.path(out_dir, "04_corr_heatmap.png"),
          fig_corr_heatmap(df, num_cols), width = 7, height = 6, dpi = 150)
+
+  # Regression model-assumption diagnostics (same model as scripts/regression.R)
+  reg_vars <- c("wellbeing_score", "sleep_hours", "stress_level",
+                "exercise_days_per_week", "caffeine_cups", "screen_time_hours", "age")
+  if (all(reg_vars %in% names(df))) {
+    fit <- lm(WELLBEING_FORMULA, data = df)
+    ggsave(file.path(out_dir, "05_resid_fitted.png"),
+           fig_resid_fitted(fit), width = 7, height = 4.5, dpi = 150)
+    ggsave(file.path(out_dir, "06_qq.png"),
+           fig_qq(fit), width = 7, height = 4.5, dpi = 150)
+  }
   invisible(out_dir)
 }

@@ -16,6 +16,26 @@ statistics — everything runs through `Rscript`.
 
 ---
 
+## Results showcase
+
+Every figure below is produced **live by R (ggplot2)** when the pipeline runs —
+nothing is mocked. The animation cycles through the full set of outputs:
+
+![Analysis results showcase](docs/demo.gif)
+
+| | |
+|---|---|
+| ![Distribution of nightly sleep](docs/figures/01_sleep_hist.png) | ![Sleep hours vs. wellbeing](docs/figures/02_sleep_wellbeing.png) |
+| ![Wellbeing by sleep quality](docs/figures/03_wellbeing_by_quality.png) | ![Correlation matrix](docs/figures/04_corr_heatmap.png) |
+| ![Residuals vs. fitted (regression diagnostic)](docs/figures/05_resid_fitted.png) | ![Normal Q-Q of residuals (regression diagnostic)](docs/figures/06_qq.png) |
+
+The last two are **regression model-assumption diagnostics**: a residuals-vs-fitted
+plot (linearity & homoscedasticity) and a normal Q-Q plot of the residuals
+(normality) for the multiple linear regression of wellbeing on sleep, stress,
+exercise, caffeine, screen time and age.
+
+---
+
 ## Universal CSV Cleaner — "AI suggests, R proves" (the unique feature)
 
 Upload **any** messy CSV and get back a tidy one — but unlike OpenRefine or

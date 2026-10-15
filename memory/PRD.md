@@ -46,6 +46,18 @@ synthetic. No invented affiliations/publications.
   - Residual: `.emergent/` is git-TRACKED (emergent.yml + markers) and must be
     deleted from the public GitHub repo after pushing; cannot be removed in-pod.
 
+## Presentation & diagnostics (2026-06) — verified in-environment
+- Added regression model-assumption diagnostics (ggplot2): residuals-vs-fitted
+  (`05_resid_fitted.png`) and normal Q-Q of residuals (`06_qq.png`), generated
+  in `R/figures.R::save_figures` from the same lm model as `scripts/regression.R`.
+  Exposed via `FIGURES` in server.py and the frontend figures gallery (new keys
+  `resid_fitted`, `qq`). Both endpoints return HTTP 200 image/png.
+- README: added a "Results showcase" section embedding the real ggplot2 outputs
+  (`docs/figures/*.png`) and an animated `docs/demo.gif` built by `docs/make_gif.py`.
+  (Real app-UI screenshots can't be written to the repo by the screenshot tool;
+  genuine R result figures are used instead.)
+- Added `LICENSE` (MIT) — copyright placeholder `[Your Name]` to be filled in.
+
 ## Backlog (P1/P2)
 - Optional Quarto (.qmd) variant of the report.
 - Optional renv lockfile for exact package pinning.
