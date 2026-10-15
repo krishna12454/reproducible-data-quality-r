@@ -42,6 +42,12 @@ disk) and all artefacts are returned inline. Endpoints:
 R engine: `rclean/engine.R` (deterministic `rc_apply_rules`), `rclean/profile.R`,
 `rclean/apply.R`. These depend only on `dplyr/readr/stringr/tibble/jsonlite`.
 
+> **Note (hosted preview only):** R packages are kept in a durable library at
+> `/app/.Rlib` and loaded via `/app/.Rprofile` + `R_LIBS_USER`, because packages
+> installed under `/usr` do not survive container resets. If the R engine ever
+> reports "unavailable", confirm `/app/.Rlib` exists and `backend/.env` has
+> `R_LIBS_USER=/app/.Rlib`.
+
 ---
 
 ## What it does
