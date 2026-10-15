@@ -8,7 +8,6 @@ import logging
 import subprocess
 import csv
 import json
-import uuid
 import asyncio
 import tempfile
 import io
@@ -400,7 +399,9 @@ def export_bundle():
 # Universal CSV Cleaner — AI suggests cleaning rules, R executes them
 # (deterministic & reproducible). All actual cleaning is done by R.
 # ==========================================================================
-EMERGENT_LLM_KEY = os.environ.get("EMERGENT_LLM_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_BASE_URL = os.environ.get("OPENAI_BASE_URL")
 
 CLEAN_SYSTEM_PROMPT = (
     "You are a meticulous data-cleaning assistant. You are given a JSON profile of "
@@ -434,18 +435,24 @@ CLEAN_SYSTEM_PROMPT = (
 
 
 async def _suggest_rules(profile: dict) -> dict:
-    """Ask the LLM to propose rules; fall back to deterministic rules on any failure."""
-    if EMERGENT_LLM_KEY:
+    """Ask an LLM to propose rules; fall back to deterministic rules when unconfigured or on failure."""
+    if OPENAI_API_KEY:
         try:
-            from emergentintegrations.llm.chat import LlmChat, UserMessage
-            chat = LlmChat(
-                api_key=EMERGENT_LLM_KEY,
-                session_id="csv-clean-" + uuid.uuid4().hex[:8],
-                system_message=CLEAN_SYSTEM_PROMPT,
-            ).with_model("openai", "gpt-5.4")
+            from openai import AsyncOpenAI
+            kwargs = {"api_key": OPENAI_API_KEY, "max_retries": 2, "timeout": 40.0}
+            if OPENAI_BASE_URL:
+                kwargs["base_url"] = OPENAI_BASE_URL
+            client = AsyncOpenAI(**kwargs)
             prompt = "Here is the CSV column profile. Return the cleaning-rules JSON only:\n\n" + json.dumps(profile)
-            resp = await chat.send_message(UserMessage(text=prompt))
-            rules = _parse_rules_json(str(resp))
+            completion = await client.chat.completions.create(
+                model=OPENAI_MODEL,
+                messages=[
+                    {"role": "system", "content": CLEAN_SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
+                response_format={"type": "json_object"},
+            )
+            rules = _parse_rules_json(completion.choices[0].message.content or "")
             if rules and isinstance(rules.get("columns"), list):
                 rules["_source"] = "ai"
                 return rules

@@ -31,9 +31,26 @@ dist/
 dist
 
 # Environment files (comprehensive coverage)
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
 
 *token.json*
 *credentials.json*
+
+# Platform / tooling internals (not part of the project)
+.emergent/
+.rollback/
+
+# R runtime libraries & generated outputs
+.Rlib/
+.Rsys/
+data/raw/
+outputs/
+report/*.html
 
 # Logs and debug files
 npm-debug.log*

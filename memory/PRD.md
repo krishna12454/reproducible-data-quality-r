@@ -31,6 +31,21 @@ synthetic. No invented affiliations/publications.
 - `report/report.html` renders with methodology/results/limitations.
 - README, requirements-R.txt, setup/install.R, data_dictionary.md complete.
 
+## Vendor-neutral / portability (2026-06) — verified in-environment
+- De-branded the codebase so it can be published as a standalone project:
+  - Backend LLM swapped from `emergentintegrations`/`EMERGENT_LLM_KEY` to the
+    standard `openai` SDK (`OPENAI_API_KEY` / `OPENAI_MODEL` / optional
+    `OPENAI_BASE_URL`); deterministic R/Python fallback when no key is set, so
+    the app runs fully offline. `requirements.txt` no longer has emergentintegrations.
+  - `frontend/public/index.html`: removed emergent meta/script + PostHog block.
+  - `frontend/craco.config.js`: rewritten without `@emergentbase/overlay` and
+    `@emergentbase/visual-edits`; both removed from package.json/yarn.lock.
+  - Neutralized testIds + comments; test default URLs now `http://localhost:8001`.
+  - `.gitignore` now excludes all `.env*` (keeps `.env.example`), `.emergent/`,
+    and R libs/outputs. Added `backend/.env.example` and `frontend/.env.example`.
+  - Residual: `.emergent/` is git-TRACKED (emergent.yml + markers) and must be
+    deleted from the public GitHub repo after pushing; cannot be removed in-pod.
+
 ## Backlog (P1/P2)
 - Optional Quarto (.qmd) variant of the report.
 - Optional renv lockfile for exact package pinning.
