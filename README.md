@@ -1,6 +1,6 @@
 # Reproducible Research: Data Quality & Analysis (R)
 
-**By [Krishna Sri Chaitanya Kesani](https://github.com/USERNAME)** · Licensed under the [MIT License](LICENSE)
+**By [Krishna Sri Chaitanya Kesani](https://github.com/krishna12454)** · Licensed under the [MIT License](LICENSE)
 
 A complete, **standalone R project** that demonstrates a reproducible
 data-quality and statistical-analysis workflow on a **synthetic** dataset of
