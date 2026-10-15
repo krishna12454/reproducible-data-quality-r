@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import axios from "axios";
+import JSZip from "jszip";
 import {
   UploadCloud, Sparkles, Loader2, Play, Download, FileCode2, ClipboardList,
   CheckCircle2, Wand2, Database, AlertTriangle, X, Plus,
@@ -54,6 +55,23 @@ export default function CsvCleaner() {
   const [error, setError] = useState(null);
 
   const reset = () => { setProfile(null); setRules(null); setResult(null); setSource(null); setError(null); };
+
+  const downloadBundle = async () => {
+    if (!result) return;
+    const zip = new JSZip();
+    zip.file("cleaned.csv", result.cleaned_csv);
+    zip.file("cleaning_script.R", result.script);
+    zip.file("audit.json", JSON.stringify(result.audit, null, 2));
+    (result.figures || []).forEach((f, i) => {
+      const b64 = (f.src || "").split(",")[1];
+      if (b64) zip.file(`figures/figure_${i + 1}.png`, b64, { base64: true });
+    });
+    const blob = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "cleaned_bundle.zip"; a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const onPick = async (f) => {
     if (!f) return;
@@ -315,6 +333,10 @@ export default function CsvCleaner() {
                 <button data-testid="download-audit" onClick={() => downloadText("audit.json", JSON.stringify(result.audit, null, 2), "application/json")}
                   className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-semibold hover:bg-accent">
                   <ClipboardList className="h-3.5 w-3.5" /> Audit
+                </button>
+                <button data-testid="download-bundle-button" onClick={downloadBundle}
+                  className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white hover:opacity-90">
+                  <Download className="h-3.5 w-3.5" /> All (zip)
                 </button>
               </div>
             </div>
