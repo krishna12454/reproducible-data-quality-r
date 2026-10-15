@@ -127,14 +127,31 @@ rc_apply_rules <- function(df, rules) {
     }
   }
 
-  # 3. remove exact duplicate rows
+  # 3. flag statistical outliers (IQR rule) — non-destructive, reported in audit
+  if (isTRUE(rules$flag_outliers)) {
+    for (nm in names(df)) {
+      x <- df[[nm]]
+      if (is.numeric(x)) {
+        q <- stats::quantile(x, c(0.25, 0.75), na.rm = TRUE)
+        iqr <- q[2] - q[1]
+        if (is.finite(iqr) && iqr > 0) {
+          lo <- q[1] - 1.5 * iqr; hi <- q[2] + 1.5 * iqr
+          n <- sum(!is.na(x) & (x < lo | x > hi))
+          if (n > 0) add("flag_outliers", nm, n,
+                         sprintf("IQR: %d value(s) outside [%.2f, %.2f]", n, lo, hi))
+        }
+      }
+    }
+  }
+
+  # 4. remove exact duplicate rows
   if (isTRUE(rules$remove_duplicate_rows)) {
     before <- nrow(df)
     df <- dplyr::distinct(df)
     add("remove_duplicate_rows", NULL, before - nrow(df))
   }
 
-  # 4. standardise column names (done last so rules can use original names)
+  # 5. standardise column names (done last so rules can use original names)
   if (isTRUE(rules$clean_column_names)) {
     old <- names(df)
     names(df) <- rc_clean_names(names(df))

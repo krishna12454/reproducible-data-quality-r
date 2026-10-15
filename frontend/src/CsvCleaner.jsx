@@ -53,6 +53,7 @@ export default function CsvCleaner() {
   const [result, setResult] = useState(null);
   const [busy, setBusy] = useState("");
   const [error, setError] = useState(null);
+  const [dragOver, setDragOver] = useState(false);
 
   const reset = () => { setProfile(null); setRules(null); setResult(null); setSource(null); setError(null); };
 
@@ -169,7 +170,13 @@ export default function CsvCleaner() {
 
       <div className="p-5 md:p-7 space-y-6">
         {/* step 1: upload */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div
+          data-testid="csv-dropzone"
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={(e) => { e.preventDefault(); setDragOver(false); onPick(e.dataTransfer.files?.[0]); }}
+          className={`flex flex-wrap items-center gap-3 rounded-lg border-2 border-dashed p-4 transition-colors ${dragOver ? "border-primary bg-primary/10" : "border-transparent"}`}
+        >
           <input ref={fileRef} type="file" accept=".csv,text/csv" className="hidden"
             data-testid="csv-file-input"
             onChange={(e) => onPick(e.target.files?.[0])} />
@@ -178,6 +185,7 @@ export default function CsvCleaner() {
             {busy === "profile" ? <Loader2 className="h-4 w-4 animate-spin" /> : <UploadCloud className="h-4 w-4" />}
             {file ? "Choose a different CSV" : "Upload a CSV"}
           </button>
+          <span className="text-xs text-muted-foreground">{dragOver ? "Drop to upload" : "…or drag & drop a .csv here"}</span>
           {file && <span data-testid="csv-filename" className="font-mono text-xs text-muted-foreground">{file.name}</span>}
           <a href="/sample_messy.csv" download className="ml-auto text-xs text-primary hover:underline inline-flex items-center gap-1">
             <Download className="h-3.5 w-3.5" /> try a sample messy file
@@ -251,6 +259,11 @@ export default function CsvCleaner() {
                   <input type="checkbox" data-testid="toggle-remove-dupes" checked={!!rules.remove_duplicate_rows}
                     onChange={(e) => setRules({ ...rules, remove_duplicate_rows: e.target.checked })} />
                   remove duplicate rows
+                </label>
+                <label className="inline-flex items-center gap-1.5 cursor-pointer">
+                  <input type="checkbox" data-testid="toggle-flag-outliers" checked={!!rules.flag_outliers}
+                    onChange={(e) => setRules({ ...rules, flag_outliers: e.target.checked })} />
+                  flag outliers (IQR)
                 </label>
               </div>
             </div>
